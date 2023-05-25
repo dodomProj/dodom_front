@@ -1,7 +1,13 @@
 import React from 'react';
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <>
+      <header>헤더</header>
+      <div>본문</div>
+      <footer>푸터</footer>
+    </>
+  );
 }
 
 export default App;
