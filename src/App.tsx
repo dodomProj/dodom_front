@@ -8,10 +8,10 @@ import Main from './pages/Main';
 function App() {
   return (
     <RecoilRoot>
-      <GlobalStyle/>
+      <GlobalStyle />
       {/* <Header /> */}
       <Routes>
-        <Route path="/" element={<Main />}/>
+        <Route path="/" element={<Main />} />
       </Routes>
       {/* <Footer/> */}
     </RecoilRoot>
