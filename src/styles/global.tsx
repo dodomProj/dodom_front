@@ -5,21 +5,18 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Pretendard-Regular'; 
+    font-family: 'Pretendard-medium'; 
     font-size: 16px;
   }
   h1 {
     font-family: 'Pretendard-Bold';
-    font-size: 32px;
+    font-size: 48px;
   }
   h2 {
-    font-family: 'Pretendard-Medium';
-    font-size: 24px;
+    font-family: 'Pretendard-Bold';
+    font-size: 36px;
   }
-  h3 {
-    font-family: 'Pretendard-Medium';
-    font-weight: 500;
-  }
+
 
   @font-face {
     font-family: 'Pretendard-Regular';
