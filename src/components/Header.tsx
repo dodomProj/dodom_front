@@ -46,7 +46,7 @@ const Header: FC<HeaderTheme> = ({ theme }) => {
       <LogoBox>
         <Logo
           to="/"
-          theme={theme === 'dark' ? '--dodom_yellow' : '--dodom_black'}
+          theme={theme === 'dark' ? '--dodom_primary' : '--dodom_black'}
         >
           DODOM
         </Logo>
