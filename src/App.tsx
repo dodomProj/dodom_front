@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { basePadding } from './styles/basePadding';
 
 const Div = styled.div`
-  ${basePadding}
+  /* ${basePadding} */
   padding-top: 100px;
 `;
 
