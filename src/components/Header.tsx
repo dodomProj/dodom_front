@@ -1,9 +1,14 @@
+import { FC } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import navEl from '../data/navEl';
 import { basePadding } from '../styles/basePadding';
 
-const HeaderContainer = styled.header`
+interface HeaderTheme {
+  theme: string;
+}
+
+const HeaderContainer = styled.header<HeaderTheme>`
   ${basePadding}
   display: flex;
   justify-content: space-between;
@@ -18,7 +23,7 @@ const HeaderContainer = styled.header`
 const LogoBox = styled.div`
   flex: 1;
 `;
-const Logo = styled(Link)`
+const Logo = styled(Link)<HeaderTheme>`
   font-family: 'Pretendard-Bold';
   font-size: 1.7rem;
   color: var(${(props) => props.theme});
@@ -28,18 +33,16 @@ const NavBox = styled.nav`
   display: flex;
   justify-content: space-between;
 `;
-const PageLink = styled(Link)`
+const PageLink = styled(Link)<HeaderTheme>`
   font-size: 1.1rem;
   color: var(${(props) => props.theme});
 `;
 
-function Header({ theme }) {
+const Header: FC<HeaderTheme> = ({ theme }) => {
   return (
-    <HeaderContainer
-      theme={theme === 'dark' ? '--dodom_black' : '--dodom_white'}
-    >
+    <HeaderContainer theme={theme === 'dark' ? '--black' : '--white'}>
       <LogoBox>
-        <Logo theme={theme === 'dark' ? '--dodom_yellow' : '--dodom_black'}>
+        <Logo to="/" theme={theme === 'dark' ? '--primary' : '--black'}>
           DODOM
         </Logo>
       </LogoBox>
@@ -47,7 +50,8 @@ function Header({ theme }) {
         {navEl.map((el) => (
           <PageLink
             key={el.uri}
-            theme={theme === 'dark' ? '--dodom_white' : '--dodom_black'}
+            to="/"
+            theme={theme === 'dark' ? '--white' : '--black'}
           >
             {el.pageName}
           </PageLink>
@@ -55,6 +59,6 @@ function Header({ theme }) {
       </NavBox>
     </HeaderContainer>
   );
-}
+};
 
 export default Header;
