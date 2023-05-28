@@ -18,9 +18,9 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
     text-decoration: none;
-    color: var(--dodom_black);
+    color: var(--black);
     :hover {
-      color: var(--dodom_primary);      
+      color: var(--primary);      
     }
   }
 
@@ -44,14 +44,14 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-    --dodom_primary: rgba(255, 194, 36, 1);
-    --dodom_secondary: rgba(255, 248, 233, 1);
-    --dodom_third: rgba(255, 249, 237, 1);
-    --dodom_black: rgba(17, 14, 13, 1);
-    --dodom_sub3: rgba(104, 96, 96, 1);
-    --dodom_sub2: rgba(127, 125, 129, 1);
-    --dodom_sub: rgba(196, 190, 189, 1);
-    --dodom_point: rgba(235, 78, 61, 1);
+    --primary: rgba(255, 194, 36, 1);
+    --secondary: rgba(255, 248, 233, 1);
+    --third: rgba(255, 249, 237, 1);
+    --black: rgba(17, 14, 13, 1);
+    --sub3: rgba(104, 96, 96, 1);
+    --sub2: rgba(127, 125, 129, 1);
+    --sub: rgba(196, 190, 189, 1);
+    --point: rgba(235, 78, 61, 1);
   }
 `;
 

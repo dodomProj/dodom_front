@@ -40,14 +40,9 @@ const PageLink = styled(Link)<HeaderTheme>`
 
 const Header: FC<HeaderTheme> = ({ theme }) => {
   return (
-    <HeaderContainer
-      theme={theme === 'dark' ? '--dodom_black' : '--dodom_white'}
-    >
+    <HeaderContainer theme={theme === 'dark' ? '--black' : '--white'}>
       <LogoBox>
-        <Logo
-          to="/"
-          theme={theme === 'dark' ? '--dodom_primary' : '--dodom_black'}
-        >
+        <Logo to="/" theme={theme === 'dark' ? '--primary' : '--black'}>
           DODOM
         </Logo>
       </LogoBox>
@@ -56,7 +51,7 @@ const Header: FC<HeaderTheme> = ({ theme }) => {
           <PageLink
             key={el.uri}
             to="/"
-            theme={theme === 'dark' ? '--dodom_white' : '--dodom_black'}
+            theme={theme === 'dark' ? '--white' : '--black'}
           >
             {el.pageName}
           </PageLink>
