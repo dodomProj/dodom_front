@@ -48,6 +48,7 @@ const GlobalStyle = createGlobalStyle`
     --secondary: rgba(255, 248, 233, 1);
     --third: rgba(255, 249, 237, 1);
     --black: rgba(17, 14, 13, 1);
+    --white: rgba(255, 255, 255, 1);
     --sub3: rgba(104, 96, 96, 1);
     --sub2: rgba(127, 125, 129, 1);
     --sub: rgba(196, 190, 189, 1);
