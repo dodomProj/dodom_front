@@ -7,7 +7,7 @@ import { PageBase } from '../styles/basePadding';
 const MainBox = styled(PageBase)`
   display: flex;
   flex-direction: column;
-  height: calc(-100px + 100vh);
+  height: calc(100vh);
   margin-bottom: 0px;
 `;
 const Top = styled.div`
@@ -56,10 +56,6 @@ const Bottom = styled.div`
 const SubBox = styled.div`
   position: relative;
   height: calc(-200px + 100vh);
-  margin-top: -10px;
-  div {
-    padding-bottom: 20px;
-  }
 `;
 const LinkBox = styled.div`
   position: absolute;
