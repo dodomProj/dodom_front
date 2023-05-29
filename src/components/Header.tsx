@@ -14,6 +14,7 @@ const HeaderContainer = styled.header<HeaderTheme>`
   justify-content: space-between;
   align-items: center;
   position: fixed;
+  z-index: 999;
   top: 0;
   left: 0;
   width: 100%;
