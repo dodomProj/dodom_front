@@ -6,6 +6,9 @@ import Main from './pages/Main';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+import { useRecoilState } from 'recoil';
+import { headerThemeState } from './recoil';
+
 function App() {
   const { pathname } = useLocation();
 
