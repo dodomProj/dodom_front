@@ -96,6 +96,11 @@ const Diary = ({ themeSetter }: PageProps) => {
     setDiaryText(text);
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(diaryText);
+  };
+
   return (
     <DiaryBox>
       <Top>
@@ -119,7 +124,7 @@ const Diary = ({ themeSetter }: PageProps) => {
               </div>
             </Info>
           </EditTip>
-          <EditForm>
+          <EditForm onSubmit={(e) => handleSubmit(e)}>
             <textarea
               onChange={handleChange}
               placeholder="정해진 이야기는 없어요.&#13;&#10;하고 싶은 이야기를 마음껏 작성해주세요 :)"
