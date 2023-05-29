@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { PageBase, basePadding } from '../styles/basePadding';
 
 import { useRecoilState } from 'recoil';
-import { PageProps } from '../recoil';
 import { diaryTextState, diaryTipState } from '../recoil/diary';
 
 import TextBox from '../components/TextBox';
@@ -89,11 +88,7 @@ const EditForm = styled.form`
     border: none;
   }
 `;
-const Diary = ({ themeSetter }: PageProps) => {
-  useEffect(() => {
-    themeSetter('light');
-  }, []);
-
+const Diary = () => {
   const [diaryText, setDiaryText] = useRecoilState(diaryTextState);
   const [diaryTip, setDiaryTip] = useRecoilState(diaryTipState);
 
@@ -145,7 +140,7 @@ const Diary = ({ themeSetter }: PageProps) => {
               onChange={handleChange}
               placeholder="정해진 이야기는 없어요.&#13;&#10;하고 싶은 이야기를 마음껏 작성해주세요 :)"
               ref={textareaRef}
-              rows={1}
+              rows={3}
               value={diaryText}
               autoFocus
             />

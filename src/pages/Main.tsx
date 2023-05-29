@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import TextBox from '../components/TextBox';
 import { firstDodom } from '../data/textBoxData';
 import { PageBase } from '../styles/basePadding';
-import { PageProps } from '../recoil';
 
 const MainBox = styled(PageBase)`
   display: flex;
@@ -83,10 +82,7 @@ const LinkBox = styled.div`
     margin-left: 1rem;
   }
 `;
-const Main = ({ themeSetter }: PageProps) => {
-  useEffect(() => {
-    themeSetter('dark');
-  }, []);
+const Main = () => {
   const target = useRef<HTMLDivElement>(null);
   const onMoveToTarget = () => {
     target?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
