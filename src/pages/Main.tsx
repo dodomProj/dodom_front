@@ -7,14 +7,12 @@ const MainBox = styled.div`
   display: flex;
   flex-direction: column;
   height: calc(-100px + 100vh);
-  width: 100vw;
   margin-bottom: 0px;
 `;
 const Top = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 100%;
 `;
 const ButtonCard = styled.div`
   background-color: var(${(props) => props.theme});
@@ -22,7 +20,8 @@ const ButtonCard = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50vw;
+  flex: 1;
+  min-width: 500px;
   height: 70vh;
   img {
     display: block;
@@ -63,7 +62,7 @@ const SubBox = styled.div`
 `;
 const LinkBox = styled.div`
   position: absolute;
-  bottom: 60px;
+  bottom: 5%;
   right: 7rem;
   display: flex;
   div {
