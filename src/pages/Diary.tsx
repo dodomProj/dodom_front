@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import styled from 'styled-components';
 import { PageBase, basePadding } from '../styles/basePadding';
 
@@ -9,6 +9,14 @@ import TextBox from '../components/TextBox';
 import { aboutDiary } from '../data/textBoxData';
 import diaryTips from '../data/diaryTips';
 import useAutosizeTextArea from '../util/useAutosizeTextArea';
+
+import {
+  diaryCardData,
+  conditionCardData,
+  counselCardData,
+} from '../data/navCardData';
+
+import NavCard from '../components/NavCard';
 
 const DiaryBox = styled(PageBase)`
   display: flex;
@@ -150,6 +158,9 @@ const Diary = () => {
           </EditForm>
         </EditBox>
       </Bottom>
+      <NavCard {...conditionCardData} />
+      <NavCard {...counselCardData} />
+      <NavCard {...diaryCardData} />
     </DiaryBox>
   );
 };
