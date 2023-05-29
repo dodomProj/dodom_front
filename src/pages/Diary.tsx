@@ -1,12 +1,14 @@
+import { useRef, useEffect } from 'react';
+import styled from 'styled-components';
 import { PageBase, basePadding } from '../styles/basePadding';
 
-import styled from 'styled-components';
+import { useRecoilState } from 'recoil';
+import { diaryTextState, PageProps } from '../recoil';
+
 import TextBox from '../components/TextBox';
 import { aboutDiary } from '../data/textBoxData';
 import diaryTips from '../data/diaryTips';
-import { PageProps } from '../recoil';
-import { useEffect } from 'react';
-import App from './../App';
+import useAutosizeTextArea from '../util/useAutosizeTextArea';
 
 const DiaryBox = styled(PageBase)`
   display: flex;
@@ -28,17 +30,9 @@ const EditTip = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-const Title = styled.div`
-  p {
-    color: var(--sub3);
-    margin-top: 1rem;
-    font-size: 18px;
-    line-height: 22px;
-  }
-`;
 const Info = styled.div`
   img {
-    width: 5rem;
+    width: 3rem;
   }
   div {
     position: absolute;
@@ -63,12 +57,20 @@ const EditForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 3rem;
   textarea {
     width: 100%;
     height: fit-content;
-    padding: 1rem;
     border: none;
+    font-size: 18px;
+    padding: 0.5rem 0.2rem;
+    ::placeholder {
+      color: var(--sub3);
+      line-height: 22px;
+    }
+    :focus {
+      outline: none;
+    }
+    background: transparent;
   }
   button {
     margin-top: 3rem;
@@ -85,6 +87,15 @@ const Diary = ({ themeSetter }: PageProps) => {
   useEffect(() => {
     themeSetter('light');
   }, []);
+
+  const [diaryText, setDiaryText] = useRecoilState(diaryTextState);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  useAutosizeTextArea(textareaRef.current, diaryText);
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const text = e.target?.value;
+    setDiaryText(text);
+  };
+
   return (
     <DiaryBox>
       <Top>
@@ -95,15 +106,7 @@ const Diary = ({ themeSetter }: PageProps) => {
         <EditBox>
           {/* EditTip & EditForm */}
           <EditTip>
-            {/* Title & Info */}
-            <Title>
-              <h2>솔직한 내 마음 일기</h2>
-              <p>
-                정해진 이야기는 없어요.
-                <br />
-                하고 싶은 이야기를 마음껏 작성해주세요 :)
-              </p>
-            </Title>
+            <h2>솔직한 내 마음 일기</h2>
             <Info>
               <img src={process.env.PUBLIC_URL + '/assets/info.png'} />
               <div>
@@ -117,7 +120,14 @@ const Diary = ({ themeSetter }: PageProps) => {
             </Info>
           </EditTip>
           <EditForm>
-            <textarea />
+            <textarea
+              onChange={handleChange}
+              placeholder="정해진 이야기는 없어요.&#13;&#10;하고 싶은 이야기를 마음껏 작성해주세요 :)"
+              ref={textareaRef}
+              rows={1}
+              value={diaryText}
+              autoFocus
+            />
             <button type="submit">작성하기</button>
           </EditForm>
         </EditBox>
