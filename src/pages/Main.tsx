@@ -32,6 +32,9 @@ const ButtonCard = styled.div`
   h1 {
     margin-bottom: 28px;
   }
+  p {
+    font-size: 24px;
+  }
   text-align: center;
 `;
 const Bottom = styled.div`
@@ -91,9 +94,9 @@ const Main = () => {
             <img src={process.env.PUBLIC_URL + '/assets/glass.png'} />
             <h1>내 상태 체크하기</h1>
             <p>
-              내 상태 체크하기는 간단한 설문을 통해 심리 검사를 진행하고,
+              내 상태 체크하기로 간단한 설문을 통해
               <br />
-              현재 자신의 상태를 알아볼 수 있는 프로그램입니다.
+              심리 검사를 진행할 수 있어요.
             </p>
           </ButtonCard>
         </Top>
