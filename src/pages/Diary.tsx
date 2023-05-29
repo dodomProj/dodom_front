@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { PageBase, basePadding } from '../styles/basePadding';
 
 import { useRecoilState } from 'recoil';
-import { diaryTextState, diaryTipState } from '../recoil/diary';
+import { diaryTextState, tipHoverState, tipClickState } from '../recoil/diary';
 
 import TextBox from '../components/TextBox';
 import { aboutDiary } from '../data/textBoxData';
@@ -90,7 +90,8 @@ const EditForm = styled.form`
 `;
 const Diary = () => {
   const [diaryText, setDiaryText] = useRecoilState(diaryTextState);
-  const [diaryTip, setDiaryTip] = useRecoilState(diaryTipState);
+  const [tipHover, setTipHover] = useRecoilState(tipHoverState);
+  const [tipClick, setTipClick] = useRecoilState(tipClickState);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   useAutosizeTextArea(textareaRef.current, diaryText);
@@ -118,10 +119,11 @@ const Diary = () => {
             <Info>
               <img
                 src={process.env.PUBLIC_URL + '/assets/info.png'}
-                onMouseOver={() => setDiaryTip(true)}
-                onMouseOut={() => setDiaryTip(false)}
+                onMouseOver={() => setTipHover(true)}
+                onMouseOut={() => setTipHover(false)}
+                onClick={() => setTipClick((prev) => !prev)}
               />
-              {diaryTip ? (
+              {tipHover || tipClick ? (
                 <div>
                   <p>
                     무슨 말을 써야할 지 모르겠다면, 아래 질문을 참고해보세요!
