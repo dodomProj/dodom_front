@@ -17,6 +17,9 @@ const DiaryBox = styled(PageBase)`
 `;
 const Top = styled.div`
   height: 500px;
+  div > div {
+    margin-bottom: 3rem;
+  }
 `;
 const Bottom = styled.div`
   ${basePadding};
