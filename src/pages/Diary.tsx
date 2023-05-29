@@ -65,6 +65,7 @@ const EditForm = styled.form`
     border: none;
     font-size: 18px;
     padding: 0.5rem 0.2rem;
+    resize: none;
     ::placeholder {
       color: var(--sub3);
       line-height: 22px;
