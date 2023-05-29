@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import TextBox from '../components/TextBox';
 import { firstDodom } from '../data/textBoxData';
@@ -15,7 +16,7 @@ const Top = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 `;
-const ButtonCard = styled.div`
+const ButtonCard = styled(Link)`
   background-color: var(${(props) => props.theme});
   display: flex;
   flex-direction: column;
@@ -81,12 +82,12 @@ const Main = () => {
     <>
       <MainBox>
         <Top>
-          <ButtonCard theme="--primary">
+          <ButtonCard to="/diary" theme="--primary">
             <img src={process.env.PUBLIC_URL + '/assets/chat.png'} />
             <h1>솔직한 내 마음 일기 작성하기</h1>
             <p>아무도 모르는 내 마음, 편하게 써봐요.</p>
           </ButtonCard>
-          <ButtonCard theme="--third">
+          <ButtonCard to="/" theme="--third">
             <img src={process.env.PUBLIC_URL + '/assets/glass.png'} />
             <h1>내 상태 체크하기</h1>
             <p>
