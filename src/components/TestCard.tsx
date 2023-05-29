@@ -6,8 +6,7 @@ interface TestCardInfo {
   test: TestInfo;
 }
 
-const Card = styled.li`
-  min-width: 35%;
+const Card = styled.article`
   height: 600px;
   background: var(--secondary);
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -23,7 +22,7 @@ const Card = styled.li`
 
 const TestCard: FC<TestCardInfo> = ({ test }) => {
   return (
-    <Card>
+    <Card className="slider-item">
       <img src={test.img} />
       <h3>{test.title}</h3>
       <div>{test.desc}</div>

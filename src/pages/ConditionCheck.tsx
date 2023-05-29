@@ -1,27 +1,18 @@
 import styled from 'styled-components';
+import TextBox from '../components/TextBox';
+import Carousel from '../components/Carousel';
 import TestCard from '../components/TestCard';
 import { psychologicalTest } from '../data/psychologicalTest';
-import TextBox from '../components/TextBox';
 import { conditionCheckData } from '../data/textBoxData';
-import { basePadding } from '../styles/basePadding';
+import { PageBase, basePadding } from '../styles/basePadding';
 
+const Div = styled(PageBase)``;
 const Main = styled.main`
   ${basePadding}
   padding-top: 5rem;
 
-  > div {
-    align-self: self-end;
+  > div:last-child {
     text-align: end;
-  }
-`;
-const CardBox = styled.ul`
-  display: flex;
-  list-style: none;
-  overflow: auto;
-  gap: 30px;
-
-  ::-webkit-scrollbar {
-    display: none;
   }
 `;
 const InlineBold = styled.span`
@@ -29,20 +20,26 @@ const InlineBold = styled.span`
 `;
 
 const ConditionCheck = () => {
+  const carouselSettings = {
+    infinite: false,
+    speed: 500,
+    slidesToShow: 2.5,
+    swipeToSlide: true,
+  };
   return (
-    <div>
+    <Div>
       <TextBox {...conditionCheckData} />
       <Main>
-        <CardBox>
+        <Carousel settings={carouselSettings} gap="3rem">
           {psychologicalTest.map((test) => (
             <TestCard key={test.title} test={test} />
           ))}
-        </CardBox>
+        </Carousel>
         <div>
           <InlineBold>출처</InlineBold> 한국가이던스 무료 심리검사
         </div>
       </Main>
-    </div>
+    </Div>
   );
 };
 
