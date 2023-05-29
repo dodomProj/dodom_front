@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import GlobalStyle from './styles/global';
 
 import Main from './pages/Main';
@@ -10,13 +10,14 @@ import { useRecoilState } from 'recoil';
 import { headerThemeState } from './recoil';
 
 function App() {
-  const [headerTheme, setHeaderTheme] = useRecoilState(headerThemeState);
+  const { pathname } = useLocation();
+
   return (
     <>
       <GlobalStyle />
-      <Header theme={headerTheme} />
+      <Header theme={pathname === '/' ? 'dark' : 'light'} />
       <Routes>
-        <Route path="/" element={<Main themeSetter={setHeaderTheme} />} />
+        <Route path="/" element={<Main />} />
       </Routes>
       <Footer />
     </>

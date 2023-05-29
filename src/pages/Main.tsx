@@ -1,13 +1,7 @@
 import styled from 'styled-components';
-import { PageProps } from '../recoil';
-import { useEffect } from 'react';
 //폰트 테스트용 임시 코드
 
-const Main = ({ themeSetter }: PageProps) => {
-  useEffect(() => {
-    themeSetter('light');
-    console.log(themeSetter);
-  }, []);
+const Main = () => {
   return (
     <>
       <Bold>Tittle1/Pretendard Bold 48 px</Bold>
