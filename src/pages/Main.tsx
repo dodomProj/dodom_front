@@ -2,8 +2,9 @@ import { useRef } from 'react';
 import styled from 'styled-components';
 import TextBox from '../components/TextBox';
 import { firstDodom } from '../data/textBoxData';
+import { PageBase } from '../styles/basePadding';
 
-const MainBox = styled.div`
+const MainBox = styled(PageBase)`
   display: flex;
   flex-direction: column;
   height: calc(-100px + 100vh);

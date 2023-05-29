@@ -6,24 +6,15 @@ import GlobalStyle from './styles/global';
 import Main from './pages/Main';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import styled from 'styled-components';
-import { basePadding } from './styles/basePadding';
-
-const Div = styled.div`
-  /* ${basePadding} */
-  padding-top: 100px;
-`;
 
 function App() {
   return (
     <RecoilRoot>
       <GlobalStyle />
       <Header theme="dark" />
-      <Div>
-        <Routes>
-          <Route path="/" element={<Main />} />
-        </Routes>
-      </Div>
+      <Routes>
+        <Route path="/" element={<Main />} />
+      </Routes>
       <Footer />
     </RecoilRoot>
   );
