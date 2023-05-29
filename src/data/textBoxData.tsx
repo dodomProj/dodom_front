@@ -19,7 +19,7 @@ export const aboutDiary = {
   theme: 'light',
 };
 
-export const conditionCheckData = {
+export const conditionData = {
   title: '내 상태 체크하기',
   subtitle:
     '내 상태 체크하기로 간단힌 설문을 통해 심리 검사를 진행를 진행할 수 있어요.',

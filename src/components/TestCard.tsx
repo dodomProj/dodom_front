@@ -21,11 +21,14 @@ const Card = styled.article`
 `;
 
 const TestCard: FC<TestCardInfo> = ({ test }) => {
+  const { img, title, text } = test;
   return (
     <Card className="slider-item">
-      <img src={test.img} />
-      <h3>{test.title}</h3>
-      <div>{test.desc}</div>
+      <img src={img} />
+      <h3>{title}</h3>
+      {text.map((line, idx) => (
+        <p key={idx}>{line}</p>
+      ))}
     </Card>
   );
 };
