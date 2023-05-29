@@ -16,6 +16,11 @@ const Top = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  :hover {
+    a:not(a:hover) {
+      filter: brightness(50%);
+    }
+  }
 `;
 const ButtonCard = styled(Link)`
   background-color: var(${(props) => props.theme});
@@ -36,6 +41,9 @@ const ButtonCard = styled(Link)`
   }
   p {
     font-size: 24px;
+  }
+  :hover {
+    color: var(--black);
   }
   text-align: center;
 `;
