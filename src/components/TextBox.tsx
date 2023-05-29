@@ -18,16 +18,13 @@ const Box = styled.div`
   background-color: var(
     ${(props) => (props.theme === 'dark' ? '--black' : '--primary')}
   );
-  color: var(
-    ${(props) => (props.theme === 'dark' ? '--white' : '--black')}
-  );
+  color: var(${(props) => (props.theme === 'dark' ? '--white' : '--black')});
 `;
 
 const Title = styled.div`
   h1 {
     color: var(
-      ${(props) =>
-        props.theme === 'dark' ? '--primary' : '--black'}
+      ${(props) => (props.theme === 'dark' ? '--primary' : '--black')}
     );
     margin-bottom: 10px;
   }
