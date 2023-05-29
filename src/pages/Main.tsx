@@ -31,6 +31,7 @@ const ButtonCard = styled(Link)`
   flex: 1;
   min-width: 500px;
   height: 70vh;
+  transition: 0.5s;
   img {
     display: block;
     margin-bottom: 70px;
