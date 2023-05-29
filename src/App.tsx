@@ -1,5 +1,4 @@
 import React from 'react';
-import { RecoilRoot } from 'recoil';
 import { Routes, Route } from 'react-router-dom';
 import GlobalStyle from './styles/global';
 
@@ -7,16 +6,20 @@ import Main from './pages/Main';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+import { useRecoilState } from 'recoil';
+import { headerThemeState } from './recoil';
+
 function App() {
+  const [headerTheme, setHeaderTheme] = useRecoilState(headerThemeState);
   return (
-    <RecoilRoot>
+    <>
       <GlobalStyle />
-      <Header theme="dark" />
+      <Header theme={headerTheme} />
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={<Main themeSetter={setHeaderTheme} />} />
       </Routes>
       <Footer />
-    </RecoilRoot>
+    </>
   );
 }
 
