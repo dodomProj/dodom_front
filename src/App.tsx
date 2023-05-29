@@ -1,24 +1,27 @@
 import React from 'react';
-import { RecoilRoot } from 'recoil';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import GlobalStyle from './styles/global';
 
 import Main from './pages/Main';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import ConditionCheck from './pages/ConditionCheck';
+// import Condition from './pages/Condition';
+// import ConditionCheck from './pages/ConditionCheck';
 
 function App() {
+  const { pathname } = useLocation();
+
   return (
-    <RecoilRoot>
+    <>
       <GlobalStyle />
-      <Header theme="dark" />
+      <Header theme={pathname === '/' ? 'dark' : 'light'} />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/conditioncheck" element={<ConditionCheck />} />
+        {/* <Route path="/condition" element={<Condition />} />
+        <Route path="/condition/*" element={<ConditionCheck />} /> */}
       </Routes>
       <Footer />
-    </RecoilRoot>
+    </>
   );
 }
 

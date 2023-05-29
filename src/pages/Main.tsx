@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-
 //폰트 테스트용 임시 코드
+
 const Main = () => {
   return (
     <>
