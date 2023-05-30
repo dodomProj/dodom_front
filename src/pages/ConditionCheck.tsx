@@ -2,6 +2,7 @@ import { useLocation } from 'react-router-dom';
 import SubtitleBox from '../components/SubtitleBox';
 import { PageBase } from '../styles/basePadding';
 import { psychologicalTest } from '../data/psychologicalTest';
+import QuestionBox from '../components/QuestionBox';
 
 const ConditionCheck = () => {
   const { pathname } = useLocation();
@@ -17,6 +18,7 @@ const ConditionCheck = () => {
   return (
     <PageBase>
       <SubtitleBox {...findTest(pathname)} />
+      <QuestionBox />
     </PageBase>
   );
 };
