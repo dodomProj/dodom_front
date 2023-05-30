@@ -13,11 +13,16 @@ const Box = styled.div`
   padding-top: 2rem;
   padding-bottom: 2rem;
   display: flex;
+  justify-content: center;
+  align-items: center;
   height: 40vh;
   background-color: var(--primary);
 
   > img {
     flex: 0.5;
+    width: 100%;
+    max-height: 100%;
+    object-fit: contain;
   }
 `;
 const Text = styled.div`
@@ -44,8 +49,8 @@ const SubtitleBox = ({
         <div>
           <h1>{title}</h1>
           {time && <span>예상 시간 {time}분</span>}
-          {text?.map((line) => (
-            <p>{line}</p>
+          {text?.map((line, idx) => (
+            <p key={idx}>{line}</p>
           ))}
         </div>
       </Text>
