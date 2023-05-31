@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 type Test = {
@@ -15,14 +16,20 @@ type Test = {
 };
 
 const useFindTest = (arr: Test[]): Test | undefined => {
+  const [selected, setSelected] = useState<Test>();
   const { pathname } = useLocation();
-  if (!pathname) return;
-  const key = pathname.split('/condition/')[1];
-  const test = {
-    ...arr.find((test: Test) => test.key === key),
-  };
-  delete test.key;
-  return test;
+
+  useEffect(() => {
+    if (pathname) {
+      const key = pathname.split('/condition/')[1];
+      const test = {
+        ...arr.find((test: Test) => test.key === key),
+      };
+      delete test.key;
+      setSelected(test);
+    }
+  }, [arr, pathname]);
+  return selected;
 };
 
 export default useFindTest;
