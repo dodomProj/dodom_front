@@ -8,7 +8,7 @@ type SubtitleProps = {
   time?: number;
 };
 
-const Box = styled.div`
+export const SubtitleContainer = styled.div`
   ${basePadding}
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -25,7 +25,7 @@ const Box = styled.div`
     object-fit: contain;
   }
 `;
-const Text = styled.div`
+export const SubtitleText = styled.div`
   flex: 1;
   position: relative;
 
@@ -43,9 +43,9 @@ const SubtitleBox = ({
 }: SubtitleProps): null | JSX.Element => {
   if (title === undefined) return null;
   return (
-    <Box>
+    <SubtitleContainer>
       <img src={img} />
-      <Text>
+      <SubtitleText>
         <div>
           <h1>{title}</h1>
           {time && <span>예상 시간 {time}분</span>}
@@ -53,8 +53,8 @@ const SubtitleBox = ({
             <p key={idx}>{line}</p>
           ))}
         </div>
-      </Text>
-    </Box>
+      </SubtitleText>
+    </SubtitleContainer>
   );
 };
 
