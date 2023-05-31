@@ -8,25 +8,46 @@ type SubtitleProps = {
   time?: number;
 };
 
-const Box = styled.div`
+export const SubtitleContainer = styled.div`
   ${basePadding}
   padding-top: 2rem;
   padding-bottom: 2rem;
   display: flex;
+  justify-content: center;
+  align-items: center;
   height: 40vh;
   background-color: var(--primary);
 
   > img {
     flex: 0.5;
+    width: 100%;
+    max-height: 100%;
+    object-fit: contain;
   }
 `;
-const Text = styled.div`
+export const SubtitleText = styled.div`
   flex: 1;
   position: relative;
 
   > div {
     position: absolute;
     top: 50%;
+
+    > h1 {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+`;
+const Time = styled.p`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: normal;
+  > span {
+    font-size: 24px;
   }
 `;
 
@@ -38,18 +59,25 @@ const SubtitleBox = ({
 }: SubtitleProps): null | JSX.Element => {
   if (title === undefined) return null;
   return (
-    <Box>
+    <SubtitleContainer>
       <img src={img} />
-      <Text>
+      <SubtitleText>
         <div>
-          <h1>{title}</h1>
-          {time && <span>예상 시간 {time}분</span>}
-          {text?.map((line) => (
-            <p>{line}</p>
+          <h1>
+            {title}
+            {time && (
+              <Time>
+                <img src="/assets/time.svg" />
+                <span>예상 시간 {time}분</span>
+              </Time>
+            )}
+          </h1>
+          {text?.map((line, idx) => (
+            <p key={idx}>{line}</p>
           ))}
         </div>
-      </Text>
-    </Box>
+      </SubtitleText>
+    </SubtitleContainer>
   );
 };
 
