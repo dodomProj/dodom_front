@@ -4,6 +4,7 @@ import ResultContainer from '../components/ResultContainer';
 import { PageBase } from '../styles/basePadding';
 import { psychologicalTest } from '../data/psychologicalTest';
 import useFindTest from '../util/useFindTest';
+import ConditionLoading from '../components/ConditionLoading';
 
 const ConditionCheck = () => {
   const testInfo = useFindTest(psychologicalTest);
@@ -12,7 +13,8 @@ const ConditionCheck = () => {
     <PageBase>
       <SubtitleBox {...testInfo} />
       {/* <QuestionBox /> */}
-      <ResultContainer />
+      {/* <ResultContainer /> */}
+      <ConditionLoading />
     </PageBase>
   );
 };
