@@ -15,7 +15,7 @@ export const SubtitleContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40vh;
+  height: 50vh;
   background-color: var(--primary);
 
   > img {
@@ -23,6 +23,7 @@ export const SubtitleContainer = styled.div`
     width: 100%;
     max-height: 100%;
     object-fit: contain;
+    padding: 3rem;
   }
 `;
 export const SubtitleText = styled.div`
@@ -60,14 +61,14 @@ const SubtitleBox = ({
   if (title === undefined) return null;
   return (
     <SubtitleContainer>
-      <img src={img} />
+      <img src={img} alt="" />
       <SubtitleText>
         <div>
           <h1>
             {title}
             {time && (
               <Time>
-                <img src="/assets/time.svg" />
+                <img src="/assets/time.svg" alt="" />
                 <span>예상 시간 {time}분</span>
               </Time>
             )}
