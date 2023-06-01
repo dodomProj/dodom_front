@@ -20,7 +20,7 @@ const ToDiary = () => {
   const navigate = useNavigate();
   return (
     <Container onClick={() => navigate('/diary')}>
-      <img src="" />
+      <img src="/assets/diaryballon.png" alt="" />
       <Text>
         <h1>솔직한 내 마음 일기, 작성해보기!</h1>
         <div>
