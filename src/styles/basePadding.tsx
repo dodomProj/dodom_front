@@ -7,3 +7,8 @@ export const basePadding = css`
 export const PageBase = styled.div`
   padding-top: 100px;
 `;
+
+export const MainContent = styled.main`
+  ${basePadding}
+  padding-top: 5rem;
+`;
