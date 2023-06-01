@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { basePadding } from '../styles/basePadding';
+import { SubtitleContainer } from './ToDiary';
 
 type SubtitleProps = {
   title?: string;
@@ -8,23 +8,12 @@ type SubtitleProps = {
   time?: number;
 };
 
-export const SubtitleContainer = styled.div`
-  ${basePadding}
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50vh;
-  background-color: var(--primary);
+type ContainerHeight = {
+  height: string;
+};
 
-  > img {
-    flex: 0.5;
-    width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    padding: 3rem;
-  }
+const Container = styled(SubtitleContainer)<ContainerHeight>`
+  height: ${(props) => props.height};
 `;
 export const SubtitleText = styled.div`
   flex: 1;
@@ -60,7 +49,7 @@ const SubtitleBox = ({
 }: SubtitleProps): null | JSX.Element => {
   if (title === undefined) return null;
   return (
-    <SubtitleContainer>
+    <Container height={time ? '40vh' : '50vh'}>
       <img src={img} alt="" />
       <SubtitleText>
         <div>
@@ -78,7 +67,7 @@ const SubtitleBox = ({
           ))}
         </div>
       </SubtitleText>
-    </SubtitleContainer>
+    </Container>
   );
 };
 
