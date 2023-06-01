@@ -1,6 +1,6 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { basePadding } from '../styles/basePadding';
-import { useNavigate } from 'react-router-dom';
 
 export const SubtitleContainer = styled.div`
   ${basePadding}
@@ -38,7 +38,7 @@ const ToDiary = () => {
   const navigate = useNavigate();
   return (
     <Container onClick={() => navigate('/diary')}>
-      <img src="/assets/diaryballon.png" alt="" />
+      <img src="/assets/chat.png" alt="" />
       <Text>
         <h1>솔직한 내 마음 일기, 작성해보기!</h1>
         <div>
