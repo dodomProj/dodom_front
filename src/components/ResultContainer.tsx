@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
 import ToPolicyCard from './ToPolicyCard';
-import ResultBox from './ResultBox';
+import DiaryResultBox from './DiaryResultBox';
+import ConditionResultBox from './ConditionResultBox';
 import { MainContent } from '../styles/basePadding';
 
 const Container = styled(MainContent)`
@@ -10,9 +12,11 @@ const Container = styled(MainContent)`
 `;
 
 const ResultContainer = () => {
+  const { pathname } = useLocation();
   return (
     <Container>
-      <ResultBox />
+      {pathname.includes('diary') ? <DiaryResultBox /> : <ConditionResultBox />}
+
       <ToPolicyCard />
     </Container>
   );
