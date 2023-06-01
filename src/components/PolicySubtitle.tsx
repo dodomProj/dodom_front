@@ -18,7 +18,7 @@ const PolicySubtitle = () => {
           <p>DODOM과 함께 내가 지원 받을 수 있는 정책과 사업을 알아보아요!</p>
         </div>
       </SubtitleText>
-      <img src="" />
+      <img src="" alt="" />
     </Container>
   );
 };
