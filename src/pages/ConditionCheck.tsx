@@ -1,5 +1,6 @@
 import SubtitleBox from '../components/SubtitleBox';
 import QuestionBox from '../components/QuestionBox';
+import ResultContainer from '../components/ResultContainer';
 import { PageBase } from '../styles/basePadding';
 import { psychologicalTest } from '../data/psychologicalTest';
 import useFindTest from '../util/useFindTest';
@@ -10,7 +11,8 @@ const ConditionCheck = () => {
   return (
     <PageBase>
       <SubtitleBox {...testInfo} />
-      <QuestionBox />
+      {/* <QuestionBox /> */}
+      <ResultContainer />
     </PageBase>
   );
 };

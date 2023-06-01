@@ -1,15 +1,13 @@
-import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { Progress } from '@nextui-org/react';
+import styled from 'styled-components';
 import Button from './Button';
 import AnswerEl from './AnswerEl';
-import { basePadding } from '../styles/basePadding';
+import { MainContent } from '../styles/basePadding';
 import { psychologicalQNA } from '../data/psychologicalTest';
 import useFindTest from '../util/useFindTest';
 
-const Box = styled.div`
-  ${basePadding}
-  padding-top: 4rem;
+const Box = styled(MainContent)`
   padding-bottom: 2rem;
 
   > p {

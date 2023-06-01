@@ -4,15 +4,10 @@ import Carousel from '../components/Carousel';
 import TestCard from '../components/TestCard';
 import { psychologicalTest } from '../data/psychologicalTest';
 import { conditionData } from '../data/textBoxData';
-import { PageBase, basePadding } from '../styles/basePadding';
+import { MainContent, PageBase } from '../styles/basePadding';
 
-const Main = styled.main`
-  ${basePadding}
-  padding-top: 5rem;
-
-  > div:last-child {
-    text-align: end;
-  }
+const Source = styled.div`
+  text-align: end;
 `;
 const InlineBold = styled.span`
   font-weight: bold;
@@ -28,16 +23,16 @@ const Condition = () => {
   return (
     <PageBase>
       <TextBox {...conditionData} />
-      <Main>
+      <MainContent>
         <Carousel settings={carouselSettings} gap="3rem">
           {psychologicalTest.map((test) => (
             <TestCard key={test.title} test={test} />
           ))}
         </Carousel>
-        <div>
+        <Source>
           <InlineBold>출처</InlineBold> 한국가이던스 무료 심리검사
-        </div>
-      </Main>
+        </Source>
+      </MainContent>
     </PageBase>
   );
 };
