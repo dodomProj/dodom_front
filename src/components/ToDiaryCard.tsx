@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { ButtonCard } from '../styles/baseCard';
 import { Link } from 'react-router-dom';
+import { ButtonCard } from '../styles/baseCard';
 
 const Item = styled(Link)`
   display: flex;
@@ -14,9 +14,6 @@ const Item = styled(Link)`
   div {
     align-self: flex-start;
     padding-bottom: 1rem;
-  }
-  img {
-    width: 14rem;
   }
 `;
 
