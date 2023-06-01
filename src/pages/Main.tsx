@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Button from '../components/Button';
-import ToStateCard from '../components/ToStateCard';
+import ToConditionCard from '../components/ToConditionCard';
 //폰트 테스트용 임시 코드
 
 const Main = () => {
@@ -13,7 +13,7 @@ const Main = () => {
       <Medium>Subtittle/Pretendard Medium 24 px</Medium>
       <Regular>Caption/Pretendard Regular 12 px</Regular>
       <Button text="작성하기" onClick={test} />
-      <ToStateCard />
+      <ToConditionCard />
     </>
   );
 };

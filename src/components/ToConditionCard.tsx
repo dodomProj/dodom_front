@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ButtonCard } from '../styles/baseCard';
-import { Link } from 'react-router-dom';
 
 const Item = styled(Link)`
   display: flex;
@@ -19,10 +19,10 @@ const Item = styled(Link)`
   }
 `;
 
-const ToStateCard = () => {
+const ToConditionCard = () => {
   return (
     <ButtonCard theme="--third">
-      <Item to={'/state'}>
+      <Item to={'/condition'}>
         <div>
           <h2>심리검사 받아보기</h2>
           <p>
@@ -37,4 +37,4 @@ const ToStateCard = () => {
   );
 };
 
-export default ToStateCard;
+export default ToConditionCard;
