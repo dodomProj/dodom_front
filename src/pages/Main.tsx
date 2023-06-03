@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import TextBox from '../components/TextBox';
 import { firstDodom } from '../data/textBoxData';
 import { PageBase } from '../styles/basePadding';
+import Button from '../components/Button';
+import ToConditionCard from '../components/ToConditionCard';
+import QuestionInput from '../components/QuestionInput';
 
 const MainBox = styled(PageBase)`
   display: flex;

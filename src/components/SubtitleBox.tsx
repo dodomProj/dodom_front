@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { basePadding } from '../styles/basePadding';
+import { SubtitleContainer } from './ToDiary';
 
 type SubtitleProps = {
   title?: string;
@@ -8,25 +8,36 @@ type SubtitleProps = {
   time?: number;
 };
 
-const Box = styled.div`
-  ${basePadding}
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  display: flex;
-  height: 40vh;
-  background-color: var(--primary);
+type ContainerHeight = {
+  height: string;
+};
 
-  > img {
-    flex: 0.5;
-  }
+const Container = styled(SubtitleContainer)<ContainerHeight>`
+  height: ${(props) => props.height};
 `;
-const Text = styled.div`
+export const SubtitleText = styled.div`
   flex: 1;
   position: relative;
 
   > div {
     position: absolute;
     top: 50%;
+
+    > h1 {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+`;
+const Time = styled.p`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: normal;
+  > span {
+    font-size: 24px;
   }
 `;
 
@@ -38,18 +49,25 @@ const SubtitleBox = ({
 }: SubtitleProps): null | JSX.Element => {
   if (title === undefined) return null;
   return (
-    <Box>
-      <img src={img} />
-      <Text>
+    <Container height={time ? '40vh' : '50vh'}>
+      <img src={img} alt="" />
+      <SubtitleText>
         <div>
-          <h1>{title}</h1>
-          {time && <span>예상 시간 {time}분</span>}
-          {text?.map((line) => (
-            <p>{line}</p>
+          <h1>
+            {title}
+            {time && (
+              <Time>
+                <img src="/assets/time.svg" alt="" />
+                <span>예상 시간 {time}분</span>
+              </Time>
+            )}
+          </h1>
+          {text?.map((line, idx) => (
+            <p key={idx}>{line}</p>
           ))}
         </div>
-      </Text>
-    </Box>
+      </SubtitleText>
+    </Container>
   );
 };
 
