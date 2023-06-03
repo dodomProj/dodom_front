@@ -17,9 +17,12 @@ export const Button = styled.button`
     }
   }
 `;
-const SaveButton = () => {
+type ButtonProps = {
+  onClick?: React.MouseEventHandler;
+};
+const SaveButton = ({ onClick }: ButtonProps) => {
   return (
-    <Button>
+    <Button onClick={onClick}>
       갤러리에 저장하기
       <TfiDownload />
     </Button>

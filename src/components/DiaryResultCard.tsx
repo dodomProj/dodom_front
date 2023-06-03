@@ -3,6 +3,10 @@ import SaveButton from './SaveButton';
 import { ResultCard } from './ConditionResultCard';
 import { useRecoilValue } from 'recoil';
 import { diaryTextState } from '../recoil/diary';
+import { useRef } from 'react';
+
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
 
 const Card = styled(ResultCard)`
   > img {
@@ -13,12 +17,20 @@ const Card = styled(ResultCard)`
 
 const DiaryResultCard = () => {
   const resultText = useRecoilValue(diaryTextState);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const onSaveButton = () => {
+    const card = cardRef.current;
+    card &&
+      domtoimage.toBlob(card).then((blob) => {
+        saveAs(blob, '나의일기.png');
+      });
+  };
   return (
-    <Card theme="--third">
+    <Card ref={cardRef} theme="--third">
       <img src="/assets/planet.png" alt="" />
       <h2>{resultText?.slice(0, 6) + '...'}</h2>
       <p>{resultText}</p>
-      <SaveButton />
+      <SaveButton onClick={onSaveButton} />
     </Card>
   );
 };
