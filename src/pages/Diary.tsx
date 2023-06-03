@@ -10,14 +10,6 @@ import { aboutDiary } from '../data/textBoxData';
 import diaryTips from '../data/diaryTips';
 import useAutosizeTextArea from '../util/useAutosizeTextArea';
 
-import {
-  diaryCardData,
-  conditionCardData,
-  counselCardData,
-} from '../data/navCardData';
-
-import NavCard from '../components/NavCard';
-
 const DiaryBox = styled(PageBase)`
   display: flex;
   flex-direction: column;
@@ -99,7 +91,6 @@ const EditForm = styled.form`
 const Diary = () => {
   const [diaryText, setDiaryText] = useRecoilState(diaryTextState);
   const [tipHover, setTipHover] = useRecoilState(tipHoverState);
-  const [tipClick, setTipClick] = useRecoilState(tipClickState);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   useAutosizeTextArea(textareaRef.current, diaryText);
@@ -129,9 +120,8 @@ const Diary = () => {
                 src={process.env.PUBLIC_URL + '/assets/info.png'}
                 onMouseOver={() => setTipHover(true)}
                 onMouseOut={() => setTipHover(false)}
-                onClick={() => setTipClick((prev) => !prev)}
               />
-              {tipHover || tipClick ? (
+              {tipHover ? (
                 <div>
                   <p>
                     무슨 말을 써야할 지 모르겠다면, 아래 질문을 참고해보세요!
@@ -158,9 +148,6 @@ const Diary = () => {
           </EditForm>
         </EditBox>
       </Bottom>
-      <NavCard {...conditionCardData} />
-      <NavCard {...counselCardData} />
-      <NavCard {...diaryCardData} />
     </DiaryBox>
   );
 };
