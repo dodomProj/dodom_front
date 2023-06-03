@@ -18,10 +18,14 @@ const Card = styled(ResultCard)`
 const DiaryResultCard = () => {
   const resultText = useRecoilValue(diaryTextState);
   const cardRef = useRef<HTMLDivElement>(null);
+
   const onSaveButton = () => {
     const card = cardRef.current;
+    const buttonFilterOnSave = (card: any) => {
+      return card.tagName !== 'BUTTON';
+    };
     card &&
-      domtoimage.toBlob(card).then((blob) => {
+      domtoimage.toBlob(card, { filter: buttonFilterOnSave }).then((blob) => {
         saveAs(blob, '나의일기.png');
       });
   };
