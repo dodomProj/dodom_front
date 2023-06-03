@@ -10,7 +10,7 @@ export const tipHoverState = atom<boolean>({
   default: false,
 });
 
-export const tipClickState = atom<boolean>({
-  key: 'tipClick',
+export const diarySubmitState = atom<boolean>({
+  key: 'diarySubmit',
   default: false,
 });

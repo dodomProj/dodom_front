@@ -2,7 +2,11 @@ import { useRef } from 'react';
 import styled from 'styled-components';
 
 import { useRecoilState } from 'recoil';
-import { diaryTextState, tipHoverState } from '../recoil/diary';
+import {
+  diaryTextState,
+  diarySubmitState,
+  tipHoverState,
+} from '../recoil/diary';
 
 import diaryTips from '../data/diaryTips';
 import useAutosizeTextArea from '../util/useAutosizeTextArea';
@@ -74,6 +78,7 @@ const EditForm = styled.form`
 
 const DiaryEditBox = () => {
   const [diaryText, setDiaryText] = useRecoilState(diaryTextState);
+  const [diarySubmit, setDiarySubmit] = useRecoilState(diarySubmitState);
   const [tipHover, setTipHover] = useRecoilState(tipHoverState);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -85,7 +90,9 @@ const DiaryEditBox = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(diaryText);
+    if (diaryText.length) {
+      setDiarySubmit(true);
+    }
   };
 
   return (
