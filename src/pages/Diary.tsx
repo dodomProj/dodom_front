@@ -9,7 +9,7 @@ import { aboutDiary } from '../data/textBoxData';
 import DiaryEditBox from '../components/DiaryEditBox';
 import DiaryResultBox from '../components/DiaryResultBox';
 
-import { Routes, Route, redirect } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 const DiaryBox = styled(PageBase)`
   display: flex;
@@ -36,7 +36,16 @@ const Diary = () => {
       <Bottom>
         <Routes>
           <Route path="/" element={<DiaryEditBox />} />
-          <Route path="/result" element={<DiaryResultBox />} />
+          <Route
+            path="/result"
+            element={
+              diarySubmit ? (
+                <DiaryResultBox />
+              ) : (
+                <Navigate replace to="/diary" />
+              )
+            }
+          />
         </Routes>
       </Bottom>
     </DiaryBox>

@@ -93,6 +93,7 @@ const DiaryEditBox = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (diaryText.length) {
+      setDiarySubmit(true);
       navigate('/diary/result');
     }
   };
