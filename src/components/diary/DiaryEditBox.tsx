@@ -6,10 +6,10 @@ import {
   diaryTextState,
   diarySubmitState,
   tipHoverState,
-} from '../recoil/diary';
+} from '../../recoil/diary';
 
-import diaryTips from '../data/diaryTips';
-import useAutosizeTextArea from '../util/useAutosizeTextArea';
+import diaryTips from '../../data/diaryTips';
+import useAutosizeTextArea from '../../util/useAutosizeTextArea';
 
 const Box = styled.div`
   background-color: var(--third);

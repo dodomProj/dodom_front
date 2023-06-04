@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import SaveButton from './SaveButton';
-import { ResultCard } from './ConditionResultCard';
+import SaveButton from '../SaveButton';
+import { ResultCard } from '../ConditionResultCard';
 import { useRecoilValue } from 'recoil';
-import { diaryTextState } from '../recoil/diary';
+import { diaryTextState } from '../../recoil/diary';
 import { useRef } from 'react';
 
 import domtoimage from 'dom-to-image';

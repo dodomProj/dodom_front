@@ -6,8 +6,8 @@ import { diarySubmitState } from '../recoil/diary';
 
 import TextBox from '../components/TextBox';
 import { aboutDiary } from '../data/textBoxData';
-import DiaryEditBox from '../components/DiaryEditBox';
-import DiaryResultBox from '../components/DiaryResultBox';
+import DiaryEditBox from '../components/diary/DiaryEditBox';
+import DiaryResultBox from '../components/diary/DiaryResultBox';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
 
