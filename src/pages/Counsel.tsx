@@ -3,7 +3,9 @@ import { PageBase, basePadding } from '../styles/basePadding';
 
 import TextBox from '../components/TextBox';
 import { aboutDiary } from '../data/textBoxData';
+
 import { Routes, Route, Navigate } from 'react-router-dom';
+import CounselFormBox from '../components/counsel/CounselFormBox';
 
 const CounselBox = styled(PageBase)`
   display: flex;
@@ -26,7 +28,11 @@ const Counsel = () => {
       <Top>
         <TextBox {...aboutDiary} />
       </Top>
-      <Bottom></Bottom>
+      <Bottom>
+        <Routes>
+          <Route path="/form" element={<CounselFormBox />} />
+        </Routes>
+      </Bottom>
     </CounselBox>
   );
 };

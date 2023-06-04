@@ -11,7 +11,7 @@ import {
 import diaryTips from '../../data/diaryTips';
 import useAutosizeTextArea from '../../util/useAutosizeTextArea';
 
-const Box = styled.div`
+export const Box = styled.div`
   background-color: var(--third);
   border-radius: 20px;
   padding: 5rem;
