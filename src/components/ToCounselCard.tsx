@@ -19,7 +19,7 @@ const Item = styled(Link)`
 const ToCounselCard = () => {
   return (
     <ButtonCard theme="--primary">
-      <Item to={'/counsel'}>
+      <Item to={'/counsel/form'}>
         <div>
           <h2>상담 받아보기</h2>
           <p>
