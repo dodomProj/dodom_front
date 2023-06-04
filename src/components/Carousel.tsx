@@ -21,9 +21,17 @@ const SliderBox = styled(Slider)<SliderGap>`
   .slick-track {
     padding-bottom: 10px;
     margin-right: 0;
-  }
-  .slider-item {
-    margin-right: ${(props) => props.gap};
+    display: flex;
+    align-items: stretch;
+    gap: ${(props) => props.gap};
+
+    > div:last-child {
+      margin-right: calc(-${(props) => props.gap} + 10px);
+    }
+
+    div {
+      height: 100%;
+    }
   }
 `;
 const Carousel: FC<CarouselProps> = ({ settings, gap, children }) => {
