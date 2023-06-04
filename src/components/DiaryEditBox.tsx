@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import styled from 'styled-components';
-
+import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import {
   diaryTextState,
@@ -11,7 +11,7 @@ import {
 import diaryTips from '../data/diaryTips';
 import useAutosizeTextArea from '../util/useAutosizeTextArea';
 
-const EditBox = styled.div`
+const Box = styled.div`
   background-color: var(--third);
   border-radius: 20px;
   padding: 5rem;
@@ -77,6 +77,8 @@ const EditForm = styled.form`
 `;
 
 const DiaryEditBox = () => {
+  const navigate = useNavigate();
+
   const [diaryText, setDiaryText] = useRecoilState(diaryTextState);
   const [diarySubmit, setDiarySubmit] = useRecoilState(diarySubmitState);
   const [tipHover, setTipHover] = useRecoilState(tipHoverState);
@@ -91,12 +93,12 @@ const DiaryEditBox = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (diaryText.length) {
-      setDiarySubmit(true);
+      navigate('/diary/result');
     }
   };
 
   return (
-    <EditBox>
+    <Box>
       <EditTip>
         <h2>솔직한 내 마음 일기</h2>
         <Info>
@@ -128,7 +130,7 @@ const DiaryEditBox = () => {
         />
         <button type="submit">작성하기</button>
       </EditForm>
-    </EditBox>
+    </Box>
   );
 };
 

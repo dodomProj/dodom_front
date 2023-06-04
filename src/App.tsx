@@ -17,7 +17,7 @@ function App() {
       <Header theme={pathname === '/' ? 'dark' : 'light'} />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/diary" element={<Diary />} />
+        <Route path="/diary/*" element={<Diary />} />
       </Routes>
       <Footer />
     </>
