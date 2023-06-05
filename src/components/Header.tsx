@@ -26,17 +26,18 @@ const LogoBox = styled.div`
 `;
 const Logo = styled(Link)<HeaderTheme>`
   font-family: 'Pretendard-Bold';
-  font-size: 1.7rem;
+  font-size: 2rem;
   color: var(${(props) => props.theme});
 `;
 const NavBox = styled.nav`
-  flex: 1;
+  flex: 0.8;
   display: flex;
   justify-content: space-between;
 `;
 const PageLink = styled(Link)<HeaderTheme>`
   font-size: 1.1rem;
   color: var(${(props) => props.theme});
+  word-break: keep-all;
 `;
 
 const Header: FC<HeaderTheme> = ({ theme }) => {
@@ -51,7 +52,7 @@ const Header: FC<HeaderTheme> = ({ theme }) => {
         {navEl.map((el) => (
           <PageLink
             key={el.uri}
-            to="/"
+            to={el.uri}
             theme={theme === 'dark' ? '--white' : '--black'}
           >
             {el.pageName}
