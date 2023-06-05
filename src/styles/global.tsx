@@ -7,6 +7,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Pretendard-medium'; 
     font-size: 16px;
+
+    @media screen and (max-width: 480px) {
+      font-size: 14px;      
+    }
   }
   h1 {
     font-family: 'Pretendard-Bold';
