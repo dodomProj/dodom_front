@@ -6,9 +6,6 @@ import { psychologicalTest } from '../data/psychologicalTest';
 import { conditionData } from '../data/textBoxData';
 import { MainContent, PageBase } from '../styles/basePadding';
 
-const Source = styled.div`
-  text-align: end;
-`;
 const InlineBold = styled.span`
   font-weight: bold;
 `;
@@ -26,12 +23,12 @@ const Condition = () => {
       <MainContent>
         <Carousel settings={carouselSettings} gap="3rem">
           {psychologicalTest.map((test) => (
-            <TestCard key={test.title} test={test} />
+            <TestCard key={test.key} test={test} />
           ))}
         </Carousel>
-        <Source>
+        <div>
           <InlineBold>출처</InlineBold> 한국가이던스 무료 심리검사
-        </Source>
+        </div>
       </MainContent>
     </PageBase>
   );
