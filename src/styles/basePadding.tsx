@@ -2,6 +2,10 @@ import styled, { css } from 'styled-components';
 
 export const basePadding = css`
   padding: 0 7rem;
+
+  @media screen and (max-width: 1056px) {
+    padding: 0 1.7rem;
+  }
 `;
 
 export const PageBase = styled.div`

@@ -1,14 +1,14 @@
 import { FC } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import navEl from '../data/navEl';
 import { basePadding } from '../styles/basePadding';
 
-interface HeaderTheme {
-  theme: string;
+interface HeaderProps {
+  path: string;
 }
 
-const HeaderContainer = styled.header<HeaderTheme>`
+const HeaderContainer = styled.header`
   ${basePadding}
   display: flex;
   justify-content: space-between;
@@ -19,45 +19,59 @@ const HeaderContainer = styled.header<HeaderTheme>`
   left: 0;
   width: 100%;
   height: 100px;
-  background-color: var(${(props) => props.theme});
+  background-color: var(--black);
 `;
 const LogoBox = styled.div`
   flex: 1;
 `;
-const Logo = styled(Link)<HeaderTheme>`
+const TitleStyle = css`
   font-family: 'Pretendard-Bold';
-  font-size: 1.7rem;
-  color: var(${(props) => props.theme});
+  font-size: 2rem;
+  color: var(--primary);
+`;
+const Logo = styled(Link)`
+  ${TitleStyle}
+
+  :hover {
+    letter-spacing: 2px;
+  }
+`;
+const Survey = styled.p`
+  ${TitleStyle}
 `;
 const NavBox = styled.nav`
-  flex: 1;
+  flex: 0.8;
   display: flex;
   justify-content: space-between;
 `;
-const PageLink = styled(Link)<HeaderTheme>`
+const PageLink = styled(Link)`
   font-size: 1.1rem;
-  color: var(${(props) => props.theme});
+  color: var(--white);
+  word-break: keep-all;
+
+  :hover {
+    font-weight: bold;
+    color: var(--white);
+  }
 `;
 
-const Header: FC<HeaderTheme> = ({ theme }) => {
+const Header: FC<HeaderProps> = ({ path }) => {
   return (
-    <HeaderContainer theme={theme === 'dark' ? '--black' : '--white'}>
+    <HeaderContainer>
       <LogoBox>
-        <Logo to="/" theme={theme === 'dark' ? '--primary' : '--black'}>
-          DODOM
-        </Logo>
+        <Logo to="/">DODOM</Logo>
       </LogoBox>
-      <NavBox>
-        {navEl.map((el) => (
-          <PageLink
-            key={el.uri}
-            to="/"
-            theme={theme === 'dark' ? '--white' : '--black'}
-          >
-            {el.pageName}
-          </PageLink>
-        ))}
-      </NavBox>
+      {path === '/survey' ? (
+        <Survey>설문조사</Survey>
+      ) : (
+        <NavBox>
+          {navEl.map((el) => (
+            <PageLink key={el.uri} to={el.uri}>
+              {el.pageName}
+            </PageLink>
+          ))}
+        </NavBox>
+      )}
     </HeaderContainer>
   );
 };
