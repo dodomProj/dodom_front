@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Button from '../components/Button';
 import ToConditionCard from '../components/ToConditionCard';
 import QuestionInput from '../components/QuestionInput';
+import CategoryBox from '../components/CategoryBox';
 //폰트 테스트용 임시 코드
 
 const Main = () => {
@@ -21,6 +22,10 @@ const Main = () => {
         type="textarea"
         placeholder="상담 가능 시간을 모두 적어주세요!"
         textareaRows={3}
+      />
+      <CategoryBox
+        title="우울증 전문 상담사"
+        text={`우울증 상담을 전문으로 하는 상담사입니다.\n상담사에 마우스를 가져가면, 더 자세히 알아볼 수 있어요.`}
       />
     </>
   );
