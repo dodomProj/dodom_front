@@ -10,7 +10,9 @@ const FooterContainer = styled.footer`
   height: 200px;
 `;
 const Slogan = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  text-align: center;
+  word-break: keep-all;
 `;
 
 function Footer() {
