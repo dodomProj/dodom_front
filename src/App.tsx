@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Header theme={pathname === '/' ? 'dark' : 'light'} />
+      <Header />
       <Routes>
         <Route path="/" element={<Main />} />
       </Routes>
