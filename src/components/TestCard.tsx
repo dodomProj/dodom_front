@@ -18,7 +18,6 @@ const Card = styled.div`
     width: 100%;
     max-height: 100%;
     object-fit: contain;
-    /* padding: 1rem; */
   }
 
   > h3 {
@@ -27,9 +26,8 @@ const Card = styled.div`
     margin: 0.5rem 0;
   }
 `;
-const Time = styled.p`
+const MoreInfo = styled.p`
   font-size: 0.75rem;
-  align-self: end;
   text-align: end;
 `;
 
@@ -43,7 +41,7 @@ const TestCard: FC<TestCardInfo> = ({ test }) => {
       {text.map((line, idx) => (
         <p key={idx}>{line}</p>
       ))}
-      <Time>예상시간 {time}분</Time>
+      <MoreInfo>예상시간 {time}분</MoreInfo>
     </Card>
   );
 };
