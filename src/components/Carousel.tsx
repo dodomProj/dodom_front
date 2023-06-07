@@ -1,44 +1,31 @@
-import { FC, ReactNode } from 'react';
-import Slider from 'react-slick';
+import { ComponentType } from 'react';
 import styled from 'styled-components';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 interface CarouselProps {
   settings: {};
-  gap: string;
-  children: ReactNode;
+  dataArr: {}[];
+  Card: ComponentType<any>;
 }
 
-interface SliderGap {
-  gap: string;
-}
-
-const SliderBox = styled(Slider)<SliderGap>`
-  > button {
-    display: none !important;
-  }
-  .slick-track {
-    padding-bottom: 10px;
-    margin-right: 0;
-    display: flex;
-    align-items: stretch;
-    gap: ${(props) => props.gap};
-
-    > div:last-child {
-      margin-right: calc(-${(props) => props.gap} + 10px);
-    }
-
-    div {
-      height: 100%;
-    }
+const Box = styled(Swiper)`
+  .swiper-slide {
+    padding-right: 4px;
+    padding-bottom: 4px;
+    height: auto;
   }
 `;
-const Carousel: FC<CarouselProps> = ({ settings, gap, children }) => {
+
+const Carousel = ({ settings, Card, dataArr }: CarouselProps) => {
   return (
-    <SliderBox {...settings} gap={gap}>
-      {children}
-    </SliderBox>
+    <Box {...settings}>
+      {dataArr.map((el, i) => (
+        <SwiperSlide key={i}>
+          <Card test={el} />
+        </SwiperSlide>
+      ))}
+    </Box>
   );
 };
 export default Carousel;
