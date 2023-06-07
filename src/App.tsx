@@ -13,7 +13,11 @@ function App() {
   return (
     <>
       <GlobalStyle />
+<<<<<<< HEAD
       <Header theme={'dark'} />
+=======
+      <Header path={pathname} />
+>>>>>>> main
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/diary/*" element={<Diary />} />
