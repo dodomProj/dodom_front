@@ -8,6 +8,9 @@ interface TestCardInfo {
 }
 
 const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   height: 100%;
   background: var(--secondary);
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
