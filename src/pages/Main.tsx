@@ -7,11 +7,6 @@ import { PageBase } from '../styles/basePadding';
 import Button from '../components/Button';
 import ToConditionCard from '../components/ToConditionCard';
 import QuestionInput from '../components/QuestionInput';
-<<<<<<< HEAD
-=======
-import CategoryBox from '../components/CategoryBox';
-//폰트 테스트용 임시 코드
->>>>>>> main
 
 const MainBox = styled(PageBase)`
   display: flex;

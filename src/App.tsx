@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import GlobalStyle from './styles/global';
 
 import Main from './pages/Main';
@@ -10,14 +10,12 @@ import Footer from './components/Footer';
 import Counsel from './pages/Counsel';
 
 function App() {
+  const { pathname } = useLocation();
+
   return (
     <>
       <GlobalStyle />
-<<<<<<< HEAD
-      <Header theme={'dark'} />
-=======
       <Header path={pathname} />
->>>>>>> main
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/diary/*" element={<Diary />} />
