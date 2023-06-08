@@ -3,14 +3,15 @@ import { Card } from '../../styles/baseCard';
 import { BsArrowRight } from 'react-icons/bs';
 
 const CardBox = styled(Card)`
-  width: 16rem;
+  width: 17.5rem;
+  height: 27rem;
   background-color: var(--white);
 `;
 const Top = styled(Card)`
   background: var(--sub);
   display: flex;
   align-items: end;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
   p {
     font-size: 24px;
     display: block;
@@ -20,7 +21,7 @@ const Top = styled(Card)`
   }
 `;
 const Bottom = styled.div`
-  padding: 1rem;
+  padding: 1.2rem;
 `;
 const Line = styled.div`
   display: flex;
@@ -39,7 +40,7 @@ const More = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 2.5rem;
   color: var(--sub2);
   p {
     vertical-align: center;

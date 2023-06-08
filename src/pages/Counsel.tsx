@@ -6,9 +6,8 @@ import { aboutDiary } from '../data/textBoxData';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
 import CounselFormBox from '../components/counsel/CounselFormBox';
+import CounselRecommend from '../components/counsel/CounselRecommend';
 
-import { tmpCounselor } from '../data/tmpCounselor';
-import CounselorCard from '../components/counsel/CounselorCard';
 const CounselBox = styled(PageBase)`
   display: flex;
   flex-direction: column;
@@ -31,9 +30,9 @@ const Counsel = () => {
         <TextBox {...aboutDiary} />
       </Top>
       <Bottom>
-        <CounselorCard {...tmpCounselor} />
         <Routes>
           <Route path="/form" element={<CounselFormBox />} />
+          <Route path="/recommend" element={<CounselRecommend />} />
         </Routes>
       </Bottom>
     </CounselBox>
