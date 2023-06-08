@@ -20,7 +20,6 @@ type ButtonProps = {
 };
 
 const Button = ({ text, onClick, isEmpty }: ButtonProps) => {
-  console.log(isEmpty);
   return (
     <Btn onClick={onClick} disabled={isEmpty}>
       {text}
