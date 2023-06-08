@@ -4,6 +4,7 @@ import { BsArrowRight } from 'react-icons/bs';
 
 const CardBox = styled(Card)`
   width: 16rem;
+  background-color: var(--white);
 `;
 const Top = styled(Card)`
   background: var(--sub);
