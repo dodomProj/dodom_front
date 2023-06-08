@@ -2,6 +2,11 @@ import styled from 'styled-components';
 import { basePadding } from '../styles/basePadding';
 import Loading from './Loading';
 
+interface LoadingProps {
+  title: string;
+  text: string;
+}
+
 const Container = styled.main`
   ${basePadding}
   padding-top: 10rem;
@@ -19,14 +24,14 @@ const Container = styled.main`
     padding-top: 1rem;
   }
 `;
-const ConditionLoading = () => {
+const LoadingBox = ({ title, text }: LoadingProps) => {
   return (
     <Container>
       <Loading />
-      <h2>검사가 완료되었습니다 :)</h2>
-      <p>검사 결과를 로딩중이니 잠시만 기다려주세요!</p>
+      <h2>{title}</h2>
+      <p>{text}</p>
     </Container>
   );
 };
 
-export default ConditionLoading;
+export default LoadingBox;
