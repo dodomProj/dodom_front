@@ -28,6 +28,7 @@ const AnswerBox = styled.ul`
   justify-content: space-around;
   align-items: start;
   list-style: none;
+  margin-top: 2rem;
 `;
 const ButtonBox = styled.div`
   display: flex;
@@ -41,6 +42,7 @@ const QuestionBox = () => {
 
   const [questionIdx, setQuestionIdx] = useState<number>(0);
   const [questionsLen, setQuestionsLen] = useState<number>(0);
+  const [answerArr, setAnswerArr] = useState<number[]>([]);
 
   useEffect(() => {
     if (testQNA?.questions) {
@@ -48,6 +50,11 @@ const QuestionBox = () => {
     }
   }, [testQNA]);
 
+  const setAnswer = (answerIdx: number) => {
+    const result = answerArr.slice();
+    result[questionIdx] = answerIdx;
+    setAnswerArr(result);
+  };
   return (
     <Box>
       <p>{testQNA?.questions && testQNA?.questions[questionIdx]}</p>
@@ -59,20 +66,28 @@ const QuestionBox = () => {
       />
       <AnswerBox>
         {testQNA?.answers?.map((answer, idx) => (
-          <AnswerEl key={idx} {...answer} />
+          <AnswerEl
+            key={idx}
+            img={answer.img}
+            text={answer.text}
+            setAnswer={() => setAnswer(idx)}
+            selected={answerArr[questionIdx] === idx}
+          />
         ))}
       </AnswerBox>
       <ButtonBox>
-        <Button
-          text="이전"
-          onClick={() => questionIdx > 0 && setQuestionIdx(questionIdx - 1)}
-        />
+        {!!questionIdx && (
+          <Button
+            text="이전"
+            onClick={() => questionIdx > 0 && setQuestionIdx(questionIdx - 1)}
+          />
+        )}
         <Button
           text={questionIdx === questionsLen - 1 ? '완료' : '다음'}
-          onClick={() =>
-            questionsLen &&
-            questionIdx < questionsLen - 1 &&
-            setQuestionIdx(questionIdx + 1)
+          onClick={
+            questionsLen && questionIdx < questionsLen - 1
+              ? () => setQuestionIdx(questionIdx + 1)
+              : undefined
           }
         />
       </ButtonBox>
