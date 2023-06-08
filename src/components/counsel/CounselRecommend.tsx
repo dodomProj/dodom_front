@@ -26,7 +26,7 @@ const TextBox = styled.div`
   }
 `;
 
-const Bottom = styled.div`
+const Content = styled.div`
   display: flex;
   flex-direction: column;
 `;
@@ -49,6 +49,16 @@ const CardBox = styled.div`
   justify-content: space-around;
 `;
 
+const Bottom = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  button {
+    padding: 0.8rem 2.4rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+`;
 const CounselRecommend = () => {
   return (
     <RecommendBox>
@@ -59,7 +69,7 @@ const CounselRecommend = () => {
           <p>적합한 상담사를 추천해드려요!</p>
         </TextBox>
       </Top>
-      <Bottom>
+      <Content>
         <More>
           <div>
             <p>더보기</p>
@@ -71,6 +81,10 @@ const CounselRecommend = () => {
           <CounselorCard {...tmpCounselor} />
           <CounselorCard {...tmpCounselor} />
         </CardBox>
+      </Content>
+      <Bottom>
+        <Button white={true} text="랜덤 배정받기" />
+        <Button text="상담 예약하기" />
       </Bottom>
     </RecommendBox>
   );
