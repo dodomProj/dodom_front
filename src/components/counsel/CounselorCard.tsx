@@ -35,15 +35,18 @@ const Content = styled.div`
   color: var(--sub3);
 `;
 const More = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   margin-top: 1rem;
-  text-align: end;
-  vertical-align: center;
-  font-family: 'Pretendard-Regular';
-  font-size: 0.8rem;
   color: var(--sub2);
+  p {
+    vertical-align: center;
+    font-family: 'Pretendard-Regular';
+    font-size: 0.8rem;
+  }
   svg {
     font-size: 0.8rem;
-    margin-top: 0.4rem;
     vertical-align: center;
   }
 `;
@@ -77,7 +80,7 @@ const CounselorCard = ({ name, year, score, intro, img }: Props) => {
           <Content>{intro}</Content>
         </Line>
         <More>
-          자세히
+          <p>자세히</p>
           <BsArrowRight />
         </More>
       </Bottom>
