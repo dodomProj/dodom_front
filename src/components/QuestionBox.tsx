@@ -61,6 +61,7 @@ const QuestionBox = ({ setStage }: QuestionBoxProps) => {
     if (testQNA?.questions) {
       setQuestionsLen(testQNA.questions.length);
       setAnswersScore(testQNA.answers.map((answer) => answer.score));
+      setAnswers([]);
     }
   }, [testQNA]);
 
