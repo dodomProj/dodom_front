@@ -69,7 +69,7 @@ const QuestionBox = ({ setStage }: QuestionBoxProps) => {
     <Box>
       <p>{testQNA?.questions && testQNA?.questions[questionIdx]}</p>
       <ProgressStyle
-        value={((questionIdx + 1) / questionsLen) * 100}
+        value={(questionIdx / questionsLen) * 100}
         size="sm"
         color="warning"
         status="warning"
