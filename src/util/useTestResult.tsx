@@ -47,7 +47,7 @@ const useTestResult = () => {
     }
   }, [resultObj]);
 
-  return { score, text: resultObj?.common, type };
+  return { score, common: resultObj?.common, type };
 };
 
 export default useTestResult;
