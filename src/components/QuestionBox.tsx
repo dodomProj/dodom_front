@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Progress } from '@nextui-org/react';
 import styled from 'styled-components';
 import Button from './Button';
 import AnswerEl from './AnswerEl';
+import ProgressBar from './ProgressBar';
 import { MainContent } from '../styles/basePadding';
 import { TestQNAInfo, psychologicalQNA } from '../data/psychologicalTest';
 import useFindTest from '../util/useFindTest';
@@ -20,12 +20,6 @@ const Box = styled(MainContent)`
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 1rem;
-  }
-`;
-const ProgressStyle = styled(Progress)`
-  background-color: var(--secondary);
-  > div {
-    background-color: var(--primary);
   }
 `;
 const AnswerBox = styled.ul`
@@ -68,11 +62,11 @@ const QuestionBox = ({ setStage }: QuestionBoxProps) => {
   return (
     <Box>
       <p>{testQNA?.questions && testQNA?.questions[questionIdx]}</p>
-      <ProgressStyle
+      <ProgressBar
         value={(questionIdx / questionsLen) * 100}
         size="sm"
-        color="warning"
-        status="warning"
+        bgcolor="--secondary"
+        barcolor="--primary"
       />
       <AnswerBox>
         {testQNA?.answers?.map((answer, idx) => (
