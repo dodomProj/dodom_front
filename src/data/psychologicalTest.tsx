@@ -1,5 +1,5 @@
 export interface TestInfo {
-  key?: string;
+  key: string;
   title: string;
   text: string[];
   img: string;
@@ -60,7 +60,7 @@ export const psychologicalTest: TestInfo[] = [
 ];
 
 export interface TestQNAInfo {
-  key?: string;
+  key: string;
   questions: string[];
   answers: {
     img: string;
@@ -301,7 +301,7 @@ export const psychologicalQNA: TestQNAInfo[] = [
 ];
 
 export interface TestResultInfo {
-  key?: string;
+  key: string;
   text: string[];
   result: {
     score: number | number[];
@@ -380,16 +380,10 @@ export const psychologicalResult: TestResultInfo[] = [
     ],
     result: [
       {
-        score: 54,
-        title: '고도의 스트레스 상태',
-        img: '/assets/stress_severe',
-        subTitle: '고도의 스트레스로 인해 반드시 전문적인 치료를 요합니다.',
-      },
-      {
-        score: 42,
-        title: '중등도의 스트레스 상태',
-        img: '/assets/stress_moderate',
-        subTitle: '중등도의 스트레스가 있으며 적극적인 도움을 받아야 합니다.',
+        score: 15,
+        title: '정서적 불편 없음',
+        img: '/assets/stress_none',
+        subTitle: '현재 특별한 정서적 불편을 느끼지 않는 상태입니다.',
       },
       {
         score: 30,
@@ -398,10 +392,16 @@ export const psychologicalResult: TestResultInfo[] = [
         subTitle: '약간의 스트레스가 의심되며 예방책이 필요합니다.',
       },
       {
-        score: 15,
-        title: '정서적 불편 없음',
-        img: '/assets/stress_none',
-        subTitle: '현재 특별한 정서적 불편을 느끼지 않는 상태입니다.',
+        score: 42,
+        title: '중등도의 스트레스 상태',
+        img: '/assets/stress_moderate',
+        subTitle: '중등도의 스트레스가 있으며 적극적인 도움을 받아야 합니다.',
+      },
+      {
+        score: 54,
+        title: '고도의 스트레스 상태',
+        img: '/assets/stress_severe',
+        subTitle: '고도의 스트레스로 인해 반드시 전문적인 치료를 요합니다.',
       },
     ],
   },
@@ -440,7 +440,7 @@ export const psychologicalResult: TestResultInfo[] = [
           '당신은 스트레스를 받았을 때 소망 추구적 대처를 사용합니다. 소망 추구적 대처란 소극적인 대처 방식으로 스트레스가 유발되는 문제나 상황을 직접적으로 통제하기보다는 그러한 문제나 상황이 긍정적으로 해결되기를 바라는 것을 말합니다.',
       },
       {
-        score: 0,
+        score: [],
         title: '문제 중심적 대처형',
         subTitle:
           '당신은 스트레스를 받았을 때 문제 중심적 대처를 사용합니다. 문제 중심적 대처란 스트레스가 유발되는 문제나 상황에 직접적으로 대응하여 문제가 되는 행동을 변화하거나 환경적인 조건을 변화시켜 스트레스와 근원에 대처하려는 노력을 말합니다.',
@@ -466,7 +466,7 @@ export const psychologicalResult: TestResultInfo[] = [
           '부모님과 폐쇄적인 의사소통을 하고 있습니다. 폐쇄적인 의사소통은 일치되지 않고 모순된 메시지를 보내고 부정적인 발언을 하며, 의사소통을 할 때 비난적인 표현을 쓰는 등 역기능적인 의사소통을 말합니다. 부모님과의 신뢰와 애정을 쌓기 위해서는 부모님과 자유롭게 감정을 표현하는 등 의사소통 방식에 변화를 주어야 합니다. ',
       },
       {
-        score: 0,
+        score: [],
         title: '개방폐쇄형 의사소통 방식',
         img: '/assets/communication_neutral.png',
         subTitle:
