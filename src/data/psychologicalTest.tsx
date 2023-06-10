@@ -311,6 +311,7 @@ export interface ResultTypeInfo {
   title: string;
   subTitle: string;
   img?: string;
+  emoji?: string;
 }
 
 export interface ResultCommonInfo {
@@ -336,6 +337,7 @@ export const psychologicalResult: TestResultInfo[] = [
         title: '당신은 우울하지 않고 밝게 지내고 있습니다.',
         subTitle:
           '대인관계에서도 어려움 없이 지낼 수 있을 것이며 편안한 심리상태를 가지고 있을 수 있습니다. 또한 스트레스 상황에 처하더라도 기인하게 대응하여 문제를 해결해 나갈 수 있을 것으로 보여집니다.',
+        emoji: '/assets/emoji_smiling_face_with_smiling_eyes.png',
       },
       {
         level: 1,
@@ -343,6 +345,7 @@ export const psychologicalResult: TestResultInfo[] = [
         title: '당신은 약간 우울하게 느끼면서 지내고 있습니다.',
         subTitle:
           '그러나, 스트레스 상황에 처하면 기분이 가라앉으면서 쉽게 이겨내기 어려울 수 있습니다.',
+        emoji: '/assets/emoji_smiling_face_with_tear.png',
       },
       {
         level: 2,
@@ -350,6 +353,7 @@ export const psychologicalResult: TestResultInfo[] = [
         title: '당신은 현재 우울한 기분을 느끼며 생활하고 있습니다.',
         subTitle:
           '좀 더 정밀한 심리검사를 받아보신 후 심리상담 전문가와의 상담이 필요할 수 있습니다.',
+        emoji: '/assets/emoji_loudly_crying_face.png',
       },
     ],
   },
@@ -370,6 +374,7 @@ export const psychologicalResult: TestResultInfo[] = [
         title: '당신은 정서가 안정되어 있습니다.',
         subTitle:
           '자신이 하고자 하는 일에 있어서 편안함을 느끼며 자신감 있게 할 수 있습니다.',
+        emoji: '/assets/emoji_smiling_face_with_smiling_eyes.png',
       },
       {
         level: 1,
@@ -377,6 +382,7 @@ export const psychologicalResult: TestResultInfo[] = [
         title: '당신은 정서가 다소 불안정 할 수 있습니다.',
         subTitle:
           '자신이 하고자 하는 일에 있어서 스트레스 상황에 하거나 어려운 일이 있으면 불안정해질 수 있습니다.',
+        emoji: '/assets/emoji_smiling_face_with_tear.png',
       },
       {
         level: 2,
@@ -384,6 +390,7 @@ export const psychologicalResult: TestResultInfo[] = [
         title: '당신은 정서가 매우 불안정한 상태입니다.',
         subTitle:
           '만일 지속적으로 이러한 문제가 있을 시에는 정밀심리검사 후 심리상담전문가와의 상담이 필요합니다.',
+        emoji: '/assets/emoji_loudly_crying_face.png',
       },
     ],
   },
@@ -405,6 +412,7 @@ export const psychologicalResult: TestResultInfo[] = [
         title: '정서적 불편 없음',
         img: '/assets/stress_none',
         subTitle: '현재 특별한 정서적 불편을 느끼지 않는 상태입니다.',
+        emoji: '/assets/emoji_smiling_face_with_smiling_eyes.png',
       },
       {
         level: 0,
@@ -412,6 +420,7 @@ export const psychologicalResult: TestResultInfo[] = [
         title: '약간의 스트레스 상태',
         img: '/assets/stress_little',
         subTitle: '약간의 스트레스가 의심되며 예방책이 필요합니다.',
+        emoji: '/assets/emoji_thinking_face.png',
       },
       {
         level: 1,
@@ -419,6 +428,7 @@ export const psychologicalResult: TestResultInfo[] = [
         title: '중등도의 스트레스 상태',
         img: '/assets/stress_moderate',
         subTitle: '중등도의 스트레스가 있으며 적극적인 도움을 받아야 합니다.',
+        emoji: '/assets/emoji_smiling_face_with_tear.png',
       },
       {
         level: 2,
@@ -426,6 +436,7 @@ export const psychologicalResult: TestResultInfo[] = [
         title: '고도의 스트레스 상태',
         img: '/assets/stress_severe',
         subTitle: '고도의 스트레스로 인해 반드시 전문적인 치료를 요합니다.',
+        emoji: '/assets/emoji_face_with_spiral_eyes.png',
       },
     ],
   },
