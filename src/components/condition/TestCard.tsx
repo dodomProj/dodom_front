@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { TestInfo } from '../data/psychologicalTest';
+import { TestInfo } from '../../data/psychologicalTest';
 
 interface TestCardInfo {
   test: TestInfo;

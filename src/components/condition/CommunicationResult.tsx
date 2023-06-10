@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import useTestResult from '../util/useTestResult';
-import ProgressBar from './ProgressBar';
+import useTestResult from '../../util/useTestResult';
+import ProgressBar from '../ProgressBar';
 
 const ProgressBox = styled.div`
   position: relative;

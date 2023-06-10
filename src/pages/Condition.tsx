@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import TextBox from '../components/TextBox';
-import TestCard from '../components/TestCard';
+import TestCard from '../components/condition/TestCard';
 import { psychologicalTest } from '../data/psychologicalTest';
 import { conditionData } from '../data/textBoxData';
 import { MainContent, PageBase } from '../styles/basePadding';

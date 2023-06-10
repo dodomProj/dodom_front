@@ -1,4 +1,4 @@
-import PolicySubtitle from '../components/PolicySubtitle';
+import PolicySubtitle from '../components/policy/PolicySubtitle';
 import ToDiary from '../components/ToDiary';
 import { PageBase } from '../styles/basePadding';
 

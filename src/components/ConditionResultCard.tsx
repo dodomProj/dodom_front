@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import SaveButton from './SaveButton';
-import ConditionResultContents from './ConditionResultContents';
+import ConditionResultContents from './condition/ConditionResultContents';
 import { ButtonCard } from '../styles/baseCard';
 
 export interface ResultCardProps {

@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Button from './Button';
+import Button from '../Button';
 import AnswerEl from './AnswerEl';
-import ProgressBar from './ProgressBar';
-import { MainContent } from '../styles/basePadding';
-import { TestQNAInfo, psychologicalQNA } from '../data/psychologicalTest';
-import useFindTest from '../util/useFindTest';
+import ProgressBar from '../ProgressBar';
+import { MainContent } from '../../styles/basePadding';
+import { TestQNAInfo, psychologicalQNA } from '../../data/psychologicalTest';
+import useFindTest from '../../util/useFindTest';
 import { useRecoilState, useSetRecoilState } from 'recoil';
-import { answerScoreState, answersState } from '../recoil';
+import { answerScoreState, answersState } from '../../recoil';
 
 interface QuestionBoxProps {
   setStage: (stage: number) => void;

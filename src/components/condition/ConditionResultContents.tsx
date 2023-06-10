@@ -1,4 +1,4 @@
-import { ResultCardProps } from './ConditionResultCard';
+import { ResultCardProps } from '../ConditionResultCard';
 import CommunicationResult from './CommunicationResult';
 
 const ConditionResultContents = ({ test }: ResultCardProps) => {

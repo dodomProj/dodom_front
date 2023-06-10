@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import LoadingBox from '../components/LoadingBox';
 import SubtitleBox from '../components/SubtitleBox';
-import QuestionBox from '../components/QuestionBox';
+import QuestionBox from '../components/condition/QuestionBox';
 import ResultContainer from '../components/ResultContainer';
 import { TestInfo, psychologicalTest } from '../data/psychologicalTest';
 import { PageBase } from '../styles/basePadding';

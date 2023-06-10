@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { SubtitleText } from './SubtitleBox';
-import { SubtitleContainer } from './ToDiary';
+import { SubtitleText } from '../SubtitleBox';
+import { SubtitleContainer } from '../ToDiary';
 
 const Container = styled(SubtitleContainer)`
   background-color: var(--black);
