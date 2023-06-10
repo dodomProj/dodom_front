@@ -65,8 +65,8 @@ const QuestionBox = ({ setStage }: QuestionBoxProps) => {
       <ProgressBar
         value={(questionIdx / questionsLen) * 100}
         size="sm"
-        bgcolor="--secondary"
-        barcolor="--primary"
+        bgcolor="var(--secondary)"
+        barcolor="var(--primary)"
       />
       <AnswerBox>
         {testQNA?.answers?.map((answer, idx) => (

@@ -14,9 +14,9 @@ interface StyleProps {
 }
 
 const ProgressStyle = styled(Progress)<StyleProps>`
-  background-color: var(${(props) => props.bgcolor});
+  background-color: ${(props) => props.bgcolor};
   > div {
-    background-color: var(${(props) => props.barcolor});
+    background-color: ${(props) => props.barcolor};
   }
 `;
 
