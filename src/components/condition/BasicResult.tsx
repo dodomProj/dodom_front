@@ -17,7 +17,7 @@ export const ProgressBox = styled.div`
 interface BarColor {
   color: string;
 }
-const ProgressWrapper = styled(ProgressBox)<BarColor>`
+export const ProgressWrapper = styled(ProgressBox)<BarColor>`
   width: 25%;
 
   > img:first-child {
