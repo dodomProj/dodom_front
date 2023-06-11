@@ -1,17 +1,12 @@
 import styled from 'styled-components';
 import useTestResult from '../../util/useTestResult';
 import ProgressBar from '../ProgressBar';
+import { ProgressBox } from './BasicResult';
 
-const ProgressBox = styled.div`
-  position: relative;
-
-  > img,
-  span {
-    position: absolute;
-    z-index: 1;
+const ProgressWrapper = styled(ProgressBox)`
+  > span {
+    font-family: 'Pretendard-Regular';
     font-size: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
   }
 
   > span:first-child {
@@ -39,7 +34,7 @@ const CommunicationResult = () => {
 
   return (
     <>
-      <ProgressBox>
+      <ProgressWrapper>
         <span>개방적</span>
         <ProgressBar
           value={(Math.max(...scoreArr) / common?.total) * 100}
@@ -48,7 +43,7 @@ const CommunicationResult = () => {
           barcolor="var(--primary)"
         />
         <span>폐쇄적</span>
-      </ProgressBox>
+      </ProgressWrapper>
       <Img src={type.img} alt="" />
       <h2>{type.title}</h2>
       <p>{type.subTitle}</p>
