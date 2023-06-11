@@ -21,8 +21,8 @@ export const ResultCard = styled(ButtonCard)`
     margin-bottom: 4rem;
   }
 
-  > p {
-    margin-bottom: 3rem;
+  > button {
+    margin-top: 3rem;
   }
 `;
 
