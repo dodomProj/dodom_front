@@ -2,6 +2,8 @@ import { useState, FocusEvent } from 'react';
 import styled from 'styled-components';
 import Button from '../components/Button';
 import QuestionInput from '../components/QuestionInput';
+import QuestionBlock from '../components/QuestionBlock';
+import ConsentCheck from '../components/survey/ConsentCheck';
 import { MainContent, PageBase, basePadding } from '../styles/basePadding';
 
 import Rate from 'rc-rate';
@@ -38,6 +40,7 @@ const SurveyBox = styled(MainContent)`
   display: flex;
   flex-direction: column;
   font-size: 1.5rem;
+  gap: 4rem;
 
   > button {
     align-self: center;
@@ -64,39 +67,6 @@ const StyledRate = styled(Rate)`
   .rc-rate-star-half:hover .rc-rate-star-first,
   .rc-rate-star-full:hover .rc-rate-star-second {
     color: var(--primary);
-  }
-`;
-const ConsentCheck = styled.div`
-  > p {
-    font-size: 1.2rem;
-  }
-
-  > label {
-    cursor: pointer;
-
-    > input {
-      display: none;
-      :checked + span:before {
-        background-image: url('/assets/check_btn.svg');
-        background-repeat: no-repeat;
-        background-position: center;
-      }
-    }
-
-    > span {
-      display: block;
-      text-align: right;
-      :before {
-        content: '';
-        display: inline-block;
-        width: 1rem;
-        height: 1rem;
-        background-color: var(--primary);
-        border-radius: 2px;
-        vertical-align: middle;
-        box-shadow: 0px 3px 5px rgba(46, 46, 66, 0.08);
-      }
-    }
   }
 `;
 
@@ -129,6 +99,7 @@ const Survey = () => {
       <SurveyBox>
         <QuestionInput
           question="1. 본인의 이름을 작성해주세요."
+          id="name"
           type="text"
           placeholder="김도돔"
           placeholderColor="rgba(196, 190, 189, 1)"
@@ -136,16 +107,17 @@ const Survey = () => {
         >
           <Info>실제 상담 후 진행된 설문인지 확인 시에 사용됩니다.</Info>
         </QuestionInput>
-        <QuestionInput question="2. 상담은 어느 정도 만족하셨나요?">
+        <QuestionBlock question="2. 상담은 어느 정도 만족하셨나요?">
           <StyledRate
             value={form.star}
             allowHalf
             character={<Star />}
             onChange={(v) => setForm({ ...form, star: v })}
           />
-        </QuestionInput>
+        </QuestionBlock>
         <QuestionInput
           question="3. 상담의 어느 부분에서 만족/불만족 하셨나요? 자유롭게 작성해주세요."
+          id="review"
           type="textarea"
           placeholder="ex. 현재 고민을 잘 들어주셨고, 실질적인 대처 방식을 제시해줘서 좋았어요.&#13;도돔 서비스의 연락 방식이나, 시간 약속 시스템이 만족스러웠어요."
           textareaRows={7}
@@ -154,27 +126,16 @@ const Survey = () => {
         />
         <QuestionInput
           question="4. 상담사에게 하고싶은 말을 자유롭게 작성해주세요."
+          id="opinion"
           type="textarea"
           placeholder="ex. 도움이 된 점, 앞으로 달라지고 싶은 내 모습 등."
           textareaRows={7}
           onBlur={setSurveyForm('opinion')}
           placeholderColor="rgba(196, 190, 189, 1)"
         />
-        <ConsentCheck>
-          <p>
-            🌟 위 후기는 "익명"으로 도돔의 상담사 후기란 혹은 도돔 소개 게시판에
-            게시될 가능성이 있습니다. 여러분의 후기는 다른 이들에게 또 다른
-            용기가 됩니다. <br />
-            동의하시겠습니까?
-          </p>
-          <label>
-            <input
-              type="checkbox"
-              onChange={(e) => setForm({ ...form, consent: e.target.checked })}
-            />
-            <span> 동의합니다.</span>
-          </label>
-        </ConsentCheck>
+        <ConsentCheck
+          checkedChange={(e) => setForm({ ...form, consent: e.target.checked })}
+        />
         <Button text="제출하기" onClick={() => console.log(form)} />
       </SurveyBox>
     </PageBase>
