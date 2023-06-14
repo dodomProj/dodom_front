@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import ToDiaryCard from './ToDiaryCard';
-import ToCounselCard from './ToCounselCard';
+import ToReserveCard from './ToReserveCard';
 import ConditionResultCard from './ConditionResultCard';
 
 type Direction = {
@@ -42,11 +42,11 @@ const ConditionResultBox = () => {
     <ResultBox
       direction={key === 'communication-parent-child' ? 'row' : 'column'}
     >
-      <ConditionResultCard test={key} />
+      {/* <ConditionResultCard test={key} /> */}
       <OtherPages
         direction={key === 'communication-parent-child' ? 'column' : 'row'}
       >
-        <ToCounselCard />
+        <ToReserveCard />
         <ToDiaryCard />
       </OtherPages>
     </ResultBox>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import ToPolicyCard from './ToPolicyCard';
-import DiaryResultBox from './DiaryResultBox';
+import DiaryResultBox from './diary/DiaryResultBox';
 import ConditionResultBox from './ConditionResultBox';
 import { MainContent } from '../styles/basePadding';
 

@@ -1,14 +1,14 @@
-import ToCounselCard from './ToCounselCard';
-import ToConditionCard from './ToConditionCard';
+import ToReserveCard from '../ToReserveCard';
+import ToConditionCard from '../ToConditionCard';
 import DiaryResultCard from './DiaryResultCard';
-import { OtherPages, ResultBox } from './ConditionResultBox';
+import { OtherPages, ResultBox } from '../ConditionResultBox';
 
 const DiaryResultBox = () => {
   return (
     <ResultBox>
       <DiaryResultCard />
       <OtherPages>
-        <ToCounselCard />
+        <ToReserveCard />
         <ToConditionCard />
       </OtherPages>
     </ResultBox>
