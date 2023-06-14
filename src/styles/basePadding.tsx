@@ -1,10 +1,12 @@
 import styled, { css } from 'styled-components';
 
 export const basePadding = css`
-  padding: 0 7rem;
+  padding-left: 7rem;
+  padding-right: 7rem;
 
   @media screen and (max-width: 1056px) {
-    padding: 0 1.7rem;
+    padding-left: 1.7rem;
+    padding-right: 1.7rem;
   }
 `;
 
