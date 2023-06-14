@@ -17,10 +17,18 @@ const Main = () => {
       <Regular>Caption/Pretendard Regular 12 px</Regular>
       <Button text="작성하기" onClick={test} />
       <ToConditionCard />
-      <QuestionInput question="연락처" type="tel" placeholder="연락처" />
+      <QuestionInput
+        question="연락처"
+        type="tel"
+        id="tel"
+        onBlur={(e) => console.log(e.target.value)}
+        placeholder="연락처"
+      />
       <QuestionInput
         question="상담 가능 시간"
         type="textarea"
+        id="time"
+        onBlur={(e) => console.log(e.target.value)}
         placeholder="상담 가능 시간을 모두 적어주세요!"
         textareaRows={3}
       />

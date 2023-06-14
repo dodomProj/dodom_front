@@ -1,57 +1,81 @@
-import { ReactNode } from 'react';
+import { ReactNode, FocusEvent } from 'react';
 import styled, { css } from 'styled-components';
 
 interface QuestionProps {
   question: string;
-  type?: string;
+  type: string;
+  id: string;
+  onBlur: (e: FocusEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
   placeholder?: string;
+  placeholderColor?: string;
   textareaRows?: number;
   children?: ReactNode;
+}
+interface InputProps {
+  placeholdercolor?: string;
 }
 
 const Box = styled.div`
   font-size: inherit;
-  padding-bottom: 2rem;
-
-  > p {
-    font-size: inherit;
-    font-family: 'Pretendard-medium';
-    font-weight: normal;
-    margin-bottom: 1rem;
-  }
 `;
-const inputText = css`
+export const questionStyle = css`
+  font-size: inherit;
+  margin-bottom: 1rem;
+`;
+const Label = styled.label`
+  display: block;
+  ${questionStyle}
+`;
+const inputStyle = css<InputProps>`
   width: 100%;
   font-size: 0.9em;
   border: 1px solid var(--sub);
   border-radius: 8px;
   padding: 1rem;
+
+  ::placeholder {
+    color: ${(props) => props.placeholdercolor || 'var(--sub3)'};
+  }
 `;
 export const BaseInput = styled.input`
-  ${inputText}
+  ${inputStyle}
 `;
 export const BaseTextarea = styled.textarea`
-  ${inputText}
+  ${inputStyle}
   resize: none;
 `;
 
 const QuestionInput = ({
   question,
+  id,
   type,
   placeholder,
+  placeholderColor,
   textareaRows,
   children,
+  onBlur,
 }: QuestionProps) => {
   return (
     <Box>
-      <p>{question}</p>
-      {!type ? (
-        children
-      ) : type === 'textarea' ? (
-        <BaseTextarea placeholder={placeholder} rows={textareaRows} />
+      <Label htmlFor={id}>{question}</Label>
+      {type === 'textarea' ? (
+        <BaseTextarea
+          id={id}
+          onBlur={onBlur}
+          placeholder={placeholder}
+          placeholdercolor={placeholderColor}
+          rows={textareaRows}
+        />
       ) : (
-        <BaseInput type={type} placeholder={placeholder} />
+        <BaseInput
+          id={id}
+          onBlur={onBlur}
+          placeholder={placeholder}
+          placeholdercolor={placeholderColor}
+          type={type}
+        />
       )}
+      {children && children}
     </Box>
   );
 };
