@@ -1,9 +1,11 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 import { Box } from '../diary/DiaryEditBox';
 import Button from '../Button';
 
-import { tmpCounselor } from '../../data/tmpCounselor';
+import { tmpCounselor, tmpCounselorDetail } from '../../data/tmpCounselor';
 import CounselorCard from './CounselorCard';
+import CounselorDetail from './CounselorDetail';
 import { BsArrowRight } from 'react-icons/bs';
 
 const RecommendBox = styled(Box)`
@@ -60,6 +62,8 @@ const Bottom = styled.div`
   }
 `;
 const CounselRecommend = () => {
+  const [cardClicked, setCardClicked] = useState(false);
+
   return (
     <RecommendBox>
       <Top>
@@ -77,10 +81,18 @@ const CounselRecommend = () => {
           </div>
         </More>
         <CardBox>
-          <CounselorCard {...tmpCounselor} />
+          <CounselorCard
+            {...tmpCounselor}
+            onClick={() => {
+              setCardClicked((prev) => !prev);
+            }}
+          />
           <CounselorCard {...tmpCounselor} />
           <CounselorCard {...tmpCounselor} />
         </CardBox>
+        {cardClicked ? (
+          <CounselorDetail {...{ ...tmpCounselor, ...tmpCounselorDetail }} />
+        ) : null}
       </Content>
       <Bottom>
         <Button white={true} text="랜덤 배정받기" />

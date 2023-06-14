@@ -58,14 +58,15 @@ type Props = {
   year: number;
   score: number;
   intro: string;
-  img: string;
+  icon: string;
+  onClick?: React.MouseEventHandler;
 };
 
-const CounselorCard = ({ name, year, score, intro, img }: Props) => {
+const CounselorCard = ({ name, year, score, intro, icon, onClick }: Props) => {
   return (
-    <CardBox>
+    <CardBox onClick={onClick}>
       <Top>
-        <img src={process.env.PUBLIC_URL + `/assets/${img}`} />
+        <img src={process.env.PUBLIC_URL + `/assets/${icon}`} />
         <p>{name}</p>
       </Top>
       <Bottom>
