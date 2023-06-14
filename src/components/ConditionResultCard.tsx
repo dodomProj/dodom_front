@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import SaveButton from './SaveButton';
-// import ConditionResultContents from './condition/ConditionResultContents';
+import ConditionResultContents from './condition/ConditionResultContents';
 import { ButtonCard } from '../styles/baseCard';
 
 export interface ResultCardProps {
@@ -31,7 +31,7 @@ const ConditionResultCard = ({ test }: ResultCardProps) => {
 
   return (
     <ResultCard theme="--third">
-      {/* <ConditionResultContents test={test} /> */}
+      <ConditionResultContents test={test} />
       <SaveButton />
     </ResultCard>
   );

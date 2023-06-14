@@ -1,27 +1,51 @@
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import ToDiaryCard from './ToDiaryCard';
 import ToReserveCard from './ToReserveCard';
 import ConditionResultCard from './ConditionResultCard';
 
-export const ResultBox = styled.div`
+type Direction = {
+  direction?: string;
+};
+
+export const ResultBox = styled.div<Direction>`
   display: flex;
+  flex-direction: ${(props) => props.direction};
   gap: 1.5rem;
 
   > div {
-    width: 50%;
+    width: 100%;
   }
 `;
-export const OtherPages = styled.div`
+export const OtherPages = styled.div<Direction>`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${(props) => props.direction};
   gap: 1.8rem;
+
+  > div {
+    flex: 1;
+  }
 `;
 
 const ConditionResultBox = () => {
+  const { pathname } = useLocation();
+  const [key, setKey] = useState<string>();
+
+  useEffect(() => {
+    if (pathname) {
+      setKey(pathname.split('/condition/')[1]);
+    }
+  }, [pathname]);
+
   return (
-    <ResultBox>
-      <ConditionResultCard />
-      <OtherPages>
+    <ResultBox
+      direction={key === 'communication-parent-child' ? 'row' : 'column'}
+    >
+      {/* <ConditionResultCard test={key} /> */}
+      <OtherPages
+        direction={key === 'communication-parent-child' ? 'column' : 'row'}
+      >
         <ToReserveCard />
         <ToDiaryCard />
       </OtherPages>
