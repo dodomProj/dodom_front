@@ -17,7 +17,6 @@ interface InputProps {
 
 const Box = styled.div`
   font-size: inherit;
-  padding-bottom: 2rem;
 `;
 export const questionStyle = css`
   font-size: inherit;
