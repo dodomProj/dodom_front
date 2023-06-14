@@ -1,12 +1,17 @@
-import { ReactNode } from 'react';
+import { ReactNode, FocusEvent } from 'react';
 import styled, { css } from 'styled-components';
 
 interface QuestionProps {
   question: string;
   type?: string;
   placeholder?: string;
+  placeholderColor?: string;
   textareaRows?: number;
   children?: ReactNode;
+  onBlur?: (e: FocusEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
+}
+interface InputProps {
+  placeholdercolor?: string;
 }
 
 const Box = styled.div`
@@ -20,12 +25,16 @@ const Box = styled.div`
     margin-bottom: 1rem;
   }
 `;
-const inputText = css`
+const inputText = css<InputProps>`
   width: 100%;
   font-size: 0.9em;
   border: 1px solid var(--sub);
   border-radius: 8px;
   padding: 1rem;
+
+  ::placeholder {
+    color: ${(props) => props.placeholdercolor || 'var(--sub3)'};
+  }
 `;
 export const BaseInput = styled.input`
   ${inputText}
@@ -39,19 +48,31 @@ const QuestionInput = ({
   question,
   type,
   placeholder,
+  placeholderColor,
   textareaRows,
   children,
+  onBlur,
 }: QuestionProps) => {
   return (
     <Box>
       <p>{question}</p>
-      {!type ? (
-        children
-      ) : type === 'textarea' ? (
-        <BaseTextarea placeholder={placeholder} rows={textareaRows} />
-      ) : (
-        <BaseInput type={type} placeholder={placeholder} />
-      )}
+      {type &&
+        (type === 'textarea' ? (
+          <BaseTextarea
+            rows={textareaRows}
+            placeholder={placeholder}
+            onBlur={onBlur}
+            placeholdercolor={placeholderColor}
+          />
+        ) : (
+          <BaseInput
+            type={type}
+            placeholder={placeholder}
+            onBlur={onBlur}
+            placeholdercolor={placeholderColor}
+          />
+        ))}
+      {children && children}
     </Box>
   );
 };
