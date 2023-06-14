@@ -3,12 +3,13 @@ import styled, { css } from 'styled-components';
 
 interface QuestionProps {
   question: string;
-  type?: string;
+  type: string;
+  id: string;
+  onBlur: (e: FocusEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
   placeholder?: string;
   placeholderColor?: string;
   textareaRows?: number;
   children?: ReactNode;
-  onBlur?: (e: FocusEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
 }
 interface InputProps {
   placeholdercolor?: string;
@@ -17,15 +18,16 @@ interface InputProps {
 const Box = styled.div`
   font-size: inherit;
   padding-bottom: 2rem;
-
-  > p {
-    font-size: inherit;
-    font-family: 'Pretendard-medium';
-    font-weight: normal;
-    margin-bottom: 1rem;
-  }
 `;
-const inputText = css<InputProps>`
+export const questionStyle = css`
+  font-size: inherit;
+  margin-bottom: 1rem;
+`;
+const Label = styled.label`
+  display: block;
+  ${questionStyle}
+`;
+const inputStyle = css<InputProps>`
   width: 100%;
   font-size: 0.9em;
   border: 1px solid var(--sub);
@@ -37,15 +39,16 @@ const inputText = css<InputProps>`
   }
 `;
 export const BaseInput = styled.input`
-  ${inputText}
+  ${inputStyle}
 `;
 export const BaseTextarea = styled.textarea`
-  ${inputText}
+  ${inputStyle}
   resize: none;
 `;
 
 const QuestionInput = ({
   question,
+  id,
   type,
   placeholder,
   placeholderColor,
@@ -55,23 +58,24 @@ const QuestionInput = ({
 }: QuestionProps) => {
   return (
     <Box>
-      <p>{question}</p>
-      {type &&
-        (type === 'textarea' ? (
-          <BaseTextarea
-            rows={textareaRows}
-            placeholder={placeholder}
-            onBlur={onBlur}
-            placeholdercolor={placeholderColor}
-          />
-        ) : (
-          <BaseInput
-            type={type}
-            placeholder={placeholder}
-            onBlur={onBlur}
-            placeholdercolor={placeholderColor}
-          />
-        ))}
+      <Label htmlFor={id}>{question}</Label>
+      {type === 'textarea' ? (
+        <BaseTextarea
+          id={id}
+          onBlur={onBlur}
+          placeholder={placeholder}
+          placeholdercolor={placeholderColor}
+          rows={textareaRows}
+        />
+      ) : (
+        <BaseInput
+          id={id}
+          onBlur={onBlur}
+          placeholder={placeholder}
+          placeholdercolor={placeholderColor}
+          type={type}
+        />
+      )}
       {children && children}
     </Box>
   );
