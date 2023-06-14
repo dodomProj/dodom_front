@@ -1,62 +1,134 @@
+import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import TextBox from '../components/TextBox';
+import { firstDodom } from '../data/textBoxData';
+import { PageBase } from '../styles/basePadding';
 import Button from '../components/Button';
 import ToConditionCard from '../components/ToConditionCard';
 import QuestionInput from '../components/QuestionInput';
-import CategoryBox from '../components/CategoryBox';
-import LoadingBox from '../components/LoadingBox';
-//폰트 테스트용 임시 코드
 
+const MainBox = styled(PageBase)`
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh);
+  margin-bottom: 0px;
+`;
+const Top = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  :hover {
+    a:not(a:hover) {
+      filter: brightness(50%);
+    }
+  }
+`;
+const ButtonCard = styled(Link)`
+  background-color: var(${(props) => props.theme});
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 500px;
+  height: 70vh;
+  transition: 0.5s;
+  img {
+    display: block;
+    margin-bottom: 70px;
+    width: 40%;
+  }
+  h1 {
+    margin-bottom: 28px;
+  }
+  p {
+    font-size: 24px;
+  }
+  :hover {
+    color: var(--black);
+  }
+  text-align: center;
+`;
+const Bottom = styled.div`
+  background-color: var(--black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  h1 {
+    color: var(--primary);
+    margin-bottom: 15px;
+  }
+  p {
+    color: var(--white);
+    cursor: pointer;
+  }
+`;
+const SubBox = styled.div`
+  position: relative;
+  height: calc(-200px + 100vh);
+`;
+const LinkBox = styled.div`
+  position: absolute;
+  bottom: 5%;
+  right: 7rem;
+  display: flex;
+  div {
+    color: var(--white);
+    cursor: pointer;
+    margin-left: 4rem;
+  }
+  img {
+    width: 1rem;
+    margin-left: 1rem;
+  }
+`;
 const Main = () => {
-  const test = () => {
-    console.log('click');
+  const target = useRef<HTMLDivElement>(null);
+  const onMoveToTarget = () => {
+    target?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
   return (
     <>
-      <Bold>Tittle1/Pretendard Bold 48 px</Bold>
-      <Medium>Subtittle/Pretendard Medium 24 px</Medium>
-      <Regular>Caption/Pretendard Regular 12 px</Regular>
-      <Button text="작성하기" onClick={test} />
-      <ToConditionCard />
-      <QuestionInput
-        question="연락처"
-        type="tel"
-        id="tel"
-        onBlur={(e) => console.log(e.target.value)}
-        placeholder="연락처"
-      />
-      <QuestionInput
-        question="상담 가능 시간"
-        type="textarea"
-        id="time"
-        onBlur={(e) => console.log(e.target.value)}
-        placeholder="상담 가능 시간을 모두 적어주세요!"
-        textareaRows={3}
-      />
-      <CategoryBox
-        title="우울증 전문 상담사"
-        text={`우울증 상담을 전문으로 하는 상담사입니다.\n상담사에 마우스를 가져가면, 더 자세히 알아볼 수 있어요.`}
-      />
-      <LoadingBox
-        title="마음 일기가 성공적으로 작성되었어요!"
-        text="일기가 카드로 만들어지고 있으니, 잠시만 기다려주세요!"
-      />
+      <MainBox>
+        <Top>
+          <ButtonCard to="/diary" theme="--primary">
+            <img src={process.env.PUBLIC_URL + '/assets/chat.png'} />
+            <h1>솔직한 내 마음 일기 작성하기</h1>
+            <p>아무도 모르는 내 마음, 편하게 써봐요.</p>
+          </ButtonCard>
+          <ButtonCard to="/" theme="--third">
+            <img src={process.env.PUBLIC_URL + '/assets/glass.png'} />
+            <h1>내 상태 체크하기</h1>
+            <p>
+              내 상태 체크하기로 간단한 설문을 통해
+              <br />
+              심리 검사를 진행할 수 있어요.
+            </p>
+          </ButtonCard>
+        </Top>
+        <Bottom>
+          <h1>도돔이 처음이라면?</h1>
+          <p onClick={onMoveToTarget}>도돔 자세히 알아보기</p>
+        </Bottom>
+      </MainBox>
+      <SubBox ref={target}>
+        <TextBox {...firstDodom} />
+        <LinkBox>
+          <div>
+            상담사 알아보기
+            <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
+          </div>
+          <div>
+            DODOM 더 알아보기
+            <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
+          </div>
+        </LinkBox>
+      </SubBox>
     </>
   );
 };
 
 export default Main;
-
-const Bold = styled.div`
-  font-family: 'Pretendard-Bold';
-  font-size: 36px;
-`;
-
-const Medium = styled.div`
-  font-family: 'Pretendard-Medium';
-  font-size: 16px;
-`;
-
-const Regular = styled.div`
-  font-family: 'Pretendard-Regular';
-  font-size: 12px;
-`;

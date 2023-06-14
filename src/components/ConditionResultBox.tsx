@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import ToDiaryCard from './ToDiaryCard';
-import ToCounselCard from './ToCounselCard';
+import ToReserveCard from './ToReserveCard';
 import ConditionResultCard from './ConditionResultCard';
 
 export const ResultBox = styled.div`
@@ -22,7 +22,7 @@ const ConditionResultBox = () => {
     <ResultBox>
       <ConditionResultCard />
       <OtherPages>
-        <ToCounselCard />
+        <ToReserveCard />
         <ToDiaryCard />
       </OtherPages>
     </ResultBox>
