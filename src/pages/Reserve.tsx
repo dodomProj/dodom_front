@@ -9,7 +9,7 @@ import ReserveRecommend from '../components/reserve/ReserveRecommend';
 import ReserveSuccess from '../components/reserve/ReserveSuccess';
 import ReserveFormBox from './../components/reserve/ReserveFormBox';
 
-const CounselBox = styled(PageBase)`
+const ReserveBox = styled(PageBase)`
   display: flex;
   flex-direction: column;
 `;
@@ -24,9 +24,9 @@ const Bottom = styled.div`
   padding-top: 7.5rem;
 `;
 
-const Counsel = () => {
+const Reserve = () => {
   return (
-    <CounselBox>
+    <ReserveBox>
       <Top>
         <TextBox {...aboutDiary} />
       </Top>
@@ -37,8 +37,8 @@ const Counsel = () => {
           <Route path="/reserved" element={<ReserveSuccess />} />
         </Routes>
       </Bottom>
-    </CounselBox>
+    </ReserveBox>
   );
 };
 
-export default Counsel;
+export default Reserve;

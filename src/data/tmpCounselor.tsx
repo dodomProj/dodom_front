@@ -1,11 +1,69 @@
-export const tmpCounselor = {
-  name: '김도돔',
-  icon: 'avatar1.svg',
-  year: 6,
-  score: 4.7,
-  intro: '같이 얘기하고, 같이 웃어요.',
-  key: 1,
-};
+export const tmpCounselor = [
+  {
+    name: '김도돔',
+    icon: 'avatar1.svg',
+    year: 6,
+    score: 4.7,
+    intro: '같이 얘기하고, 같이 웃어요.',
+    key: 1,
+  },
+  {
+    name: '김도돔',
+    icon: 'avatar1.svg',
+    year: 6,
+    score: 4.7,
+    intro: '같이 얘기하고, 같이 웃어요.',
+    key: 1,
+  },
+  {
+    name: '김도돔',
+    icon: 'avatar1.svg',
+    year: 6,
+    score: 4.7,
+    intro: '같이 얘기하고, 같이 웃어요.',
+    key: 1,
+  },
+  {
+    name: '김도돔',
+    icon: 'avatar1.svg',
+    year: 6,
+    score: 4.7,
+    intro: '같이 얘기하고, 같이 웃어요.',
+    key: 1,
+  },
+  {
+    name: '김도돔',
+    icon: 'avatar1.svg',
+    year: 6,
+    score: 4.7,
+    intro: '같이 얘기하고, 같이 웃어요.',
+    key: 1,
+  },
+  {
+    name: '김도돔',
+    icon: 'avatar1.svg',
+    year: 6,
+    score: 4.7,
+    intro: '같이 얘기하고, 같이 웃어요.',
+    key: 1,
+  },
+  {
+    name: '김도돔',
+    icon: 'avatar1.svg',
+    year: 6,
+    score: 4.7,
+    intro: '같이 얘기하고, 같이 웃어요.',
+    key: 1,
+  },
+  {
+    name: '김도돔',
+    icon: 'avatar1.svg',
+    year: 6,
+    score: 4.7,
+    intro: '같이 얘기하고, 같이 웃어요.',
+    key: 1,
+  },
+];
 
 export const tmpCounselorDetail = {
   key: 1,

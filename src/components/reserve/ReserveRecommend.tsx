@@ -80,7 +80,7 @@ const ReserveRecommend = () => {
             <BsArrowRight />
           </div>
         </More>
-        <CardBox>
+        {/* <CardBox>
           <CounselorCard
             {...tmpCounselor}
             onClick={() => {
@@ -92,7 +92,7 @@ const ReserveRecommend = () => {
         </CardBox>
         {cardClicked ? (
           <CounselorDetail {...{ ...tmpCounselor, ...tmpCounselorDetail }} />
-        ) : null}
+        ) : null} */}
       </Content>
       <Bottom>
         <Button white={true} text="랜덤 배정받기" />

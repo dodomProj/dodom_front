@@ -16,7 +16,7 @@ const DiaryBox = styled(PageBase)`
   flex-direction: column;
 `;
 const Top = styled.div`
-  height: 500px;
+  height: 32rem;
   div > div {
     margin-bottom: 3rem;
   }
