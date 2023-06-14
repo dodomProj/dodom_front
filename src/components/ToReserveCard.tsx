@@ -16,10 +16,10 @@ const Item = styled(Link)`
   }
 `;
 
-const ToCounselCard = () => {
+const ToReserveCard = () => {
   return (
     <ButtonCard theme="--primary">
-      <Item to={'/counsel/form'}>
+      <Item to={'/reserve/'}>
         <div>
           <h2>상담 받아보기</h2>
           <p>
@@ -34,4 +34,4 @@ const ToCounselCard = () => {
   );
 };
 
-export default ToCounselCard;
+export default ToReserveCard;

@@ -4,10 +4,10 @@ import GlobalStyle from './styles/global';
 
 import Main from './pages/Main';
 import Diary from './pages/Diary';
+import Reserve from './pages/Reserve';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Counsel from './pages/Counsel';
 
 function App() {
   const { pathname } = useLocation();
@@ -19,7 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/diary/*" element={<Diary />} />
-        <Route path="/counsel/*" element={<Counsel />} />
+        <Route path="/reserve/*" element={<Reserve />} />
       </Routes>
       <Footer />
     </>

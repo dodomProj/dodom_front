@@ -22,7 +22,7 @@ const Text = styled.div`
   }
 `;
 
-const CounselReserved = () => {
+const ReserveSuccess = () => {
   const navigate = useNavigate();
   return (
     <>
@@ -41,4 +41,4 @@ const CounselReserved = () => {
   );
 };
 
-export default CounselReserved;
+export default ReserveSuccess;

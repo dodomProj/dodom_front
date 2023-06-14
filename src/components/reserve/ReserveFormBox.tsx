@@ -5,7 +5,7 @@ import QuestionInput from '../QuestionInput';
 import CheckBoxInput from '../CheckBoxInput';
 
 import { useRecoilState } from 'recoil';
-import { counselCallCheck, counselMessageCheck } from '../../recoil/counsel';
+import { reserveCallCheck, reserveMessageCheck } from '../../recoil/reserve';
 import { useEffect } from 'react';
 
 const FormBox = styled(Box)`
@@ -42,9 +42,9 @@ const Form = styled.form`
   }
 `;
 
-const CounselFormBox = () => {
-  const [callCheck, setCallCheck] = useRecoilState(counselCallCheck);
-  const [messageCheck, setMessageCheck] = useRecoilState(counselMessageCheck);
+const ReserveFormBox = () => {
+  const [callCheck, setCallCheck] = useRecoilState(reserveCallCheck);
+  const [messageCheck, setMessageCheck] = useRecoilState(reserveMessageCheck);
   return (
     <FormBox>
       <Left>
@@ -90,4 +90,4 @@ const CounselFormBox = () => {
   );
 };
 
-export default CounselFormBox;
+export default ReserveFormBox;

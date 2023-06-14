@@ -5,9 +5,9 @@ import TextBox from '../components/TextBox';
 import { aboutDiary } from '../data/textBoxData';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
-import CounselFormBox from '../components/counsel/CounselFormBox';
-import CounselRecommend from '../components/counsel/CounselRecommend';
-import CounselReserved from '../components/counsel/CounselReserved';
+import ReserveRecommend from '../components/reserve/ReserveRecommend';
+import ReserveSuccess from '../components/reserve/ReserveSuccess';
+import ReserveFormBox from './../components/reserve/ReserveFormBox';
 
 const CounselBox = styled(PageBase)`
   display: flex;
@@ -32,9 +32,9 @@ const Counsel = () => {
       </Top>
       <Bottom>
         <Routes>
-          <Route path="/form" element={<CounselFormBox />} />
-          <Route path="/recommend" element={<CounselRecommend />} />
-          <Route path="/reserved" element={<CounselReserved />} />
+          <Route path="/" element={<ReserveFormBox />} />
+          <Route path="/recommend" element={<ReserveRecommend />} />
+          <Route path="/reserved" element={<ReserveSuccess />} />
         </Routes>
       </Bottom>
     </CounselBox>

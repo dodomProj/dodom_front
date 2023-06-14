@@ -1,4 +1,4 @@
-import ToCounselCard from '../ToCounselCard';
+import ToReserveCard from '../ToReserveCard';
 import ToConditionCard from '../ToConditionCard';
 import DiaryResultCard from './DiaryResultCard';
 import { OtherPages, ResultBox } from '../ConditionResultBox';
@@ -8,7 +8,7 @@ const DiaryResultBox = () => {
     <ResultBox>
       <DiaryResultCard />
       <OtherPages>
-        <ToCounselCard />
+        <ToReserveCard />
         <ToConditionCard />
       </OtherPages>
     </ResultBox>

@@ -61,7 +61,7 @@ const Bottom = styled.div`
     margin-left: 1rem;
   }
 `;
-const CounselRecommend = () => {
+const ReserveRecommend = () => {
   const [cardClicked, setCardClicked] = useState(false);
 
   return (
@@ -102,4 +102,4 @@ const CounselRecommend = () => {
   );
 };
 
-export default CounselRecommend;
+export default ReserveRecommend;
