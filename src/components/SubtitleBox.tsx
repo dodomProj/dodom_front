@@ -8,18 +8,11 @@ type SubtitleProps = {
   time?: number;
 };
 
-type ContainerHeight = {
-  height: string;
-};
-
-const Container = styled(SubtitleContainer)<ContainerHeight>`
-  height: ${(props) => props.height};
-`;
 export const SubtitleText = styled.div`
-  flex: 1;
+  height: inherit;
   position: relative;
-
   > div {
+    max-height: 50%;
     position: absolute;
     top: 50%;
 
@@ -49,7 +42,7 @@ const SubtitleBox = ({
 }: SubtitleProps): null | JSX.Element => {
   if (title === undefined) return null;
   return (
-    <Container height={time ? '40vh' : '50vh'}>
+    <SubtitleContainer>
       <img src={img} alt="" />
       <SubtitleText>
         <div>
@@ -67,7 +60,7 @@ const SubtitleBox = ({
           ))}
         </div>
       </SubtitleText>
-    </Container>
+    </SubtitleContainer>
   );
 };
 

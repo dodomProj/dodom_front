@@ -8,29 +8,40 @@ export const SubtitleContainer = styled.div`
   padding-bottom: 2rem;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 50vh;
   background-color: var(--primary);
+  gap: 4rem;
+  max-height: 400px;
+  align-items: stretch;
 
   > img {
-    flex: 0.5;
-    width: 100%;
+    flex: 1;
+    max-width: 33%;
     max-height: 100%;
     object-fit: contain;
-    padding: 3rem;
+  }
+
+  > div {
+    flex: 2;
   }
 `;
 const Container = styled(SubtitleContainer)`
   cursor: pointer;
+  align-items: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+
+  > img {
+    max-width: 25%;
+  }
 `;
 const Text = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
 
   > h1 {
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  > p {
+    font-size: 1.5rem;
   }
 `;
 
@@ -41,10 +52,7 @@ const ToDiary = () => {
       <img src="/assets/chat.png" alt="" />
       <Text>
         <h1>솔직한 내 마음 일기, 작성해보기!</h1>
-        <div>
-          <p>Lorem ipsum dolor sit amet consectetur.</p>
-          <p>Diam eleifend purus enim diam faucibus.</p>
-        </div>
+        <p>아무도 모르는 내 마음, 편하게 써봐요.</p>
       </Text>
     </Container>
   );
