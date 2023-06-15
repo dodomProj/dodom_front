@@ -6,6 +6,9 @@ import { conditionData } from '../data/textBoxData';
 import { MainContent, PageBase } from '../styles/basePadding';
 import Carousel from '../components/Carousel';
 
+const Source = styled.div`
+  margin-top: 1.5rem;
+`;
 const InlineBold = styled.span`
   font-weight: bold;
 `;
@@ -34,9 +37,10 @@ const Condition = () => {
           dataArr={psychologicalTest}
           Card={TestCard}
         />
-        <div>
-          <InlineBold>출처</InlineBold> 한국가이던스 무료 심리검사
-        </div>
+        <Source>
+          <InlineBold>출처</InlineBold>
+          <span> 한국가이던스 무료 심리검사</span>
+        </Source>
       </MainContent>
     </PageBase>
   );
