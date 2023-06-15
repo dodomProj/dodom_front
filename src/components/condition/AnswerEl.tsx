@@ -31,9 +31,9 @@ const Box = styled.li<BoxProps>`
 `;
 const AnswerEmoticon = styled.img`
   width: 100%;
-  max-width: 100%;
+  max-width: 10rem;
   object-fit: contain;
-  padding: 2rem;
+  margin: 2rem;
   pointer-events: none;
 
   @media screen and (max-width: 768px) {
