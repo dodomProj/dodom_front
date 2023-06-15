@@ -3,7 +3,7 @@ import { basePadding } from '../styles/basePadding';
 
 type TextBoxProps = {
   title: String;
-  subtitle: String;
+  subtitle?: String;
   text: Array<String>;
   theme: String;
 };
@@ -14,11 +14,17 @@ const Box = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  height: 100%;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+
   background-color: var(
     ${(props) => (props.theme === 'dark' ? '--black' : '--primary')}
   );
   color: var(${(props) => (props.theme === 'dark' ? '--white' : '--black')});
+
+  p {
+    font-size: 1.5rem;
+  }
 `;
 
 const Title = styled.div`
@@ -28,16 +34,11 @@ const Title = styled.div`
     );
     margin-bottom: 10px;
   }
-  p {
-    font-size: 24px;
-  }
   margin-bottom: 4%;
 `;
 
 const Text = styled.div`
   p {
-    font-family: 'Pretendard-Regular';
-    font-size: 24px;
     text-indent: 0.5rem;
     line-height: 2.2rem;
   }
