@@ -23,6 +23,7 @@ const HeaderContainer = styled.header`
 `;
 const LogoBox = styled.div`
   flex: 1;
+  position: relative;
 `;
 const TitleStyle = css`
   font-family: 'Pretendard-Bold';
@@ -33,6 +34,10 @@ const Logo = styled(Link)`
   ${TitleStyle}
 
   :hover {
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    left: -4px;
     letter-spacing: 2px;
   }
 `;
