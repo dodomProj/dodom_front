@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { basePadding } from '../styles/basePadding';
+import { MainContent } from '../styles/basePadding';
 import Loading from './Loading';
 
 interface LoadingProps {
@@ -7,8 +7,7 @@ interface LoadingProps {
   text: string;
 }
 
-const Container = styled.main`
-  ${basePadding}
+const Container = styled(MainContent)`
   padding-top: 10rem;
   padding-bottom: 10rem;
   display: flex;
