@@ -8,28 +8,24 @@ type SubtitleProps = {
   time?: number;
   theme?: string;
 };
-type isConditionProps = {
+type SubtitleStyle = {
   inCondition?: number;
+  theme?: string;
 };
 
-const Container = styled(SubtitleContainer)<{ theme: string }>`
+const Container = styled(SubtitleContainer)<SubtitleStyle>`
   background-color: ${(props) =>
     props.theme === 'light' ? 'var(--primary)' : 'var(--black)'};
   color: ${(props) =>
     props.theme === 'light' ? 'var(--black)' : 'var(--white)'};
-`;
-
-export const SubtitleText = styled.div`
-  height: inherit;
-  position: relative;
 
   > div {
-    max-height: 50%;
-    position: absolute;
-    top: 50%;
+    align-items: end;
+    padding-top: ${(props) => (props.inCondition ? '2rem' : '5rem')};
+    padding-bottom: ${(props) => (props.inCondition ? '2rem' : '5rem')};
   }
 `;
-const Title = styled.div<isConditionProps>`
+const Title = styled.div<SubtitleStyle>`
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -49,7 +45,7 @@ const Time = styled.div`
     font-size: 1.5rem;
   }
 `;
-const Text = styled.div<isConditionProps>`
+const Text = styled.div<SubtitleStyle>`
   > p {
     font-size: ${(props) => (props.inCondition ? '1.2rem' : '1.5rem')};
     text-indent: ${(props) => (props.inCondition ? '0.5rem' : '0')};
@@ -67,27 +63,25 @@ const SubtitleBox = ({
 }: SubtitleProps): null | JSX.Element => {
   if (title === undefined) return null;
   return (
-    <Container theme={theme}>
+    <Container theme={theme} inCondition={time}>
       <div>
         {theme === 'light' && <img src={img} alt="" />}
-        <SubtitleText>
-          <div>
-            <Title inCondition={time}>
-              <h1>{title}</h1>
-              {time && (
-                <Time>
-                  <img src="/assets/time.svg" alt="" />
-                  <span>예상 시간 {time}분</span>
-                </Time>
-              )}
-            </Title>
-            <Text inCondition={time}>
-              {text?.map((line, idx) => (
-                <p key={idx}>{line}</p>
-              ))}
-            </Text>
-          </div>
-        </SubtitleText>
+        <div>
+          <Title inCondition={time}>
+            <h1>{title}</h1>
+            {time && (
+              <Time>
+                <img src="/assets/time.svg" alt="" />
+                <span>예상 시간 {time}분</span>
+              </Time>
+            )}
+          </Title>
+          <Text inCondition={time}>
+            {text?.map((line, idx) => (
+              <p key={idx}>{line}</p>
+            ))}
+          </Text>
+        </div>
         {theme === 'dark' && <img src={img} alt="" />}
       </div>
     </Container>
