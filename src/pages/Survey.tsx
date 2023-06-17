@@ -5,6 +5,7 @@ import TextBox from '../components/TextBox';
 import QuestionInput from '../components/QuestionInput';
 import QuestionBlock from '../components/QuestionBlock';
 import ConsentCheck from '../components/survey/ConsentCheck';
+import { surveyData } from '../data/textBoxData';
 import { MainContent, PageBase } from '../styles/basePadding';
 
 import Rate from 'rc-rate';
@@ -37,10 +38,6 @@ const Info = styled.p`
   margin-top: 0.6rem;
 `;
 const StyledRate = styled(Rate)`
-  &.rc-rate {
-    font-size: 5rem;
-  }
-
   .rc-rate-star {
     color: var(--white);
   }
@@ -69,16 +66,7 @@ const Survey = () => {
 
   return (
     <PageBase>
-      <TextBox
-        title="○○○ 상담사 만족도 설문조사"
-        text={[
-          '도돔(Dodom)을 이용해주셔서 감사드립니다.',
-
-          '여러분의 소중한 후기가 다른 이들에게 희망과 용기가 되며, 상담사들에게 큰 힘이 됩니다.',
-          '앞으로도 화창하게 빛날 여러분의 내일을 언제나 응원합니다.✨',
-        ]}
-        theme="light"
-      />
+      <TextBox {...surveyData} />
       <SurveyBox>
         <QuestionInput
           question="1. 본인의 이름을 작성해주세요."
