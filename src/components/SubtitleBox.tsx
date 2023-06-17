@@ -43,23 +43,25 @@ const SubtitleBox = ({
   if (title === undefined) return null;
   return (
     <SubtitleContainer>
-      <img src={img} alt="" />
-      <SubtitleText>
-        <div>
-          <h1>
-            {title}
-            {time && (
-              <Time>
-                <img src="/assets/time.svg" alt="" />
-                <span>예상 시간 {time}분</span>
-              </Time>
-            )}
-          </h1>
-          {text?.map((line, idx) => (
-            <p key={idx}>{line}</p>
-          ))}
-        </div>
-      </SubtitleText>
+      <div>
+        <img src={img} alt="" />
+        <SubtitleText>
+          <div>
+            <h1>
+              {title}
+              {time && (
+                <Time>
+                  <img src="/assets/time.svg" alt="" />
+                  <span>예상 시간 {time}분</span>
+                </Time>
+              )}
+            </h1>
+            {text?.map((line, idx) => (
+              <p key={idx}>{line}</p>
+            ))}
+          </div>
+        </SubtitleText>
+      </div>
     </SubtitleContainer>
   );
 };

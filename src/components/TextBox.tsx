@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { basePadding } from '../styles/basePadding';
 
@@ -6,21 +7,25 @@ type TextBoxProps = {
   subtitle?: String;
   text: Array<String>;
   theme: String;
+  children?: ReactNode;
 };
 
 const Box = styled.div`
-  ${basePadding}
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-
   background-color: var(
     ${(props) => (props.theme === 'dark' ? '--black' : '--primary')}
   );
   color: var(${(props) => (props.theme === 'dark' ? '--white' : '--black')});
+
+  > div {
+    ${basePadding}
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
 
   p {
     font-size: 1.5rem;
@@ -44,18 +49,21 @@ const Text = styled.div`
   }
 `;
 
-const TextBox = ({ title, subtitle, text, theme }: TextBoxProps) => {
+const TextBox = ({ title, subtitle, text, theme, children }: TextBoxProps) => {
   return (
     <Box theme={theme}>
-      <Title theme={theme}>
-        <h1>{title}</h1>
-        <p>{subtitle}</p>
-      </Title>
-      <Text>
-        {text.map((line) => (
-          <p>{line}</p>
-        ))}
-      </Text>
+      <div>
+        <Title theme={theme}>
+          <h1>{title}</h1>
+          <p>{subtitle}</p>
+        </Title>
+        <Text>
+          {text.map((line) => (
+            <p>{line}</p>
+          ))}
+        </Text>
+        {children}
+      </div>
     </Box>
   );
 };

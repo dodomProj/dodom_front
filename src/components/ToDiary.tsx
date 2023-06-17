@@ -3,35 +3,40 @@ import styled from 'styled-components';
 import { basePadding } from '../styles/basePadding';
 
 export const SubtitleContainer = styled.div`
-  ${basePadding}
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  display: flex;
-  justify-content: center;
   background-color: var(--primary);
-  gap: 4rem;
-  max-height: 400px;
-  align-items: stretch;
-
-  > img {
-    flex: 1;
-    max-width: 33%;
-    max-height: 100%;
-    object-fit: contain;
-  }
 
   > div {
-    flex: 2;
+    ${basePadding}
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 4rem;
+    max-height: 400px;
+
+    > img {
+      flex: 1;
+      max-width: 33%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    > div {
+      flex: 2;
+    }
   }
 `;
 const Container = styled(SubtitleContainer)`
-  cursor: pointer;
-  align-items: center;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  > div {
+    cursor: pointer;
+    align-items: center;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 
-  > img {
-    max-width: 25%;
+    > img {
+      max-width: 25%;
+    }
   }
 `;
 const Text = styled.div`
@@ -49,11 +54,13 @@ const ToDiary = () => {
   const navigate = useNavigate();
   return (
     <Container onClick={() => navigate('/diary')}>
-      <img src="/assets/chat.png" alt="" />
-      <Text>
-        <h1>솔직한 내 마음 일기, 작성해보기!</h1>
-        <p>아무도 모르는 내 마음, 편하게 써봐요.</p>
-      </Text>
+      <div>
+        <img src="/assets/chat.png" alt="" />
+        <Text>
+          <h1>솔직한 내 마음 일기, 작성해보기!</h1>
+          <p>아무도 모르는 내 마음, 편하게 써봐요.</p>
+        </Text>
+      </div>
     </Container>
   );
 };

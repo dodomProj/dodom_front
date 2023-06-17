@@ -9,17 +9,20 @@ interface HeaderProps {
 }
 
 const HeaderContainer = styled.header`
-  ${basePadding}
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: var(--black);
   position: fixed;
   z-index: 999;
+  width: 100%;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100px;
-  background-color: var(--black);
+
+  > div {
+    ${basePadding}
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 const LogoBox = styled.div`
   flex: 1;
@@ -63,20 +66,22 @@ const PageLink = styled(Link)`
 const Header: FC<HeaderProps> = ({ path }) => {
   return (
     <HeaderContainer>
-      <LogoBox>
-        <Logo to="/">DODOM</Logo>
-      </LogoBox>
-      {path === '/survey' ? (
-        <Survey>설문조사</Survey>
-      ) : (
-        <NavBox>
-          {navEl.map((el) => (
-            <PageLink key={el.uri} to={el.uri}>
-              {el.pageName}
-            </PageLink>
-          ))}
-        </NavBox>
-      )}
+      <div>
+        <LogoBox>
+          <Logo to="/">DODOM</Logo>
+        </LogoBox>
+        {path === '/survey' ? (
+          <Survey>설문조사</Survey>
+        ) : (
+          <NavBox>
+            {navEl.map((el) => (
+              <PageLink key={el.uri} to={el.uri}>
+                {el.pageName}
+              </PageLink>
+            ))}
+          </NavBox>
+        )}
+      </div>
     </HeaderContainer>
   );
 };

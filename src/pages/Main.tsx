@@ -115,17 +115,18 @@ const Main = () => {
         </Bottom>
       </MainBox>
       <SubBox ref={target}>
-        <TextBox {...firstDodom} />
-        <LinkBox>
-          <div>
-            상담사 알아보기
-            <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
-          </div>
-          <div>
-            DODOM 더 알아보기
-            <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
-          </div>
-        </LinkBox>
+        <TextBox {...firstDodom}>
+          <LinkBox>
+            <div>
+              상담사 알아보기
+              <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
+            </div>
+            <div>
+              DODOM 더 알아보기
+              <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
+            </div>
+          </LinkBox>
+        </TextBox>
       </SubBox>
     </>
   );
