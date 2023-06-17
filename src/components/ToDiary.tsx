@@ -7,13 +7,10 @@ export const SubtitleContainer = styled.div`
 
   > div {
     ${basePadding}
-    padding-top: 2rem;
-    padding-bottom: 2rem;
     display: flex;
     justify-content: center;
     align-items: stretch;
     gap: 4rem;
-    max-height: 400px;
 
     > img {
       flex: 1;

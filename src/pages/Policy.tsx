@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ToDiary from '../components/ToDiary';
-import { MainContent, PageBase } from '../styles/basePadding';
-import PolicyCard from '../components/policy/PolicyCard';
-import PolicySubtitle from '../components/policy/PolicySubtitle';
-import postData from '../api/postData';
 import LoadingBox from '../components/LoadingBox';
+import SubtitleBox from '../components/SubtitleBox';
+import PolicyCard from '../components/policy/PolicyCard';
+import { policyBoxData } from '../data/subtitleBoxData';
+import { MainContent, PageBase } from '../styles/basePadding';
+import postData from '../api/postData';
 
 const CardBox = styled(MainContent)`
   display: grid;
@@ -37,7 +38,7 @@ const Policy = () => {
   }, []);
   return (
     <PageBase>
-      <PolicySubtitle />
+      <SubtitleBox {...policyBoxData} theme="dark" />
       {isLoading ? (
         <LoadingBox title="" text="" />
       ) : isError ? (
