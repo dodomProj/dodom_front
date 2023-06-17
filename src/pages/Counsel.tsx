@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PageBase, basePadding } from '../styles/basePadding';
+import { MainContent, PageBase } from '../styles/basePadding';
 
 import SubtitleBox from '../components/SubtitleBox';
 import { counselBoxData } from './../data/subtitleBoxData';
@@ -26,8 +26,7 @@ const Top = styled.div`
     }
   }
 `;
-const Mid = styled.div`
-  ${basePadding};
+const Mid = styled(MainContent)`
   display: flex;
   flex-direction: column;
 `;
@@ -52,9 +51,9 @@ const Counsel = () => {
   };
   return (
     <CounselBox>
-      <Top>
-        <SubtitleBox {...counselBoxData} />
-      </Top>
+      {/* <Top> */}
+      <SubtitleBox {...counselBoxData} />
+      {/* </Top> */}
       <Mid>
         <Container>
           <CategoryBox {...depressed} />

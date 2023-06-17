@@ -1,10 +1,11 @@
 import { useState, FocusEvent } from 'react';
 import styled from 'styled-components';
 import Button from '../components/Button';
+import TextBox from '../components/TextBox';
 import QuestionInput from '../components/QuestionInput';
 import QuestionBlock from '../components/QuestionBlock';
 import ConsentCheck from '../components/survey/ConsentCheck';
-import { MainContent, PageBase, basePadding } from '../styles/basePadding';
+import { MainContent, PageBase } from '../styles/basePadding';
 
 import Rate from 'rc-rate';
 import 'rc-rate/assets/index.css';
@@ -18,24 +19,6 @@ interface FormEl {
   consent: boolean;
 }
 
-const TitleBox = styled.div`
-  ${basePadding}
-  display: flex;
-  flex-direction: column;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  justify-content: center;
-  align-items: start;
-  background-color: var(--primary);
-
-  > h1 {
-    margin-bottom: 2.5rem;
-  }
-
-  > p {
-    font-size: 1.5rem;
-  }
-`;
 const SurveyBox = styled(MainContent)`
   display: flex;
   flex-direction: column;
@@ -86,16 +69,16 @@ const Survey = () => {
 
   return (
     <PageBase>
-      <TitleBox>
-        <h1>{'○○○'} 상담사 만족도 설문조사</h1>
-        <p>
-          도돔(Dodom)을 이용해주셔서 감사드립니다.
-          <br />
-          여러분의 소중한 후기가 다른 이들에게 희망과 용기가 되며, 상담사들에게
-          큰 힘이 됩니다. <br />
-          앞으로도 화창하게 빛날 여러분의 내일을 언제나 응원합니다.✨
-        </p>
-      </TitleBox>
+      <TextBox
+        title="○○○ 상담사 만족도 설문조사"
+        text={[
+          '도돔(Dodom)을 이용해주셔서 감사드립니다.',
+
+          '여러분의 소중한 후기가 다른 이들에게 희망과 용기가 되며, 상담사들에게 큰 힘이 됩니다.',
+          '앞으로도 화창하게 빛날 여러분의 내일을 언제나 응원합니다.✨',
+        ]}
+        theme="light"
+      />
       <SurveyBox>
         <QuestionInput
           question="1. 본인의 이름을 작성해주세요."

@@ -8,18 +8,11 @@ type SubtitleProps = {
   time?: number;
 };
 
-type ContainerHeight = {
-  height: string;
-};
-
-const Container = styled(SubtitleContainer)<ContainerHeight>`
-  height: ${(props) => props.height};
-`;
 export const SubtitleText = styled.div`
-  flex: 1;
+  height: inherit;
   position: relative;
-
   > div {
+    max-height: 50%;
     position: absolute;
     top: 50%;
 
@@ -49,25 +42,27 @@ const SubtitleBox = ({
 }: SubtitleProps): null | JSX.Element => {
   if (title === undefined) return null;
   return (
-    <Container height={time ? '40vh' : '50vh'}>
-      <img src={img} alt="" />
-      <SubtitleText>
-        <div>
-          <h1>
-            {title}
-            {time && (
-              <Time>
-                <img src="/assets/time.svg" alt="" />
-                <span>예상 시간 {time}분</span>
-              </Time>
-            )}
-          </h1>
-          {text?.map((line, idx) => (
-            <p key={idx}>{line}</p>
-          ))}
-        </div>
-      </SubtitleText>
-    </Container>
+    <SubtitleContainer>
+      <div>
+        <img src={img} alt="" />
+        <SubtitleText>
+          <div>
+            <h1>
+              {title}
+              {time && (
+                <Time>
+                  <img src="/assets/time.svg" alt="" />
+                  <span>예상 시간 {time}분</span>
+                </Time>
+              )}
+            </h1>
+            {text?.map((line, idx) => (
+              <p key={idx}>{line}</p>
+            ))}
+          </div>
+        </SubtitleText>
+      </div>
+    </SubtitleContainer>
   );
 };
 
