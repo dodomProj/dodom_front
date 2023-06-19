@@ -1,7 +1,8 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
-import navEl from '../data/navEl';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import NavBox from './NavBox';
 import { basePadding } from '../styles/basePadding';
 
 interface HeaderProps {
@@ -47,23 +48,54 @@ const Logo = styled(Link)`
 const Survey = styled.p`
   ${TitleStyle}
 `;
-const NavBox = styled.nav`
-  flex: 0.8;
-  display: flex;
-  justify-content: space-between;
-`;
-const PageLink = styled(Link)`
-  font-size: 1.1rem;
-  color: var(--white);
-  word-break: keep-all;
+const HamburgerIcon = styled(GiHamburgerMenu)`
+  display: none;
 
-  :hover {
-    font-weight: bold;
+  @media screen and (max-width: 480px) {
+    display: block;
     color: var(--white);
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+  }
+`;
+const NavWrapper = styled.div`
+  display: none;
+
+  @media screen and (max-width: 480px) {
+    display: block;
+    position: fixed;
+    top: 100px;
+    right: 0;
+    width: 100vw;
+    height: calc(100vh - 100px);
+    background-color: rgba(17, 14, 13, 0.4);
+
+    > nav {
+      display: flex;
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-width: 40vw;
+      height: calc(100vh - 100px);
+      padding: 2rem 40px 0;
+      background-color: var(--black);
+
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-end;
+      gap: 2.6rem;
+    }
   }
 `;
 
 const Header: FC<HeaderProps> = ({ path }) => {
+  const [isNavOpend, setIsNavOpend] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setIsNavOpend(false);
+  }, [pathname]);
   return (
     <HeaderContainer>
       <div>
@@ -73,13 +105,15 @@ const Header: FC<HeaderProps> = ({ path }) => {
         {path === '/survey' ? (
           <Survey>설문조사</Survey>
         ) : (
-          <NavBox>
-            {navEl.map((el) => (
-              <PageLink key={el.uri} to={el.uri}>
-                {el.pageName}
-              </PageLink>
-            ))}
-          </NavBox>
+          <>
+            <HamburgerIcon onClick={() => setIsNavOpend(!isNavOpend)} />
+            <NavBox />
+            {isNavOpend && (
+              <NavWrapper onClick={() => setIsNavOpend(false)}>
+                <NavBox />
+              </NavWrapper>
+            )}
+          </>
         )}
       </div>
     </HeaderContainer>
