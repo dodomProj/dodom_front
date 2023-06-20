@@ -17,7 +17,7 @@ const Box = styled(MainContent)`
   padding-bottom: 2rem;
 
   > p {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
   }
