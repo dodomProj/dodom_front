@@ -1,7 +1,8 @@
 import { FC, useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import { useLocation } from 'react-router-dom';
+import styled from 'styled-components';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import Logo, { TitleStyle } from './Logo';
 import NavBox from './NavBox';
 import { basePadding } from '../styles/basePadding';
 
@@ -28,22 +29,6 @@ const HeaderContainer = styled.header`
 const LogoBox = styled.div`
   flex: 1;
   position: relative;
-`;
-const TitleStyle = css`
-  font-family: 'Pretendard-Bold';
-  font-size: 2rem;
-  color: var(--primary);
-`;
-const Logo = styled(Link)`
-  ${TitleStyle}
-
-  :hover {
-    position: absolute;
-    top: 0;
-    transform: translateY(-50%);
-    left: -4px;
-    letter-spacing: 2px;
-  }
 `;
 const Survey = styled.p`
   ${TitleStyle}
@@ -100,7 +85,7 @@ const Header: FC<HeaderProps> = ({ path }) => {
     <HeaderContainer>
       <div>
         <LogoBox>
-          <Logo to="/">DODOM</Logo>
+          <Logo />
         </LogoBox>
         {path === '/survey' ? (
           <Survey>설문조사</Survey>
