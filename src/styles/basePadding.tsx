@@ -19,4 +19,5 @@ export const PageBase = styled.div`
 export const MainContent = styled.main`
   ${basePadding}
   padding-top: 5rem;
+  padding-bottom: 5rem;
 `;
