@@ -8,17 +8,30 @@ const FooterContainer = styled.footer`
   justify-content: center;
   align-items: center;
   height: 200px;
+  gap: 1rem;
 `;
 const Slogan = styled.p`
-  font-size: 1.5rem;
-  text-align: center;
-  word-break: keep-all;
+  display: flex;
+  gap: 0.5rem;
+
+  > span {
+    font-size: 1.5rem;
+    text-align: center;
+    word-break: keep-all;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 function Footer() {
   return (
     <FooterContainer>
-      <Slogan>같이 발돋움하며 앞으로 나아가요, 도돔도돔 DODOM!</Slogan>
+      <Slogan>
+        <span>같이 발돋움하며 앞으로 나아가요,</span>
+        <span>도돔도돔 DODOM!</span>
+      </Slogan>
       <p>실시간 DODOM! 이용자수 1,234명</p>
     </FooterContainer>
   );
