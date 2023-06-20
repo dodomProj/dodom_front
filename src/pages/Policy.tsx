@@ -40,7 +40,7 @@ const Policy = () => {
     <PageBase>
       <SubtitleBox {...policyBoxData} theme="dark" />
       {isLoading ? (
-        <LoadingBox title="" text="" />
+        <LoadingBox title="정보를 불러오고 있습니다" text="" />
       ) : isError ? (
         <p>에러입니다</p>
       ) : (
