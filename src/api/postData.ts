@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const postData = async (uri: string, data: string, headers: {} = {}) => {
+const postData = async (uri: string, data: any, headers: {} = {}) => {
   try {
     const response = await axios.post(uri, data, {
       headers: {
