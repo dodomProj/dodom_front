@@ -23,6 +23,11 @@ const Container = styled(SubtitleContainer)<SubtitleStyle>`
     align-items: end;
     padding-top: ${(props) => (props.inCondition ? '2rem' : '5rem')};
     padding-bottom: ${(props) => (props.inCondition ? '2rem' : '5rem')};
+
+    @media screen and (max-width: 768px) {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
   }
 `;
 const Title = styled.div<SubtitleStyle>`
@@ -33,6 +38,11 @@ const Title = styled.div<SubtitleStyle>`
 
   > h1 {
     white-space: pre-line;
+
+    @media screen and (max-width: 550px),
+      (min-width: 769px) and (max-width: 1023px) {
+      white-space: normal;
+    }
   }
 `;
 const Time = styled.div`
@@ -43,6 +53,7 @@ const Time = styled.div`
 
   > span {
     font-size: 1.5rem;
+    word-break: keep-all;
   }
 `;
 const Text = styled.div<SubtitleStyle>`

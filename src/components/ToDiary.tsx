@@ -22,6 +22,19 @@ export const SubtitleContainer = styled.div`
     > div {
       flex: 2;
     }
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    @media screen and (max-width: 480px) {
+      > img {
+        width: 50%;
+        height: 50%;
+        max-width: 50% !important;
+        max-height: 50%;
+      }
+    }
   }
 `;
 const Container = styled(SubtitleContainer)`
