@@ -17,16 +17,14 @@ const Box = styled(MainContent)`
   padding-bottom: 2rem;
 
   > p {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
   }
 `;
 const AnswerBox = styled.ul`
   display: flex;
-  max-width: 100%;
-  justify-content: space-around;
-  align-items: start;
+  justify-content: center;
   list-style: none;
   margin-top: 2rem;
 `;

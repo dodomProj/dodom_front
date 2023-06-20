@@ -1,11 +1,11 @@
-import { ReactNode, FocusEvent } from 'react';
+import { ReactNode, ChangeEvent } from 'react';
 import styled, { css } from 'styled-components';
 
 interface QuestionProps {
   question: string;
   type: string;
   id: string;
-  onBlur: (e: FocusEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
+  onChange: (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
   placeholder?: string;
   placeholderColor?: string;
   textareaRows?: number;
@@ -53,7 +53,7 @@ const QuestionInput = ({
   placeholderColor,
   textareaRows,
   children,
-  onBlur,
+  onChange,
 }: QuestionProps) => {
   return (
     <Box>
@@ -61,7 +61,7 @@ const QuestionInput = ({
       {type === 'textarea' ? (
         <BaseTextarea
           id={id}
-          onBlur={onBlur}
+          onChange={onChange}
           placeholder={placeholder}
           placeholdercolor={placeholderColor}
           rows={textareaRows}
@@ -69,7 +69,7 @@ const QuestionInput = ({
       ) : (
         <BaseInput
           id={id}
-          onBlur={onBlur}
+          onChange={onChange}
           placeholder={placeholder}
           placeholdercolor={placeholderColor}
           type={type}

@@ -30,6 +30,7 @@ const ImgWrapper = styled.div`
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
     object-fit: cover;
+    border-radius: 10px;
   }
 `;
 const Text = styled.div`

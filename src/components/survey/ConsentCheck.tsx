@@ -34,8 +34,11 @@ const Label = styled.label`
   }
 
   > span {
-    display: block;
-    text-align: right;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: end;
+
     :before {
       content: '';
       display: inline-block;
@@ -63,7 +66,7 @@ const ConsentCheck = ({ checkedChange }: CheckProps) => {
       </Box>
       <Label>
         <input type="checkbox" onChange={checkedChange} />
-        <span> 동의합니다.</span>
+        <span>동의합니다.</span>
       </Label>
     </div>
   );

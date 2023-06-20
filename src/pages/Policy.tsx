@@ -12,6 +12,13 @@ const CardBox = styled(MainContent)`
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-gap: 2.5rem;
+
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 `;
 
 const Policy = () => {
@@ -40,7 +47,7 @@ const Policy = () => {
     <PageBase>
       <SubtitleBox {...policyBoxData} theme="dark" />
       {isLoading ? (
-        <LoadingBox title="" text="" />
+        <LoadingBox title="정보를 불러오고 있습니다" text="" />
       ) : isError ? (
         <p>에러입니다</p>
       ) : (

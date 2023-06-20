@@ -14,11 +14,12 @@ const GlobalStyle = createGlobalStyle`
   }
   h1 {
     font-family: 'Pretendard-Bold';
-    font-size: 48px;
+    font-size: 3rem;
+    word-break: keep-all;
   }
   h2 {
     font-family: 'Pretendard-Bold';
-    font-size: 36px;
+    font-size: 2.25rem;
   }
   a {
     text-decoration: none;
