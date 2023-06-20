@@ -12,21 +12,19 @@ type BoxProps = {
 };
 
 const Box = styled.li<BoxProps>`
+  height: inherit;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: var(${(props) => props.bgcolor});
-  padding: 2rem;
+  padding: 3% 2%;
   border-radius: 10px;
+  cursor: pointer;
 
   > p {
     font-size: 1.5rem;
     word-break: keep-all;
     text-align: center;
-  }
-
-  @media screen and (max-width: 768px) {
-    padding: 1rem;
   }
 `;
 const AnswerEmoticon = styled.img`
@@ -35,10 +33,6 @@ const AnswerEmoticon = styled.img`
   object-fit: contain;
   margin: 2rem;
   pointer-events: none;
-
-  @media screen and (max-width: 768px) {
-    padding: 1rem;
-  }
 `;
 
 const AnswerEl = ({ img, text, setAnswer, selected }: AnswerProps) => {

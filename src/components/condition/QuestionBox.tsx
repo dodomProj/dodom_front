@@ -24,9 +24,7 @@ const Box = styled(MainContent)`
 `;
 const AnswerBox = styled.ul`
   display: flex;
-  max-width: 100%;
-  justify-content: space-around;
-  align-items: start;
+  justify-content: center;
   list-style: none;
   margin-top: 2rem;
 `;

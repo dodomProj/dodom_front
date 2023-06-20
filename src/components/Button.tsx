@@ -15,6 +15,7 @@ const Btn = styled.button<{ disabled?: boolean; white?: boolean }>`
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
   border: 2px solid var(--primary);
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+  word-break: keep-all;
 `;
 
 type ButtonProps = {
