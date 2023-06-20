@@ -1,4 +1,5 @@
-import { useState, FocusEvent } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../components/Button';
 import TextBox from '../components/TextBox';
@@ -7,17 +8,19 @@ import QuestionBlock from '../components/QuestionBlock';
 import ConsentCheck from '../components/survey/ConsentCheck';
 import { surveyData } from '../data/textBoxData';
 import { MainContent, PageBase } from '../styles/basePadding';
+import postData from '../api/postData';
 
 import Rate from 'rc-rate';
 import 'rc-rate/assets/index.css';
 import { ReactComponent as Star } from '../svg/star.svg';
 
 interface FormEl {
+  [key: string]: string | number | boolean;
   name: string;
-  star: number;
+  score: number;
   review: string;
   opinion: string;
-  consent: boolean;
+  agree: boolean;
 }
 
 const SurveyBox = styled(MainContent)`
@@ -53,16 +56,35 @@ const StyledRate = styled(Rate)`
 const Survey = () => {
   const [form, setForm] = useState<FormEl>({
     name: '',
-    star: 0,
+    score: 0,
     review: '',
     opinion: '',
-    consent: false,
+    agree: false,
   });
+  const { search } = useLocation();
+  const navigate = useNavigate();
+
   const setSurveyForm =
     (key: string) =>
-    (e: FocusEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-      e.target.value && setForm({ ...form, [key]: e.target.value });
+    (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+      const value = e.target.value;
+      form[key] !== value && setForm({ ...form, [key]: value });
     };
+
+  const submitForm = () => {
+    if (Object.values(form).every((el) => el))
+      postData(`/reviews?appointmentId=${search.slice(1)}`, form);
+    // TODO 요청 실패할 경우 동작(ex. alert)
+  };
+
+  useEffect(() => {
+    if (!search) navigate('/');
+    else {
+      // TODO get 요청(+예약번호) => 상담사 번호, 후기 작성 여부
+      // 잘못된 예약번호거나 후기 작성 O인 경우 메인으로 navigate('/')
+      // 200이면 상담사 번호로 상담사 이름 가져오기
+    }
+  }, [search]);
 
   return (
     <PageBase>
@@ -74,16 +96,16 @@ const Survey = () => {
           type="text"
           placeholder="김도돔"
           placeholderColor="rgba(196, 190, 189, 1)"
-          onBlur={setSurveyForm('name')}
+          onChange={setSurveyForm('name')}
         >
           <Info>실제 상담 후 진행된 설문인지 확인 시에 사용됩니다.</Info>
         </QuestionInput>
         <QuestionBlock question="2. 상담은 어느 정도 만족하셨나요?">
           <StyledRate
-            value={form.star}
+            value={form.score}
             allowHalf
             character={<Star />}
-            onChange={(v) => setForm({ ...form, star: v })}
+            onChange={(v) => setForm({ ...form, score: v })}
           />
         </QuestionBlock>
         <QuestionInput
@@ -92,7 +114,7 @@ const Survey = () => {
           type="textarea"
           placeholder="ex. 현재 고민을 잘 들어주셨고, 실질적인 대처 방식을 제시해줘서 좋았어요.&#13;도돔 서비스의 연락 방식이나, 시간 약속 시스템이 만족스러웠어요."
           textareaRows={7}
-          onBlur={setSurveyForm('review')}
+          onChange={setSurveyForm('review')}
           placeholderColor="rgba(196, 190, 189, 1)"
         />
         <QuestionInput
@@ -101,13 +123,17 @@ const Survey = () => {
           type="textarea"
           placeholder="ex. 도움이 된 점, 앞으로 달라지고 싶은 내 모습 등."
           textareaRows={7}
-          onBlur={setSurveyForm('opinion')}
+          onChange={setSurveyForm('opinion')}
           placeholderColor="rgba(196, 190, 189, 1)"
         />
         <ConsentCheck
-          checkedChange={(e) => setForm({ ...form, consent: e.target.checked })}
+          checkedChange={(e) => setForm({ ...form, agree: e.target.checked })}
         />
-        <Button text="제출하기" onClick={() => console.log(form)} />
+        <Button
+          text="제출하기"
+          onClick={submitForm}
+          isEmpty={!Object.values(form).every((el) => el)}
+        />
       </SurveyBox>
     </PageBase>
   );
