@@ -27,19 +27,19 @@ const Container = styled.div`
 const Counsel = () => {
   const carouselSettings = {
     slidesPerView: 1.3,
-    spaceBetween: 9,
+    spaceBetween: 34,
     breakpoints: {
       481: {
-        spaceBetween: 17,
-        slidesPerView: 1.6,
+        slidesPerView: 1.7,
       },
       769: {
-        spaceBetween: 17,
         slidesPerView: 2.6,
       },
-      1100: {
-        spaceBetween: 34,
+      1057: {
         slidesPerView: 3.7,
+      },
+      1345: {
+        slidesPerView: 4.2,
       },
     },
   };
