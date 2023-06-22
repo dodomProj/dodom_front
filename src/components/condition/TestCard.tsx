@@ -1,11 +1,6 @@
-import { FC } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { TestInfo } from '../../data/psychologicalTest';
-
-interface TestCardInfo {
-  test: TestInfo;
-}
 
 const Card = styled.div`
   display: flex;
@@ -34,9 +29,9 @@ const MoreInfo = styled.p`
   text-align: end;
 `;
 
-const TestCard: FC<TestCardInfo> = ({ test }) => {
-  const { key, img, title, text, time } = test;
+const TestCard = ({ key, img, title, text, time }: TestInfo) => {
   const navigate = useNavigate();
+
   return (
     <Card onClick={() => navigate(`/condition/${key}`)}>
       <img src={img} alt="" />

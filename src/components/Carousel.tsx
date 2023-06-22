@@ -10,6 +10,7 @@ interface CarouselProps {
 }
 
 const Box = styled(Swiper)`
+  width: inherit;
   .swiper-slide {
     padding-right: 4px;
     padding-bottom: 4px;
@@ -20,9 +21,9 @@ const Box = styled(Swiper)`
 const Carousel = ({ settings, Card, dataArr }: CarouselProps) => {
   return (
     <Box {...settings}>
-      {dataArr.map((el, i) => (
+      {dataArr.map((data, i) => (
         <SwiperSlide key={i}>
-          <Card test={el} />
+          <Card {...data} />
         </SwiperSlide>
       ))}
     </Box>
