@@ -11,6 +11,7 @@ const Card = styled.div`
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   padding: 2.5rem;
+  cursor: pointer;
 
   > img {
     width: 100%;
@@ -29,11 +30,11 @@ const MoreInfo = styled.p`
   text-align: end;
 `;
 
-const TestCard = ({ key, img, title, text, time }: TestInfo) => {
+const TestCard = ({ id, img, title, text, time }: TestInfo) => {
   const navigate = useNavigate();
 
   return (
-    <Card onClick={() => navigate(`/condition/${key}`)}>
+    <Card onClick={() => navigate(`/condition/${id}`)}>
       <img src={img} alt="" />
       <h3>{title}</h3>
       {text.map((line, idx) => (
