@@ -14,7 +14,7 @@ import useAutosizeTextArea from '../../util/useAutosizeTextArea';
 export const Box = styled.div`
   background-color: var(--third);
   border-radius: 20px;
-  padding: 5rem;
+  padding: 4rem;
 `;
 const EditTip = styled.div`
   display: flex;
