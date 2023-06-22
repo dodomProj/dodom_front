@@ -1,23 +1,25 @@
 import styled from 'styled-components';
 import { Card } from '../../styles/baseCard';
-import { BsArrowRight } from 'react-icons/bs';
 
 const CardBox = styled(Card)`
-  width: 17.5rem;
-  height: 27rem;
   background-color: var(--white);
 `;
 const Top = styled(Card)`
   background: var(--sub);
   display: flex;
+  justify-content: space-between;
   align-items: end;
-  padding: 2rem 1rem;
+  padding-right: 1.2rem;
+
   p {
-    font-size: 24px;
+    font-size: 1.5rem;
     display: block;
+    padding-bottom: 2.1rem;
+    word-break: keep-all;
   }
   img {
-    width: 11rem;
+    width: 67%;
+    padding: 2.9rem 0;
   }
 `;
 const Bottom = styled.div`
@@ -26,31 +28,17 @@ const Bottom = styled.div`
 const Line = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   margin-top: 0.8rem;
 `;
-const Title = styled.div`
-  font-size: 18px;
+const Title = styled.p`
+  font-size: 1.2rem;
+  word-break: keep-all;
 `;
-const Content = styled.div`
+const Content = styled.p`
   text-align: end;
   max-width: 6.5rem;
   color: var(--sub3);
-`;
-const More = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-top: 2.5rem;
-  color: var(--sub2);
-  p {
-    vertical-align: center;
-    font-family: 'Pretendard-Regular';
-    font-size: 0.8rem;
-  }
-  svg {
-    font-size: 0.8rem;
-    vertical-align: center;
-  }
 `;
 
 type Props = {
@@ -82,10 +70,6 @@ const CounselorCard = ({ name, year, score, intro, icon, onClick }: Props) => {
           <Title>한 줄 소개</Title>
           <Content>{intro}</Content>
         </Line>
-        <More>
-          <p>자세히</p>
-          <BsArrowRight />
-        </More>
       </Bottom>
     </CardBox>
   );
