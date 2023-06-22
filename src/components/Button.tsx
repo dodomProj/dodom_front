@@ -23,11 +23,17 @@ type ButtonProps = {
   onClick?: React.MouseEventHandler;
   isEmpty?: boolean;
   white?: boolean;
+  forSubmit?: boolean;
 };
 
-const Button = ({ text, onClick, isEmpty, white }: ButtonProps) => {
+const Button = ({ text, onClick, isEmpty, white, forSubmit }: ButtonProps) => {
   return (
-    <Btn onClick={onClick} disabled={isEmpty} white={white}>
+    <Btn
+      onClick={onClick}
+      disabled={isEmpty}
+      white={white}
+      type={forSubmit ? 'submit' : 'button'}
+    >
       {text}
     </Btn>
   );
