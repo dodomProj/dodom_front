@@ -6,67 +6,95 @@ type SubtitleProps = {
   text?: string[];
   img?: string;
   time?: number;
+  theme?: string;
+};
+type SubtitleStyle = {
+  inCondition?: number;
+  theme?: string;
 };
 
-type ContainerHeight = {
-  height: string;
-};
-
-const Container = styled(SubtitleContainer)<ContainerHeight>`
-  height: ${(props) => props.height};
-`;
-export const SubtitleText = styled.div`
-  flex: 1;
-  position: relative;
+const Container = styled(SubtitleContainer)<SubtitleStyle>`
+  background-color: ${(props) =>
+    props.theme === 'light' ? 'var(--primary)' : 'var(--black)'};
+  color: ${(props) =>
+    props.theme === 'light' ? 'var(--black)' : 'var(--white)'};
 
   > div {
-    position: absolute;
-    top: 50%;
+    align-items: end;
+    padding-top: ${(props) => (props.inCondition ? '2rem' : '5rem')};
+    padding-bottom: ${(props) => (props.inCondition ? '2rem' : '5rem')};
 
-    > h1 {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 0.5rem;
+    @media screen and (max-width: 768px) {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
     }
   }
 `;
-const Time = styled.p`
+const Title = styled.div<SubtitleStyle>`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: ${(props) => (props.inCondition ? '0.5rem' : '1rem')};
+
+  > h1 {
+    white-space: pre-line;
+
+    @media screen and (max-width: 550px),
+      (min-width: 769px) and (max-width: 1023px) {
+      white-space: normal;
+    }
+  }
+`;
+const Time = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-weight: normal;
+
   > span {
-    font-size: 24px;
+    font-size: 1.5rem;
+    word-break: keep-all;
+  }
+`;
+const Text = styled.div<SubtitleStyle>`
+  > p {
+    font-size: ${(props) => (props.inCondition ? '1.2rem' : '1.5rem')};
+    text-indent: ${(props) => (props.inCondition ? '0.5rem' : '0')};
+    margin-bottom: ${(props) => (props.inCondition ? '0.3rem' : '0')};
+    line-height: ${(props) => (props.inCondition ? '1.5rem' : '1.8rem')};
   }
 `;
 
 const SubtitleBox = ({
-  img,
   title,
   text,
+  img,
   time,
+  theme = 'light',
 }: SubtitleProps): null | JSX.Element => {
   if (title === undefined) return null;
   return (
-    <Container height={time ? '40vh' : '50vh'}>
-      <img src={img} alt="" />
-      <SubtitleText>
+    <Container theme={theme} inCondition={time}>
+      <div>
+        {theme === 'light' && <img src={img} alt="" />}
         <div>
-          <h1>
-            {title}
+          <Title inCondition={time}>
+            <h1>{title}</h1>
             {time && (
               <Time>
                 <img src="/assets/time.svg" alt="" />
                 <span>예상 시간 {time}분</span>
               </Time>
             )}
-          </h1>
-          {text?.map((line, idx) => (
-            <p key={idx}>{line}</p>
-          ))}
+          </Title>
+          <Text inCondition={time}>
+            {text?.map((line, idx) => (
+              <p key={idx}>{line}</p>
+            ))}
+          </Text>
         </div>
-      </SubtitleText>
+        {theme === 'dark' && <img src={img} alt="" />}
+      </div>
     </Container>
   );
 };

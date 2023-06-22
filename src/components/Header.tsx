@@ -1,7 +1,9 @@
-import { FC } from 'react';
-import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
-import navEl from '../data/navEl';
+import { FC, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import styled from 'styled-components';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import Logo, { TitleStyle } from './Logo';
+import NavBox from './NavBox';
 import { basePadding } from '../styles/basePadding';
 
 interface HeaderProps {
@@ -9,69 +11,96 @@ interface HeaderProps {
 }
 
 const HeaderContainer = styled.header`
-  ${basePadding}
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: var(--black);
   position: fixed;
   z-index: 999;
+  width: 100%;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100px;
-  background-color: var(--black);
+
+  > div {
+    ${basePadding}
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 const LogoBox = styled.div`
   flex: 1;
-`;
-const TitleStyle = css`
-  font-family: 'Pretendard-Bold';
-  font-size: 2rem;
-  color: var(--primary);
-`;
-const Logo = styled(Link)`
-  ${TitleStyle}
-
-  :hover {
-    letter-spacing: 2px;
-  }
+  position: relative;
 `;
 const Survey = styled.p`
   ${TitleStyle}
 `;
-const NavBox = styled.nav`
-  flex: 0.8;
-  display: flex;
-  justify-content: space-between;
-`;
-const PageLink = styled(Link)`
-  font-size: 1.1rem;
-  color: var(--white);
-  word-break: keep-all;
+const HamburgerIcon = styled(GiHamburgerMenu)`
+  display: none;
 
-  :hover {
-    font-weight: bold;
+  @media screen and (max-width: 480px) {
+    display: block;
     color: var(--white);
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+  }
+`;
+const NavWrapper = styled.div`
+  display: none;
+
+  @media screen and (max-width: 480px) {
+    display: block;
+    position: fixed;
+    top: 100px;
+    right: 0;
+    width: 100vw;
+    height: calc(100vh - 100px);
+    background-color: rgba(17, 14, 13, 0.4);
+
+    > nav {
+      display: flex;
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-width: 40vw;
+      height: calc(100vh - 100px);
+      padding: 2rem 40px 0;
+      background-color: var(--black);
+
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-end;
+      gap: 2.6rem;
+    }
   }
 `;
 
 const Header: FC<HeaderProps> = ({ path }) => {
+  const [isNavOpend, setIsNavOpend] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setIsNavOpend(false);
+  }, [pathname]);
   return (
     <HeaderContainer>
-      <LogoBox>
-        <Logo to="/">DODOM</Logo>
-      </LogoBox>
-      {path === '/survey' ? (
-        <Survey>설문조사</Survey>
-      ) : (
-        <NavBox>
-          {navEl.map((el) => (
-            <PageLink key={el.uri} to={el.uri}>
-              {el.pageName}
-            </PageLink>
-          ))}
-        </NavBox>
-      )}
+      <div>
+        <LogoBox>
+          <Logo />
+        </LogoBox>
+        {path === '/survey' ? (
+          <Survey>설문조사</Survey>
+        ) : (
+          <>
+            <HamburgerIcon onClick={() => setIsNavOpend(!isNavOpend)} />
+            <NavBox />
+            {isNavOpend && (
+              <NavWrapper onClick={() => setIsNavOpend(false)}>
+                <NavBox />
+              </NavWrapper>
+            )}
+          </>
+        )}
+      </div>
     </HeaderContainer>
   );
 };

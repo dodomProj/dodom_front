@@ -30,3 +30,15 @@ export const conditionData = {
   ],
   theme: 'light',
 };
+
+export const surveyData = {
+  title: '○○○ 상담사 만족도 설문조사',
+  subtitle: '',
+  text: [
+    '도돔(Dodom)을 이용해주셔서 감사드립니다.',
+
+    '여러분의 소중한 후기가 다른 이들에게 희망과 용기가 되며, 상담사들에게 큰 힘이 됩니다.',
+    '앞으로도 화창하게 빛날 여러분의 내일을 언제나 응원합니다.✨',
+  ],
+  theme: 'light',
+};

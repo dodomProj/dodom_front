@@ -11,3 +11,9 @@ export const counselBoxData = {
   ],
   img: `${process.env.PUBLIC_URL}/assets/counselavatar.svg`,
 };
+
+export const policyBoxData = {
+  title: '내가 지원받을 수 있는\n정책과 사업 한눈에 보기',
+  text: ['DODOM과 함께 내가 지원 받을 수 있는 정책과 사업을 알아보아요!'],
+  img: `/assets/hands_show.png`,
+};
