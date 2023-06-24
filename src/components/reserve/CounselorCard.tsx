@@ -78,7 +78,6 @@ const CounselorCard = ({
   grayscale,
   counselorId,
 }: Props) => {
-  console.log(counselorId, grayscale);
   return (
     <CardBox onClick={onClick} emphatic={emphatic} grayscale={grayscale}>
       <Top>
