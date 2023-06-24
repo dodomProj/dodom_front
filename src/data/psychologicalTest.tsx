@@ -1,5 +1,5 @@
 export interface TestInfo {
-  key: string;
+  id: string;
   title: string;
   text: string[];
   img: string;
@@ -8,7 +8,7 @@ export interface TestInfo {
 
 export const psychologicalTest: TestInfo[] = [
   {
-    key: 'depression',
+    id: 'depression',
     title: '우울증 검사',
     text: [
       '마음을 편안하게 안정시킨 후 문항에 대한 자신의 생각과 상태를 있는 그대로 나타내시면 됩니다. 이 검사를 통해 본인의 우울증 정도를 판단할 수 있으며,  이 검사는 자신을 이해하는 데에 유익한 도움을 줄 수 있습니다.',
@@ -18,7 +18,7 @@ export const psychologicalTest: TestInfo[] = [
     time: 5,
   },
   {
-    key: 'anxiety',
+    id: 'anxiety',
     title: '불안증 검사',
     text: [
       '마음을 편안하게 안정시킨 후 문항에 대한 자신의 생각과 상태를 있는 그대로 나타내시면 됩니다. 이 검사를 통해 본인의 불안증 정도를 판단할 수 있으며,  이 검사는 자신을 이해하는 데에 유익한 도움을 줄 수 있습니다.',
@@ -28,7 +28,7 @@ export const psychologicalTest: TestInfo[] = [
     time: 5,
   },
   {
-    key: 'stress',
+    id: 'stress',
     title: '스트레스 검사',
     text: [
       '마음을 편안하게 안정시킨 후 문항에 대한 자신의 생각과 상태를 있는 그대로 나타내시면 됩니다. 이 검사를 통해 본인의 스트레스 정도를 판단할 수 있으며,  이 검사는 자신을 이해하는 데에 유익한 도움을 줄 수 있습니다.',
@@ -38,7 +38,7 @@ export const psychologicalTest: TestInfo[] = [
     time: 5,
   },
   {
-    key: 'stress-management',
+    id: 'stress-management',
     title: '스트레스 대처 방식 검사',
     text: [
       '마음을 편안하게 안정시킨 후 문항에 대한 자신의 생각과 상태를 있는 그대로 나타내시면 됩니다. 이 검사를 통해 본인의 스트레스 대처 방식을 판단할 수 있으며,  이 검사는 자신을 이해하는 데에 유익한 도움을 줄 수 있습니다.',
@@ -48,7 +48,7 @@ export const psychologicalTest: TestInfo[] = [
     time: 5,
   },
   {
-    key: 'communication-parent-child',
+    id: 'communication-parent-child',
     title: '부모-자녀의사소통검사',
     text: [
       '마음을 편안하게 안정시킨 후 문항에 대한 자신의 생각과 상태를 있는 그대로 나타내시면 됩니다. 이 검사를 통해 본인이 부모님과의 대화 시 어떠한 의사소통 유형을 사용하고 있는지 파악할 수 있습니다. 원활한 의사소통은 서로에게 긍정적인 영향을 주고 서로를 이해하는 데 큰 도움이 됩니다.',
@@ -60,7 +60,7 @@ export const psychologicalTest: TestInfo[] = [
 ];
 
 export interface TestQNAInfo {
-  key: string;
+  id: string;
   questions: string[];
   answers: {
     img: string;
@@ -71,7 +71,7 @@ export interface TestQNAInfo {
 
 export const psychologicalQNA: TestQNAInfo[] = [
   {
-    key: 'depression',
+    id: 'depression',
     questions: [
       '1. 요즘 나는 슬프거나 우울하다고 느낀다.',
       '2. 다른 사람이 보기에 내가 자주 기운이 없어 보인다고 말한다.',
@@ -111,7 +111,7 @@ export const psychologicalQNA: TestQNAInfo[] = [
     ],
   },
   {
-    key: 'anxiety',
+    id: 'anxiety',
     questions: [
       '1. 나는 매사에 자신이 없다.',
       '2. 나는 타인의 시선을 많이 의식한다.',
@@ -152,7 +152,7 @@ export const psychologicalQNA: TestQNAInfo[] = [
     ],
   },
   {
-    key: 'stress',
+    id: 'stress',
     questions: [
       '1. 아침에 일어나는 게 두렵다.',
       '2. 잠을 자기 어렵거나 자주 잠에서 깬다.',
@@ -201,7 +201,7 @@ export const psychologicalQNA: TestQNAInfo[] = [
     ],
   },
   {
-    key: 'stress-management',
+    id: 'stress-management',
     questions: [
       '1. 내가 무엇을 해야 하는지 계획을 세우고 그것에 따른다.',
       '2. 무엇을 해야 할지를 알기 때문에 일이 잘되도록 더 열심히 노력한다.',
@@ -252,7 +252,7 @@ export const psychologicalQNA: TestQNAInfo[] = [
     ],
   },
   {
-    key: 'communication-parent-child',
+    id: 'communication-parent-child',
     questions: [
       '1. 나는 부모님에게 나의 생각을 망설임 없이 의논한다.',
       '2. 나는 부모님과 많은 이야기를 하지 않는다.',
@@ -301,7 +301,7 @@ export const psychologicalQNA: TestQNAInfo[] = [
 ];
 
 export interface TestResultInfo {
-  key: string;
+  id: string;
   common: ResultCommonInfo;
   result: ResultTypeInfo[];
 }
@@ -321,7 +321,7 @@ export interface ResultCommonInfo {
 
 export const psychologicalResult: TestResultInfo[] = [
   {
-    key: 'depression',
+    id: 'depression',
     common: {
       text: [
         "우리는 누구나 기분의 변화를 경험하며 살아갑니다. 어떤 날에는 소망하는 일들이 잘 이루어져서 기분이 좋고 즐거우며 신바람이 납니다. 자신이 유능한 사람이라는 생각이 들며 자신감과 의욕이 충만해지고 인생은 정말 살 만한 것이라고 여겨지면서 '기분이 들뜨는'때가 있습니다. 하지만 때로는 실패와 좌절을 겪어 기분이 침체되고 우울해질 때도 있습니다. 자신이 무가치한 사람이라는 생각이 들며 자신감과 의욕을 잃고 앞으로의 미래에 대해 희망이 없다고 여겨지면서 '기분이 가라앉는'때가 있을 겁니다. 삶을 살아가면서 누구나 이러한 기분의 변화를 경험하게 됩니다. 또한 이러한 기분의 변화가 그다지 심하지 않아서 일상생활을 하는데 큰 지장을 받지 않는 경우가 대부분입니다. 하지만 기분이 가라앉는 정도가 지나쳐서 매우 고통스러울 뿐만 아니라 일상생활을 어려움을 겪게 된다면 우울장애 (depressive disorder)를 의심해봐야 합니다.",
@@ -358,7 +358,7 @@ export const psychologicalResult: TestResultInfo[] = [
     ],
   },
   {
-    key: 'anxiety',
+    id: 'anxiety',
     common: {
       text: [
         '불안은 누구나 생활 속에서 흔히 경험하는 불쾌한 감정 중 하나입니다. 예를 들면, 여러 사람 앞에서 발표를 해야 하거나 중요한 시험을 앞두고 있을 때, 뱀이나 지네와 같은 위험한 동물을 만나거나 아주 높은 곳에 올랐을 때 등 부정적인 결과가 나타날 수도 있고 위험하고 위협적인 상황에 처했을 때 자연스러운 정서적 반응이 불안입니다. 불안을 느끼면 우리는 부정적인 결과가 일어나지 않도록 긴장을 하고 경계를 하며 조심스런 행동을 하게 됩니다. 그래서 위협적인 상황을 벗어나게 되고 안도감을 느끼며 긴장을 풀고 편안한 상태로 돌아가게 됩니다. 이처럼 위험한 상황에서 적절한 불안을 느끼는 것은 매우 자연스럽고 정상적인 것입니다. 즉, 불안은 불쾌하게 느껴지지만 우리에게 도움이 되는 감정으로 위험하거나 위협적인 상황에서 우리 자신을 보호하기 위해 경계 태세를 취하게 하는 자연스럽고 적응적인 심리적 반응이며 정상적인 불안(normal anxiety)이라 할 수 있습니다.',
@@ -395,7 +395,7 @@ export const psychologicalResult: TestResultInfo[] = [
     ],
   },
   {
-    key: 'stress',
+    id: 'stress',
     common: {
       text: [
         '스트레스란?',
@@ -441,7 +441,7 @@ export const psychologicalResult: TestResultInfo[] = [
     ],
   },
   {
-    key: 'stress-management',
+    id: 'stress-management',
     common: {
       text: [
         '스트레스 대처방식은 좋고/나쁨, 옳고/그름이 없습니다.',
@@ -488,7 +488,7 @@ export const psychologicalResult: TestResultInfo[] = [
     ],
   },
   {
-    key: 'communication-parent-child',
+    id: 'communication-parent-child',
     common: {
       text: [],
       total: 80,

@@ -24,22 +24,24 @@ export interface TimeData {
 
 export interface FormData {
   name: string;
-  tel: string;
+  contact: string;
+  result: string;
   email: string;
-  etc: string;
-  call: boolean;
-  message: boolean;
+  inquiry: string;
+  method: string;
+  counselorId: number;
 }
 
 export const formDataState = atom<FormData>({
   key: 'formData',
   default: {
     name: '',
-    tel: '',
+    contact: '',
+    result: '',
     email: '',
-    etc: '',
-    call: false,
-    message: false,
+    inquiry: '',
+    method: '',
+    counselorId: 0,
   },
 });
 

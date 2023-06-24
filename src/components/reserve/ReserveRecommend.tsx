@@ -1,103 +1,110 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { useState } from 'react';
-import { Box } from '../diary/DiaryEditBox';
+import { useRecoilState } from 'recoil';
 import Button from '../Button';
-
-import { tmpCounselor, tmpCounselorDetail } from '../../data/tmpCounselor';
 import CounselorCard from './CounselorCard';
-import CounselorDetail from './CounselorDetail';
+import { Box } from '../diary/DiaryEditBox';
 import { BsArrowRight } from 'react-icons/bs';
+import { formDataState } from '../../recoil/reserve';
+import { tmpCounselor } from '../../data/tmpCounselor';
+import postData from '../../api/postData';
 
 const RecommendBox = styled(Box)`
   display: flex;
   flex-direction: column;
 `;
-
-const Top = styled.div`
+const TitleBox = styled.div`
   display: flex;
-  padding: 1rem 3rem;
+  gap: 1.2rem;
 `;
-
 const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 1.2rem;
-  h2 {
-    margin: 0.8rem 0;
+  gap: 1rem;
+
+  > p {
+    font-size: 1.5rem;
   }
 `;
-
-const Content = styled.div`
+const More = styled(Link)`
+  align-self: flex-end;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 4rem;
 `;
-
-const More = styled.div`
-  padding-right: 3rem;
-  margin-bottom: 3rem;
-  display: flex;
-  justify-content: flex-end;
-  div {
-    width: fit-content;
-    display: flex;
-    align-items: center;
-  }
-`;
-
 const CardBox = styled.div`
   display: flex;
-  padding: 2rem 1rem;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
-
-const Bottom = styled.div`
+const ButtonBox = styled.div`
+  margin-top: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 2rem;
+  max-width: 100%;
+
   button {
-    padding: 0.8rem 2.4rem;
-    margin-right: 1rem;
-    margin-left: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 `;
-const ReserveRecommend = () => {
-  const [cardClicked, setCardClicked] = useState(false);
 
+const ReserveRecommend = () => {
+  const [formData, setFormData] = useRecoilState(formDataState);
+  const SubmitReserveForm = () => {
+    console.log(formData);
+    // postData('/appointments', formData);
+  };
   return (
     <RecommendBox>
-      <Top>
+      <TitleBox>
         <img src={process.env.PUBLIC_URL + '/assets/counselorpic.svg'} />
         <TextBox>
-          <h2>추천상담사</h2>
+          <h2>추천 상담사</h2>
           <p>적합한 상담사를 추천해드려요!</p>
         </TextBox>
-      </Top>
-      <Content>
-        <More>
-          <div>
-            <p>더보기</p>
-            <BsArrowRight />
-          </div>
-        </More>
-        {/* <CardBox>
+      </TitleBox>
+      <More
+        to="/counsel"
+        onClick={() => setFormData({ ...formData, counselorId: 0 })}
+      >
+        더보기
+        <BsArrowRight />
+      </More>
+      <CardBox>
+        {tmpCounselor.slice(0, 3).map((el) => (
           <CounselorCard
-            {...tmpCounselor}
-            onClick={() => {
-              setCardClicked((prev) => !prev);
-            }}
+            {...el}
+            key={el.counselorId}
+            onClick={() =>
+              formData.counselorId === el.counselorId
+                ? setFormData({ ...formData, counselorId: 0 })
+                : setFormData({ ...formData, counselorId: el.counselorId })
+            }
+            grayscale={
+              !!formData.counselorId && formData.counselorId !== el.counselorId
+            }
+            emphatic={formData.counselorId === el.counselorId}
           />
-          <CounselorCard {...tmpCounselor} />
-          <CounselorCard {...tmpCounselor} />
-        </CardBox>
-        {cardClicked ? (
-          <CounselorDetail {...{ ...tmpCounselor, ...tmpCounselorDetail }} />
-        ) : null} */}
-      </Content>
-      <Bottom>
-        <Button white={true} text="랜덤 배정받기" />
-        <Button text="상담 예약하기" />
-      </Bottom>
+        ))}
+      </CardBox>
+      <ButtonBox>
+        <Button
+          white={true}
+          text="랜덤 배정받기"
+          onClick={() => (
+            setFormData({
+              ...formData,
+              counselorId: tmpCounselor[0].counselorId,
+            }),
+            SubmitReserveForm()
+          )}
+        />
+        <Button text="상담 예약하기" onClick={SubmitReserveForm} />
+      </ButtonBox>
     </RecommendBox>
   );
 };

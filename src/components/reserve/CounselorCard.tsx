@@ -1,23 +1,39 @@
 import styled from 'styled-components';
 import { Card } from '../../styles/baseCard';
-import { BsArrowRight } from 'react-icons/bs';
 
-const CardBox = styled(Card)`
-  width: 17.5rem;
-  height: 27rem;
+const CardBox = styled(Card)<{ grayscale?: boolean; emphatic?: boolean }>`
+  position: relative;
   background-color: var(--white);
+  cursor: pointer;
+
+  :after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: ${(props) => props.grayscale && 'rgba(17, 14, 13, 0.6)'};
+    border: ${(props) => props.emphatic && '6px solid var(--primary)'};
+    border-radius: 1.25rem;
+  }
 `;
 const Top = styled(Card)`
   background: var(--sub);
   display: flex;
+  justify-content: space-between;
   align-items: end;
-  padding: 2rem 1rem;
+  padding-right: 1.2rem;
+
   p {
-    font-size: 24px;
+    font-size: 1.5rem;
     display: block;
+    padding-bottom: 2.1rem;
+    word-break: keep-all;
   }
   img {
-    width: 11rem;
+    width: 67%;
+    padding: 2.9rem 0;
   }
 `;
 const Bottom = styled.div`
@@ -26,45 +42,44 @@ const Bottom = styled.div`
 const Line = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   margin-top: 0.8rem;
 `;
-const Title = styled.div`
-  font-size: 18px;
+const Title = styled.p`
+  font-size: 1.2rem;
+  word-break: keep-all;
 `;
-const Content = styled.div`
+const Content = styled.p`
   text-align: end;
   max-width: 6.5rem;
   color: var(--sub3);
 `;
-const More = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-top: 2.5rem;
-  color: var(--sub2);
-  p {
-    vertical-align: center;
-    font-family: 'Pretendard-Regular';
-    font-size: 0.8rem;
-  }
-  svg {
-    font-size: 0.8rem;
-    vertical-align: center;
-  }
-`;
 
 type Props = {
   name: string;
-  year: number;
+  career: number;
   score: number;
-  intro: string;
+  introduce: string;
   icon: string;
   onClick?: React.MouseEventHandler;
+  emphatic?: boolean;
+  grayscale?: boolean;
+  counselorId: number;
 };
 
-const CounselorCard = ({ name, year, score, intro, icon, onClick }: Props) => {
+const CounselorCard = ({
+  name,
+  career,
+  score,
+  introduce,
+  icon,
+  onClick,
+  emphatic,
+  grayscale,
+  counselorId,
+}: Props) => {
   return (
-    <CardBox onClick={onClick}>
+    <CardBox onClick={onClick} emphatic={emphatic} grayscale={grayscale}>
       <Top>
         <img src={process.env.PUBLIC_URL + `/assets/${icon}`} />
         <p>{name}</p>
@@ -72,7 +87,7 @@ const CounselorCard = ({ name, year, score, intro, icon, onClick }: Props) => {
       <Bottom>
         <Line>
           <Title>경력</Title>
-          <Content>전문 상담사 {year}년</Content>
+          <Content>전문 상담사 {career}년</Content>
         </Line>
         <Line>
           <Title>상담 후기 점수</Title>
@@ -80,12 +95,8 @@ const CounselorCard = ({ name, year, score, intro, icon, onClick }: Props) => {
         </Line>
         <Line>
           <Title>한 줄 소개</Title>
-          <Content>{intro}</Content>
+          <Content>{introduce}</Content>
         </Line>
-        <More>
-          <p>자세히</p>
-          <BsArrowRight />
-        </More>
       </Bottom>
     </CardBox>
   );

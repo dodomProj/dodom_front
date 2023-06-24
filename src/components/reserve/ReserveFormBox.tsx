@@ -7,6 +7,7 @@ import DateTimeBlock from '../DateTimeBlock';
 import { useRecoilState } from 'recoil';
 import { formDataState } from '../../recoil/reserve';
 import { formTimeState } from '../../recoil/reserve';
+import { useNavigate } from 'react-router-dom';
 
 const FormBox = styled.div`
   display: flex;
@@ -63,6 +64,7 @@ const InputBox = styled.div`
 const ReserveFormBox = () => {
   const [formData, setFormData] = useRecoilState(formDataState);
   const [formTime, setFormTime] = useRecoilState(formTimeState);
+  const navigate = useNavigate();
 
   const onSubmit = () => {
     const totalFormData = {
@@ -99,7 +101,7 @@ const ReserveFormBox = () => {
               id="form-tel"
               placeholder="010-1234-1234"
               onChange={(e) =>
-                setFormData({ ...formData, tel: e.target.value })
+                setFormData({ ...formData, contact: e.target.value })
               }
             />
           </FlexBox>
@@ -125,25 +127,21 @@ const ReserveFormBox = () => {
               placeholder="이외의 상담 시간 관련 요청사항이나 궁금한 점, 상담 받고 싶은 부분 등이 있다면 자유롭게 작성해주세요 :)"
               textareaRows={3}
               onChange={(e) =>
-                setFormData({ ...formData, etc: e.target.value })
+                setFormData({ ...formData, inquiry: e.target.value })
               }
             />
           </InputBox>
           <InputBox>
             <CheckBoxInput
-              checked={formData.call}
+              checked={formData.method === 'call'}
               text="전화가 좋아요!"
-              onChange={() =>
-                setFormData({ ...formData, call: !formData.call })
-              }
+              onChange={() => setFormData({ ...formData, method: 'call' })}
               id="form-call"
             />
             <CheckBoxInput
-              checked={formData.message}
+              checked={formData.method === 'message'}
               text="문자가 좋아요!"
-              onChange={() =>
-                setFormData({ ...formData, message: !formData.message })
-              }
+              onChange={() => setFormData({ ...formData, method: 'message' })}
               id="form-message"
             />
           </InputBox>
@@ -152,7 +150,7 @@ const ReserveFormBox = () => {
           <Button
             text="상담사 추천받기"
             forSubmit={false}
-            onClick={() => onSubmit()}
+            onClick={() => navigate('/reserve/recommend')}
           />
         </Form>
       </Right>

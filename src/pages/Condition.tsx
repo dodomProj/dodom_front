@@ -15,16 +15,21 @@ const InlineBold = styled.span`
 
 const Condition = () => {
   const carouselSettings = {
-    slidesPerView: 1.1,
-    spaceBetween: 12,
+    slidesPerView: 1.2,
+    spaceBetween: 35,
     breakpoints: {
-      480: {
-        spaceBetween: 24,
-        slidesPerView: 1.5,
+      481: {
+        slidesPerView: 1.4,
       },
-      768: {
-        spaceBetween: 36,
-        slidesPerView: 2.5,
+      769: {
+        spaceBetween: 70,
+        slidesPerView: 1.9,
+      },
+      1057: {
+        slidesPerView: 2.4,
+      },
+      1345: {
+        slidesPerView: 2.9,
       },
     },
   };
