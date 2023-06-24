@@ -1,12 +1,8 @@
-import axios from 'axios';
+import { dodomAPI } from '.';
 
-const postData = async (uri: string, data: any, headers: {} = {}) => {
+const postData = async (uri: string, data: any) => {
   try {
-    const response = await axios.post(uri, data, {
-      headers: {
-        ...headers,
-      },
-    });
+    const response = await dodomAPI.post(uri, data);
     return response;
   } catch (error: any) {
     return error.response;
