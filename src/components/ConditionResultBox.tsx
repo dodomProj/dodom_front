@@ -42,7 +42,7 @@ const ConditionResultBox = () => {
     <ResultBox
       direction={key === 'communication-parent-child' ? 'row' : 'column'}
     >
-      {/* <ConditionResultCard test={key} /> */}
+      <ConditionResultCard test={key} />
       <OtherPages
         direction={key === 'communication-parent-child' ? 'column' : 'row'}
       >
