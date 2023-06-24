@@ -1,11 +1,13 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useRecoilState } from 'recoil';
 import Button from '../Button';
 import CounselorCard from './CounselorCard';
 import { Box } from '../diary/DiaryEditBox';
 import { BsArrowRight } from 'react-icons/bs';
-import { tmpCounselor, tmpCounselorDetail } from '../../data/tmpCounselor';
+import { formDataState } from '../../recoil/reserve';
+import { tmpCounselor } from '../../data/tmpCounselor';
+import postData from '../../api/postData';
 
 const RecommendBox = styled(Box)`
   display: flex;
@@ -51,6 +53,11 @@ const ButtonBox = styled.div`
 `;
 
 const ReserveRecommend = () => {
+  const [formData, setFormData] = useRecoilState(formDataState);
+  const SubmitReserveForm = () => {
+    console.log(formData);
+    // postData('/appointments', formData);
+  };
   return (
     <RecommendBox>
       <TitleBox>
@@ -60,18 +67,43 @@ const ReserveRecommend = () => {
           <p>적합한 상담사를 추천해드려요!</p>
         </TextBox>
       </TitleBox>
-      <More to="/counsel">
+      <More
+        to="/counsel"
+        onClick={() => setFormData({ ...formData, counselorId: 0 })}
+      >
         더보기
         <BsArrowRight />
       </More>
       <CardBox>
         {tmpCounselor.slice(0, 3).map((el) => (
-          <CounselorCard {...el} />
+          <CounselorCard
+            {...el}
+            key={el.counselorId}
+            onClick={() =>
+              formData.counselorId === el.counselorId
+                ? setFormData({ ...formData, counselorId: 0 })
+                : setFormData({ ...formData, counselorId: el.counselorId })
+            }
+            grayscale={
+              !!formData.counselorId && formData.counselorId !== el.counselorId
+            }
+            emphatic={formData.counselorId === el.counselorId}
+          />
         ))}
       </CardBox>
       <ButtonBox>
-        <Button white={true} text="랜덤 배정받기" />
-        <Button text="상담 예약하기" />
+        <Button
+          white={true}
+          text="랜덤 배정받기"
+          onClick={() => (
+            setFormData({
+              ...formData,
+              counselorId: tmpCounselor[0].counselorId,
+            }),
+            SubmitReserveForm()
+          )}
+        />
+        <Button text="상담 예약하기" onClick={SubmitReserveForm} />
       </ButtonBox>
     </RecommendBox>
   );

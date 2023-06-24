@@ -1,8 +1,22 @@
 import styled from 'styled-components';
 import { Card } from '../../styles/baseCard';
 
-const CardBox = styled(Card)`
+const CardBox = styled(Card)<{ grayscale?: boolean; emphatic?: boolean }>`
+  position: relative;
   background-color: var(--white);
+  cursor: pointer;
+
+  :after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: ${(props) => props.grayscale && 'rgba(17, 14, 13, 0.6)'};
+    border: ${(props) => props.emphatic && '6px solid var(--primary)'};
+    border-radius: 1.25rem;
+  }
 `;
 const Top = styled(Card)`
   background: var(--sub);
@@ -43,16 +57,30 @@ const Content = styled.p`
 
 type Props = {
   name: string;
-  year: number;
+  career: number;
   score: number;
-  intro: string;
+  introduce: string;
   icon: string;
   onClick?: React.MouseEventHandler;
+  emphatic?: boolean;
+  grayscale?: boolean;
+  counselorId: number;
 };
 
-const CounselorCard = ({ name, year, score, intro, icon, onClick }: Props) => {
+const CounselorCard = ({
+  name,
+  career,
+  score,
+  introduce,
+  icon,
+  onClick,
+  emphatic,
+  grayscale,
+  counselorId,
+}: Props) => {
+  console.log(counselorId, grayscale);
   return (
-    <CardBox onClick={onClick}>
+    <CardBox onClick={onClick} emphatic={emphatic} grayscale={grayscale}>
       <Top>
         <img src={process.env.PUBLIC_URL + `/assets/${icon}`} />
         <p>{name}</p>
@@ -60,7 +88,7 @@ const CounselorCard = ({ name, year, score, intro, icon, onClick }: Props) => {
       <Bottom>
         <Line>
           <Title>경력</Title>
-          <Content>전문 상담사 {year}년</Content>
+          <Content>전문 상담사 {career}년</Content>
         </Line>
         <Line>
           <Title>상담 후기 점수</Title>
@@ -68,7 +96,7 @@ const CounselorCard = ({ name, year, score, intro, icon, onClick }: Props) => {
         </Line>
         <Line>
           <Title>한 줄 소개</Title>
-          <Content>{intro}</Content>
+          <Content>{introduce}</Content>
         </Line>
       </Bottom>
     </CardBox>
