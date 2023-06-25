@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useRecoilState } from 'recoil';
 import Button from '../Button';
 import CounselorCard from './CounselorCard';
 import { Box } from '../diary/DiaryEditBox';
-import { BsArrowRight } from 'react-icons/bs';
+import MoreInfoArrow from '../MoreInfoArrow';
 import { formDataState } from '../../recoil/reserve';
 import { tmpCounselor } from '../../data/tmpCounselor';
 import postData from '../../api/postData';
@@ -27,19 +26,13 @@ const TextBox = styled.div`
     font-size: 1.5rem;
   }
 `;
-const More = styled(Link)`
-  align-self: flex-end;
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  margin-bottom: 4rem;
-`;
 const CardBox = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: 4rem;
+  margin-bottom: 5rem;
 `;
 const ButtonBox = styled.div`
-  margin-top: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,13 +60,11 @@ const ReserveRecommend = () => {
           <p>적합한 상담사를 추천해드려요!</p>
         </TextBox>
       </TitleBox>
-      <More
-        to="/counsel"
+      <MoreInfoArrow
+        toUri="/counsel"
         onClick={() => setFormData({ ...formData, counselorId: 0 })}
-      >
-        더보기
-        <BsArrowRight />
-      </More>
+        infoText="더보기"
+      />
       <CardBox>
         {tmpCounselor.slice(0, 3).map((el) => (
           <CounselorCard
