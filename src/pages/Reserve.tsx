@@ -13,23 +13,16 @@ const ReserveBox = styled(PageBase)`
   display: flex;
   flex-direction: column;
 `;
-const Top = styled.div`
-  height: 500px;
-  div > div {
-    margin-bottom: 3rem;
-  }
-`;
 const Bottom = styled.div`
   ${basePadding};
   padding-top: 7.5rem;
+  width: 100%;
 `;
 
 const Reserve = () => {
   return (
     <ReserveBox>
-      <Top>
-        <TextBox {...aboutDiary} />
-      </Top>
+      <TextBox {...aboutDiary} />
       <Bottom>
         <Routes>
           <Route path="/" element={<ReserveFormBox />} />

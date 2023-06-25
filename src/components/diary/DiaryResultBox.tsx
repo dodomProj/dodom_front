@@ -1,7 +1,7 @@
 import ToReserveCard from '../ToReserveCard';
 import ToConditionCard from '../ToConditionCard';
 import DiaryResultCard from './DiaryResultCard';
-import { OtherPages, ResultBox } from '../ConditionResultBox';
+import { OtherPages, ResultBox } from '../condition/ConditionResultBox';
 
 const DiaryResultBox = () => {
   return (

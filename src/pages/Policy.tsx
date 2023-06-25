@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ToDiary from '../components/ToDiary';
 import LoadingBox from '../components/LoadingBox';
@@ -6,7 +5,7 @@ import SubtitleBox from '../components/SubtitleBox';
 import PolicyCard from '../components/policy/PolicyCard';
 import { policyBoxData } from '../data/subtitleBoxData';
 import { MainContent, PageBase } from '../styles/basePadding';
-import { notionAPI } from '../api';
+import useNotionAPI from '../api/useNotionAPI';
 
 const CardBox = styled(MainContent)`
   display: grid;
@@ -22,25 +21,10 @@ const CardBox = styled(MainContent)`
 `;
 
 const Policy = () => {
-  const [policyData, setPolicyData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
+  const [policyData, isLoading, isError] = useNotionAPI(
+    process.env.REACT_APP_NOTION_DATABASE_ID || ''
+  );
 
-  useEffect(() => {
-    notionAPI
-      .post(
-        `/api/v1/databases/${process.env.REACT_APP_NOTION_DATABASE_ID}/query`,
-        ''
-      )
-      .then((res) => {
-        if (res.status === 200) {
-          setPolicyData(res.data.results);
-        } else {
-          setIsError(true);
-        }
-        setIsLoading(false);
-      });
-  }, []);
   return (
     <PageBase>
       <SubtitleBox {...policyBoxData} theme="dark" />
@@ -50,14 +34,15 @@ const Policy = () => {
         <p>에러입니다</p>
       ) : (
         <CardBox>
-          {policyData.map((policy: any) => (
-            <PolicyCard
-              key={policy.id}
-              img={policy.cover?.file.url}
-              policyInfo={policy.properties}
-              url={policy.public_url}
-            />
-          ))}
+          {Array.isArray(policyData) &&
+            policyData.map((policy: any) => (
+              <PolicyCard
+                key={policy.id}
+                img={policy.cover?.file.url}
+                policyInfo={policy.properties}
+                url={policy.public_url}
+              />
+            ))}
         </CardBox>
       )}
       <ToDiary />

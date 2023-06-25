@@ -15,24 +15,18 @@ const DiaryBox = styled(PageBase)`
   display: flex;
   flex-direction: column;
 `;
-const Top = styled.div`
-  height: 32rem;
-  div > div {
-    margin-bottom: 3rem;
-  }
-`;
 const Bottom = styled.div`
   ${basePadding};
   padding-top: 7.5rem;
+  width: 100%;
+  height: 860px;
 `;
 
 const Diary = () => {
   const diarySubmit = useRecoilValue(diarySubmitState);
   return (
     <DiaryBox>
-      <Top>
-        <TextBox {...aboutDiary} />
-      </Top>
+      <TextBox {...aboutDiary} />
       <Bottom>
         <Routes>
           <Route path="/" element={<DiaryEditBox />} />

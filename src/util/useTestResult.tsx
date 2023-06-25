@@ -6,8 +6,9 @@ import {
   psychologicalResult,
 } from '../data/psychologicalTest';
 import useFindTest from './useFindTest';
-import { useRecoilValue } from 'recoil';
-import { answerScoreState, answersState } from '../recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { answerScoreState, answersState } from '../recoil/condition';
+import { formDataState } from '../recoil/reserve';
 
 export interface TestResult {
   score: number;
@@ -24,9 +25,10 @@ const useTestResult = (): TestResult => {
   const [score, setScore] = useState<number>(0);
   const [scoreArr, setScoreArr] = useState<number[]>([]);
   const [type, setType] = useState(resultObj?.result[0]);
+  const [formData, setFormData] = useRecoilState(formDataState);
 
   useEffect(() => {
-    if (resultObj?.result) {
+    if (resultObj?.result && answers && answerScore) {
       let tmpType;
 
       if (Array.isArray(resultObj.result[0].score)) {
@@ -56,9 +58,9 @@ const useTestResult = (): TestResult => {
         tmpType = resultObj.result.find((el) => tmpScore <= el.score);
       }
       setType(tmpType);
+      setFormData({ ...formData, result: tmpType ? tmpType.title : '' });
     }
   }, [resultObj, answers, answerScore]);
-
   return { score, scoreArr, common: resultObj?.common, type };
 };
 

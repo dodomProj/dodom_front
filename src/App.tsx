@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import GlobalStyle from './styles/global';
 import Header from './components/Header';
@@ -16,6 +16,9 @@ import Error from './pages/Error';
 function App() {
   const { pathname } = useLocation();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <>
       <GlobalStyle />
@@ -23,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/diary/*" element={<Diary />} />
+        <Route path="/reserve/counsel" element={<Counsel />} />
         <Route path="/reserve/*" element={<Reserve />} />
         <Route path="/counsel/*" element={<Counsel />} />
         <Route path="/condition" element={<Condition />} />
