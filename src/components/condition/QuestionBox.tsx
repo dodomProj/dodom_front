@@ -7,7 +7,7 @@ import { MainContent } from '../../styles/basePadding';
 import { TestQNAInfo, psychologicalQNA } from '../../data/psychologicalTest';
 import useFindTest from '../../util/useFindTest';
 import { useRecoilState, useSetRecoilState } from 'recoil';
-import { answerScoreState, answersState } from '../../recoil';
+import { answerScoreState, answersState } from '../../recoil/condition';
 
 interface QuestionBoxProps {
   setStage: (stage: number) => void;
