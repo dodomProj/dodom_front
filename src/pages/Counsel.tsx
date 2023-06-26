@@ -1,13 +1,16 @@
 import styled from 'styled-components';
+import { useRecoilValue } from 'recoil';
+import { useLocation } from 'react-router-dom';
 import ToDiary from '../components/ToDiary';
 import CategoryBox from '../components/CategoryBox';
 import SubtitleBox from '../components/SubtitleBox';
+import ReserveButtonBox from '../components/reserve/ReserveButtonBox';
 import CounselorContainer from '../components/counsel/CounselorContainer';
 import { MainContent, PageBase } from '../styles/basePadding';
+import { recommendedsState } from '../recoil/reserve';
 import { tmpCounselor } from '../data/tmpCounselor';
 import { counselBoxData } from './../data/subtitleBoxData';
 import { depressed, healthy, recommended } from '../data/categoryBoxData';
-import { useLocation } from 'react-router-dom';
 
 const CounselBox = styled(PageBase)`
   display: flex;
@@ -25,6 +28,7 @@ const ReviewBox = styled.aside`
 
 const Counsel = () => {
   const { pathname } = useLocation();
+  const recommendeds = useRecoilValue(recommendedsState);
 
   return (
     <CounselBox>
@@ -33,7 +37,7 @@ const Counsel = () => {
         {pathname.includes('reserve') && (
           <CounselorContainer
             categoryText={recommended}
-            carouselData={tmpCounselor}
+            carouselData={recommendeds}
           />
         )}
         <CounselorContainer
@@ -45,19 +49,25 @@ const Counsel = () => {
           carouselData={tmpCounselor}
         />
       </Mid>
-      <ReviewBox>
-        <Mid>
-          <CategoryBox
-            title="DODOM 상담 후기"
-            text="DODOM의 상담사와 함께한 실제 후기에요.
+      {pathname.includes('reserve') ? (
+        <ReserveButtonBox />
+      ) : (
+        <>
+          <ReviewBox>
+            <Mid>
+              <CategoryBox
+                title="DODOM 상담 후기"
+                text="DODOM의 상담사와 함께한 실제 후기에요.
 도돔을 이용한 청년들의 후기가 최신순으로 업데이트 되고 있습니다."
-          />
-          <div>후기 1</div>
-          <div>후기 2</div>
-          <div>후기 3</div>
-        </Mid>
-      </ReviewBox>
-      <ToDiary />
+              />
+              <div>후기 1</div>
+              <div>후기 2</div>
+              <div>후기 3</div>
+            </Mid>
+          </ReviewBox>
+          <ToDiary />
+        </>
+      )}
     </CounselBox>
   );
 };

@@ -41,11 +41,26 @@ export const formDataState = atom<FormData>({
     email: '',
     inquiry: '',
     method: '',
-    counselorId: 0,
+    counselorId: -1,
   },
 });
 
 export const formTimeState = atom<TimeData[]>({
   key: 'formTime',
   default: [{ date: '', time: '', id: 0 }],
+});
+
+export interface RecommendedsData {
+  counselorId: number;
+  career: number;
+  introduce: string;
+  score: number;
+  name: string;
+  icon: string;
+  img: string;
+}
+
+export const recommendedsState = atom<RecommendedsData[]>({
+  key: 'recommendeds',
+  default: [],
 });
