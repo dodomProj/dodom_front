@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import { ButtonCard } from '../styles/baseCard';
 import { Link } from 'react-router-dom';
+import { ButtonCard } from '../styles/baseCard';
+import { useSetRecoilState } from 'recoil';
+import { counselKeywordState } from '../recoil/reserve';
 
 const Item = styled(Link)`
   display: flex;
@@ -16,9 +18,15 @@ const Item = styled(Link)`
   }
 `;
 
-const ToReserveCard = () => {
+interface CardProps {
+  keyword: string;
+}
+
+const ToReserveCard = ({ keyword }: CardProps) => {
+  const setCounselKeyword = useSetRecoilState(counselKeywordState);
+
   return (
-    <ButtonCard theme="--primary">
+    <ButtonCard theme="--primary" onClick={() => setCounselKeyword(keyword)}>
       <Item to={'/reserve/'}>
         <div>
           <h2>상담 받아보기</h2>

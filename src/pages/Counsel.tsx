@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValueLoadable } from 'recoil';
 import { useLocation } from 'react-router-dom';
 import ToDiary from '../components/ToDiary';
 import CategoryBox from '../components/CategoryBox';
@@ -8,9 +8,9 @@ import ReserveButtonBox from '../components/reserve/ReserveButtonBox';
 import CounselorContainer from '../components/counsel/CounselorContainer';
 import { MainContent, PageBase } from '../styles/basePadding';
 import { recommendedsState } from '../recoil/reserve';
-import { tmpCounselor } from '../data/tmpCounselor';
+import { counselors } from '../data/counselors';
 import { counselBoxData } from './../data/subtitleBoxData';
-import { depressed, healthy, recommended } from '../data/categoryBoxData';
+import { depression, health, recommended } from '../data/categoryBoxData';
 
 const CounselBox = styled(PageBase)`
   display: flex;
@@ -28,7 +28,8 @@ const ReviewBox = styled.aside`
 
 const Counsel = () => {
   const { pathname } = useLocation();
-  const recommendeds = useRecoilValue(recommendedsState);
+  const { state, contents: recommendeds } =
+    useRecoilValueLoadable(recommendedsState);
 
   return (
     <CounselBox>
@@ -37,16 +38,16 @@ const Counsel = () => {
         {pathname.includes('reserve') && (
           <CounselorContainer
             categoryText={recommended}
-            carouselData={recommendeds}
+            carouselData={state === 'hasValue' ? recommendeds : []}
           />
         )}
         <CounselorContainer
-          categoryText={depressed}
-          carouselData={tmpCounselor}
+          categoryText={depression}
+          carouselData={counselors.depression}
         />
         <CounselorContainer
-          categoryText={healthy}
-          carouselData={tmpCounselor}
+          categoryText={health}
+          carouselData={counselors.health}
         />
       </Mid>
       {pathname.includes('reserve') ? (

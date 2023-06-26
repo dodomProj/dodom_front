@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValueLoadable } from 'recoil';
 import { formDataState, recommendedsState } from '../../recoil/reserve';
 import Button from '../Button';
 
@@ -18,7 +18,9 @@ const ButtonBox = styled.div`
 
 const ReserveButtonBox = () => {
   const [formData, setFormData] = useRecoilState(formDataState);
-  const recommendeds = useRecoilValue(recommendedsState);
+  const { state, contents: recommendeds } =
+    useRecoilValueLoadable(recommendedsState);
+
   const SubmitReserveForm = () => {
     console.log(formData);
     // postData('/appointments', formData);
@@ -30,7 +32,7 @@ const ReserveButtonBox = () => {
         white={true}
         text="랜덤 배정받기"
         onClick={
-          !!recommendeds.length
+          state === 'hasValue'
             ? () => (
                 setFormData({
                   ...formData,

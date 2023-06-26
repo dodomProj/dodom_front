@@ -8,7 +8,7 @@ const DiaryResultBox = () => {
     <ResultBox>
       <DiaryResultCard />
       <OtherPages>
-        <ToReserveCard />
+        <ToReserveCard keyword="health" />
         <ToConditionCard />
       </OtherPages>
     </ResultBox>

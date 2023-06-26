@@ -1,10 +1,14 @@
 import styled from 'styled-components';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValueLoadable } from 'recoil';
 import { Box } from '../diary/DiaryEditBox';
 import CounselorCard from '../counsel/CounselorCard';
 import MoreInfoArrow from '../MoreInfoArrow';
 import ReserveButtonBox from './ReserveButtonBox';
-import { formDataState, recommendedsState } from '../../recoil/reserve';
+import {
+  RecommendedsData,
+  formDataState,
+  recommendedsState,
+} from '../../recoil/reserve';
 
 const RecommendBox = styled(Box)`
   display: flex;
@@ -33,7 +37,8 @@ const CardBox = styled.div`
 
 const ReserveRecommend = () => {
   const [formData, setFormData] = useRecoilState(formDataState);
-  const recommendeds = useRecoilValue(recommendedsState);
+  const { state, contents: recommendeds } =
+    useRecoilValueLoadable(recommendedsState);
 
   return (
     <RecommendBox>
@@ -45,30 +50,31 @@ const ReserveRecommend = () => {
         </TextBox>
       </TitleBox>
       <MoreInfoArrow
-        toUri="/counsel"
-        onClick={() => setFormData({ ...formData, counselorId: 0 })}
+        toUri="/reserve/counsel"
+        onClick={() => setFormData({ ...formData, counselorId: -1 })}
         infoText="더보기"
       />
       <CardBox>
-        {recommendeds.map((recommended) => (
-          <CounselorCard
-            {...recommended}
-            key={recommended.counselorId}
-            onClick={() =>
-              formData.counselorId === recommended.counselorId
-                ? setFormData({ ...formData, counselorId: 0 })
-                : setFormData({
-                    ...formData,
-                    counselorId: recommended.counselorId,
-                  })
-            }
-            grayscale={
-              !!formData.counselorId &&
-              formData.counselorId !== recommended.counselorId
-            }
-            emphatic={formData.counselorId === recommended.counselorId}
-          />
-        ))}
+        {state === 'hasValue' &&
+          recommendeds.map((recommended: RecommendedsData) => (
+            <CounselorCard
+              {...recommended}
+              key={recommended.counselorId}
+              onClick={() =>
+                formData.counselorId === recommended.counselorId
+                  ? setFormData({ ...formData, counselorId: -1 })
+                  : setFormData({
+                      ...formData,
+                      counselorId: recommended.counselorId,
+                    })
+              }
+              grayscale={
+                formData.counselorId !== -1 &&
+                formData.counselorId !== recommended.counselorId
+              }
+              emphatic={formData.counselorId === recommended.counselorId}
+            />
+          ))}
       </CardBox>
       <ReserveButtonBox />
     </RecommendBox>
