@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useRecoilState } from 'recoil';
 import Button from '../Button';
-import CounselorCard from './CounselorCard';
+import CounselorCard from '../counsel/CounselorCard';
 import { Box } from '../diary/DiaryEditBox';
 import MoreInfoArrow from '../MoreInfoArrow';
 import { formDataState } from '../../recoil/reserve';
