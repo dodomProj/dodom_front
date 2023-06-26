@@ -1,12 +1,14 @@
 import styled from 'styled-components';
-import { useRecoilState } from 'recoil';
-import Button from '../Button';
-import CounselorCard from './CounselorCard';
+import { useRecoilState, useRecoilValueLoadable } from 'recoil';
 import { Box } from '../diary/DiaryEditBox';
+import CounselorCard from '../counsel/CounselorCard';
 import MoreInfoArrow from '../MoreInfoArrow';
-import { formDataState } from '../../recoil/reserve';
-import { tmpCounselor } from '../../data/tmpCounselor';
-import postData from '../../api/postData';
+import ReserveButtonBox from './ReserveButtonBox';
+import {
+  RecommendedsData,
+  formDataState,
+  recommendedsState,
+} from '../../recoil/reserve';
 
 const RecommendBox = styled(Box)`
   display: flex;
@@ -32,25 +34,12 @@ const CardBox = styled.div`
   margin-top: 4rem;
   margin-bottom: 5rem;
 `;
-const ButtonBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  max-width: 100%;
-
-  button {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-`;
 
 const ReserveRecommend = () => {
   const [formData, setFormData] = useRecoilState(formDataState);
-  const SubmitReserveForm = () => {
-    console.log(formData);
-    // postData('/appointments', formData);
-  };
+  const { state, contents: recommendeds } =
+    useRecoilValueLoadable(recommendedsState);
+
   return (
     <RecommendBox>
       <TitleBox>
@@ -61,41 +50,33 @@ const ReserveRecommend = () => {
         </TextBox>
       </TitleBox>
       <MoreInfoArrow
-        toUri="/counsel"
-        onClick={() => setFormData({ ...formData, counselorId: 0 })}
+        toUri="/reserve/counsel"
+        onClick={() => setFormData({ ...formData, counselorId: -1 })}
         infoText="더보기"
       />
       <CardBox>
-        {tmpCounselor.slice(0, 3).map((el) => (
-          <CounselorCard
-            {...el}
-            key={el.counselorId}
-            onClick={() =>
-              formData.counselorId === el.counselorId
-                ? setFormData({ ...formData, counselorId: 0 })
-                : setFormData({ ...formData, counselorId: el.counselorId })
-            }
-            grayscale={
-              !!formData.counselorId && formData.counselorId !== el.counselorId
-            }
-            emphatic={formData.counselorId === el.counselorId}
-          />
-        ))}
+        {state === 'hasValue' &&
+          recommendeds.map((recommended: RecommendedsData) => (
+            <CounselorCard
+              {...recommended}
+              key={recommended.counselorId}
+              onClick={() =>
+                formData.counselorId === recommended.counselorId
+                  ? setFormData({ ...formData, counselorId: -1 })
+                  : setFormData({
+                      ...formData,
+                      counselorId: recommended.counselorId,
+                    })
+              }
+              grayscale={
+                formData.counselorId !== -1 &&
+                formData.counselorId !== recommended.counselorId
+              }
+              emphatic={formData.counselorId === recommended.counselorId}
+            />
+          ))}
       </CardBox>
-      <ButtonBox>
-        <Button
-          white={true}
-          text="랜덤 배정받기"
-          onClick={() => (
-            setFormData({
-              ...formData,
-              counselorId: tmpCounselor[0].counselorId,
-            }),
-            SubmitReserveForm()
-          )}
-        />
-        <Button text="상담 예약하기" onClick={SubmitReserveForm} />
-      </ButtonBox>
+      <ReserveButtonBox />
     </RecommendBox>
   );
 };

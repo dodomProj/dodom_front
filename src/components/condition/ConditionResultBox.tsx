@@ -46,7 +46,9 @@ const ConditionResultBox = () => {
       <OtherPages
         direction={key === 'communication-parent-child' ? 'column' : 'row'}
       >
-        <ToReserveCard />
+        <ToReserveCard
+          keyword={pathname.includes('depression') ? 'depression' : 'health'}
+        />
         <ToDiaryCard />
       </OtherPages>
     </ResultBox>

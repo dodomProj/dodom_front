@@ -2,49 +2,41 @@ import styled from 'styled-components';
 
 const Top = styled.div`
   display: flex;
-  margin: 1.5rem 0 2.5rem 0;
-  padding: 0 2rem;
+  margin: 1.5rem 0 2.5rem;
   justify-content: space-between;
-  align-items: flex-end;
   border-width: 0 0 3px 0;
   border-style: solid;
   border-color: var(--black);
 `;
 const Bottom = styled.div`
-  padding: 0 2.5rem;
-  div {
+  h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    font-weight: 500;
   }
   p {
-    font-size: 18px;
+    font-size: 1.2rem;
     margin-bottom: 2.5rem;
   }
 `;
-const Image = styled.div`
-  width: 50rem;
-  overflow: hidden;
-  img {
-    position: relative;
-    left: -6rem;
-    top: 1rem;
-  }
+const Image = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 `;
 const Profile = styled.div`
   display: flex;
   flex-direction: column;
-  height: 20rem;
+  height: inherit;
   justify-content: space-between;
-  padding-right: 1rem;
+  margin-bottom: 2rem;
   h2 {
     color: var(--sub3);
     width: 15rem;
     text-align: end;
-    margin-top: 1rem;
   }
   div {
     text-align: end;
-    margin-bottom: 2rem;
     small {
       display: block;
       color: var(--sub3);
@@ -61,50 +53,40 @@ const Profile = styled.div`
 
 type Props = {
   name: string;
-  year: number;
+  career: number;
   score: number;
-  intro: string;
-  img: string;
-  pros: string;
-  recommend: string;
-  effect: string;
+  introduce: string;
+  icon: string;
 };
-const CounselorDetail = ({
-  name,
-  year,
-  score,
-  intro,
-  img,
-  pros,
-  recommend,
-  effect,
-}: Props) => {
+const CounselorDetail = ({ name, career, score, introduce, icon }: Props) => {
   return (
-    <>
+    <div>
       <Top>
-        <Image>
-          <img src={process.env.PUBLIC_URL + `/assets/${img}`} />
-        </Image>
+        <Image src={process.env.PUBLIC_URL + `/assets/counselor_5.png`} />
         <Profile>
-          <h2>{intro}</h2>
+          <h2>{introduce}</h2>
           <div>
             <small>🌟 {score}점 (5.0)</small>
-            <p>전문 상담사 {year}년</p>
+            <p>전문 상담사 {career}년</p>
             <h1>{name}</h1>
           </div>
         </Profile>
       </Top>
       <Bottom>
-        <div>{name} 상담사의 강점</div>
-        <p>{pros}</p>
-
-        <div>이런 사람에게 추천해요!</div>
-        <p>{recommend}</p>
-
-        <div>심리상담 효과</div>
-        <p>{effect}</p>
+        <div>
+          <h3>{name} 상담사의 강점</h3>
+          <p>업데이트 예정입니다</p>
+        </div>
+        <div>
+          <h3>이런 사람에게 추천해요!</h3>
+          <p>업데이트 예정입니다</p>
+        </div>
+        <div>
+          <h3>심리상담 효과</h3>
+          <p>업데이트 예정입니다</p>
+        </div>
       </Bottom>
-    </>
+    </div>
   );
 };
 
