@@ -1,14 +1,13 @@
 import styled from 'styled-components';
-import Carousel from '../components/Carousel';
+import ToDiary from '../components/ToDiary';
 import CategoryBox from '../components/CategoryBox';
 import SubtitleBox from '../components/SubtitleBox';
-import CounselorCard from '../components/counsel/CounselorCard';
+import CounselorContainer from '../components/counsel/CounselorContainer';
 import { MainContent, PageBase } from '../styles/basePadding';
 import { tmpCounselor } from '../data/tmpCounselor';
 import { counselBoxData } from './../data/subtitleBoxData';
-import { depressed, healthy } from '../data/categoryBoxData';
-import ToDiary from '../components/ToDiary';
-import CounselorDetail from '../components/counsel/CounselorDetail';
+import { depressed, healthy, recommended } from '../data/categoryBoxData';
+import { useLocation } from 'react-router-dom';
 
 const CounselBox = styled(PageBase)`
   display: flex;
@@ -20,57 +19,31 @@ const Mid = styled(MainContent)`
   gap: 5.5rem;
   width: 100%;
 `;
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  width: 100%;
-`;
 const ReviewBox = styled.aside`
   background-color: var(--third);
 `;
 
 const Counsel = () => {
-  const carouselSettings = {
-    slidesPerView: 1.3,
-    spaceBetween: 34,
-    breakpoints: {
-      481: {
-        slidesPerView: 1.7,
-      },
-      769: {
-        slidesPerView: 2.6,
-      },
-      1057: {
-        slidesPerView: 3.7,
-      },
-      1345: {
-        slidesPerView: 4.2,
-      },
-    },
-  };
+  const { pathname } = useLocation();
 
   return (
     <CounselBox>
       <SubtitleBox {...counselBoxData} />
       <Mid>
-        <Container>
-          <CategoryBox {...depressed} />
-          <Carousel
-            settings={carouselSettings}
-            dataArr={tmpCounselor}
-            Card={CounselorCard}
+        {pathname.includes('reserve') && (
+          <CounselorContainer
+            categoryText={recommended}
+            carouselData={tmpCounselor}
           />
-          <CounselorDetail {...tmpCounselor[0]} />
-        </Container>
-        <Container>
-          <CategoryBox {...healthy} />
-          <Carousel
-            settings={carouselSettings}
-            dataArr={tmpCounselor}
-            Card={CounselorCard}
-          />
-        </Container>
+        )}
+        <CounselorContainer
+          categoryText={depressed}
+          carouselData={tmpCounselor}
+        />
+        <CounselorContainer
+          categoryText={healthy}
+          carouselData={tmpCounselor}
+        />
       </Mid>
       <ReviewBox>
         <Mid>
