@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { useRecoilState, useRecoilValueLoadable } from 'recoil';
+import {
+  useRecoilState,
+  useRecoilValueLoadable,
+  useSetRecoilState,
+} from 'recoil';
 import { formDataState, recommendedsState } from '../../recoil/reserve';
 import Button from '../Button';
 
@@ -18,6 +22,7 @@ const ButtonBox = styled.div`
 
 const ReserveButtonBox = () => {
   const [formData, setFormData] = useRecoilState(formDataState);
+  // const setFormData = useSetRecoilState(formDataState);
   const { state, contents: recommendeds } =
     useRecoilValueLoadable(recommendedsState);
 
@@ -34,9 +39,11 @@ const ReserveButtonBox = () => {
         onClick={
           state === 'hasValue'
             ? () => (
-                setFormData({
-                  ...formData,
-                  counselorId: recommendeds[0].counselorId,
+                setFormData((formData) => {
+                  return {
+                    ...formData,
+                    counselorId: recommendeds[0].counselorId,
+                  };
                 }),
                 SubmitReserveForm()
               )
