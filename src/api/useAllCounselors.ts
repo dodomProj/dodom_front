@@ -16,8 +16,8 @@ const useAllCounselors = (
     );
     try {
       const responses = await Promise.all(requests);
+      const newOne = [...data];
       responses.forEach((response, i) => {
-        const newOne = [...data];
         newOne[i].counselors = response.data.map((one: ResCounselorData) => {
           return {
             ...one,
@@ -26,8 +26,8 @@ const useAllCounselors = (
             ),
           };
         });
-        setdata(newOne);
       });
+      setdata(newOne);
       setIsLoading(false);
     } catch (error: any) {
       setIsError(true);
