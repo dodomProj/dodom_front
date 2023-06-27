@@ -59,7 +59,11 @@ const useTestResult = (): TestResult => {
       }
       setType(tmpType);
       setFormData((formData) => {
-        return { ...formData, result: tmpType ? tmpType.title : '' };
+        return {
+          ...formData,
+          result: tmpType ? tmpType.title : '',
+          type: resultObj.id,
+        };
       });
     }
   }, [resultObj, answers, answerScore]);
