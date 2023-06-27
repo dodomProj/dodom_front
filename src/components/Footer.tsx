@@ -32,7 +32,7 @@ function Footer() {
         <span>같이 발돋움하며 앞으로 나아가요,</span>
         <span>도돔도돔 DODOM!</span>
       </Slogan>
-      <p>실시간 DODOM! 이용자수 1,234명</p>
+      <p>누적 DODOM! 이용자수 1,234명</p>
     </FooterContainer>
   );
 }

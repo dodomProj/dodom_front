@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Box } from '../diary/DiaryEditBox';
 import Button from '../Button';
 import QuestionInput from '../QuestionInput';
 import CheckBoxInput from '../CheckBoxInput';
@@ -8,7 +9,8 @@ import { useRecoilState } from 'recoil';
 import { formDataState } from '../../recoil/reserve';
 import { formTimeState } from '../../recoil/reserve';
 
-const FormBox = styled.div`
+import { useEffect } from 'react';
+const FormBox = styled(Box)`
   display: flex;
   flex-direction: column;
   background-color: var(--third);
@@ -23,7 +25,6 @@ const Title = styled.div`
     margin-top: 1rem;
   }
 `;
-
 const Left = styled.div`
   width: 15%;
   min-width: 80px;
@@ -67,18 +68,27 @@ const InputBox = styled.div`
   padding-left: calc(15% + 1rem);
 `;
 
+const FlexQuestionInput = styled(QuestionInput)`
+  width: 100%;
+  flex: 1;
+  margin-right: 1rem;
+`;
+
 const ReserveFormBox = () => {
   const [formData, setFormData] = useRecoilState(formDataState);
   const [formTime, setFormTime] = useRecoilState(formTimeState);
 
   const onSubmit = () => {
-    const totalFormData = {
+    const timeList = formTime.map((data) => data.date + data.time);
+    setFormData({
       ...formData,
-      ...formTime,
-    };
-    console.log(totalFormData);
+      timeList,
+    });
   };
 
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
   return (
     <FormBox>
       <Title>
@@ -104,7 +114,9 @@ const ReserveFormBox = () => {
             type="text"
             id="form-tel"
             placeholder="010-1234-1234"
-            onChange={(e) => setFormData({ ...formData, tel: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, contact: e.target.value })
+            }
           />
         </FlexBox>
         <InputBox>
@@ -128,22 +140,22 @@ const ReserveFormBox = () => {
             id="form-tel"
             placeholder="이외의 상담 시간 관련 요청사항이나 궁금한 점, 상담 받고 싶은 부분 등이 있다면 자유롭게 작성해주세요 :)"
             textareaRows={3}
-            onChange={(e) => setFormData({ ...formData, etc: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, inquiry: e.target.value })
+            }
           />
         </InputBox>
         <InputBox>
           <CheckBoxInput
-            checked={formData.call}
+            checked={formData.method === 'call'}
             text="전화가 좋아요!"
-            onChange={() => setFormData({ ...formData, call: !formData.call })}
+            onChange={() => setFormData({ ...formData, method: 'call' })}
             id="form-call"
           />
           <CheckBoxInput
-            checked={formData.message}
+            checked={formData.method === 'message'}
             text="문자가 좋아요!"
-            onChange={() =>
-              setFormData({ ...formData, message: !formData.message })
-            }
+            onChange={() => setFormData({ ...formData, method: 'message' })}
             id="form-message"
           />
         </InputBox>

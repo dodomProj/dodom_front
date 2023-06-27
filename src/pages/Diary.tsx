@@ -28,6 +28,7 @@ const Diary = () => {
   return (
     <DiaryBox>
       <TextBox {...aboutDiary} />
+      <TextBox {...aboutDiary} />
       <Bottom>
         <Routes>
           <Route path="/" element={<DiaryEditBox />} />

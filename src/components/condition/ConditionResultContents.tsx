@@ -1,4 +1,4 @@
-import { ResultCardProps } from '../ConditionResultCard';
+import { ResultCardProps } from './ConditionResultCard';
 import BasicResult from './BasicResult';
 import CommunicationResult from './CommunicationResult';
 import StressManageResult from './StressManageResult';

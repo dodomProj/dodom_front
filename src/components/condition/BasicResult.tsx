@@ -19,6 +19,7 @@ interface BarColor {
 }
 export const ProgressWrapper = styled(ProgressBox)<BarColor>`
   width: 25%;
+  min-width: 180px;
 
   > img:first-child {
     left: 1rem;
@@ -37,7 +38,7 @@ export const ProgressWrapper = styled(ProgressBox)<BarColor>`
 
   > div {
     border-radius: 40px;
-    border: 4px solid ${(props) => props.color};
+    box-shadow: inset 0 0 0 4px ${(props) => props.color};
     height: 3.2rem;
   }
 `;

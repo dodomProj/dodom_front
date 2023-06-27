@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import SaveButton from '../SaveButton';
-import { ResultCard } from '../ConditionResultCard';
+import { ResultCard } from '../condition/ConditionResultCard';
 import { useRecoilValue } from 'recoil';
 import { diaryTextState } from '../../recoil/diary';
 import { useRef } from 'react';

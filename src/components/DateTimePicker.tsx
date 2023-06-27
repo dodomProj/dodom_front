@@ -65,16 +65,20 @@ const DateTimePicker = ({ dateId, maxId }: Props) => {
   const [time, setTime] = useState<Date>(today);
 
   const [formTime, setFormTime] = useRecoilState(formTimeState);
-
+  const TIME_ZONE = 9 * 60 * 60 * 1000;
   useEffect(() => {
-    const dateString = date.toLocaleDateString();
+    const dateString = new Date(date.getTime() + TIME_ZONE)
+      .toISOString()
+      .substring(0, 10);
     const timeState = [...formTime];
     timeState[dateId] = { ...timeState[dateId], date: dateString };
     setFormTime(timeState);
   }, [date]);
 
   useEffect(() => {
-    const timeString = time.toTimeString().slice(0, 9);
+    const timeString = new Date(time.getTime() + TIME_ZONE)
+      .toISOString()
+      .substring(10, 19);
     const timeState = [...formTime];
     timeState[dateId] = { ...timeState[dateId], time: timeString };
     setFormTime(timeState);

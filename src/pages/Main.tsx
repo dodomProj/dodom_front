@@ -11,7 +11,6 @@ import QuestionInput from '../components/QuestionInput';
 const MainBox = styled(PageBase)`
   display: flex;
   flex-direction: column;
-  height: calc(100vh);
   margin-bottom: 0px;
 `;
 const Top = styled.div`
@@ -23,6 +22,8 @@ const Top = styled.div`
       filter: brightness(50%);
     }
   }
+
+  height: 70vh;
 `;
 const ButtonCard = styled(Link)`
   background-color: var(${(props) => props.theme});
@@ -30,9 +31,8 @@ const ButtonCard = styled(Link)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex: 1;
+  flex: 2;
   min-width: 500px;
-  height: 70vh;
   transition: 0.5s;
   img {
     display: block;
@@ -65,16 +65,19 @@ const Bottom = styled.div`
     color: var(--white);
     cursor: pointer;
   }
+  height: calc(-100px + 30vh);
 `;
 const SubBox = styled.div`
-  position: relative;
-  height: calc(-200px + 100vh);
+  height: calc(-300px + 100vh);
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 `;
 const LinkBox = styled.div`
-  position: absolute;
-  bottom: 5%;
-  right: 7rem;
   display: flex;
+  padding-right: 4rem;
+  margin-top: 2rem;
   div {
     color: var(--white);
     cursor: pointer;
@@ -115,18 +118,17 @@ const Main = () => {
         </Bottom>
       </MainBox>
       <SubBox ref={target}>
-        <TextBox {...firstDodom}>
-          <LinkBox>
-            <div>
-              상담사 알아보기
-              <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
-            </div>
-            <div>
-              DODOM 더 알아보기
-              <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
-            </div>
-          </LinkBox>
-        </TextBox>
+        <TextBox {...firstDodom} />
+        <LinkBox>
+          <div>
+            상담사 알아보기
+            <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
+          </div>
+          <div>
+            DODOM 더 알아보기
+            <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
+          </div>
+        </LinkBox>
       </SubBox>
     </>
   );

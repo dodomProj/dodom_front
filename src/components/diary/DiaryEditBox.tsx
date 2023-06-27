@@ -48,6 +48,8 @@ const EditForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+  justify-content: space-between;
   textarea {
     width: 100%;
     height: fit-content;
@@ -66,6 +68,7 @@ const EditForm = styled.form`
   }
   button {
     margin-top: 3rem;
+    margin-bottom: 5.2rem;
     width: fit-content;
     padding: 10px 50px;
     font-size: 24px;
@@ -125,7 +128,7 @@ const DiaryEditBox = () => {
           onChange={handleChange}
           placeholder="정해진 이야기는 없어요.&#13;&#10;하고 싶은 이야기를 마음껏 작성해주세요 :)"
           ref={textareaRef}
-          rows={3}
+          rows={4}
           value={diaryText}
           autoFocus
         />
