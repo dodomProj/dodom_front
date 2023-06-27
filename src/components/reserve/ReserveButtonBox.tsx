@@ -1,11 +1,9 @@
 import styled from 'styled-components';
-import {
-  useRecoilState,
-  useRecoilValueLoadable,
-  useSetRecoilState,
-} from 'recoil';
-import { formDataState, recommendedsState } from '../../recoil/reserve';
+import { useRecoilState, useRecoilValue, useRecoilValueLoadable } from 'recoil';
 import Button from '../Button';
+import postData from '../../api/postData';
+import { selectedCounselorsState } from '../../recoil/counsel';
+import { formDataState, recommendedsState } from '../../recoil/reserve';
 
 const ButtonBox = styled.div`
   display: flex;
@@ -21,14 +19,23 @@ const ButtonBox = styled.div`
 `;
 
 const ReserveButtonBox = () => {
+  const selectedCounselors = useRecoilValue(selectedCounselorsState);
   const [formData, setFormData] = useRecoilState(formDataState);
-  // const setFormData = useSetRecoilState(formDataState);
   const { state, contents: recommendeds } =
     useRecoilValueLoadable(recommendedsState);
 
   const SubmitReserveForm = () => {
-    console.log(formData);
-    // postData('/appointments', formData);
+    if (formData.counselorId === -1) {
+      const counselors = [...new Set(selectedCounselors)];
+      const numOfCounselors = counselors.length;
+      if (numOfCounselors === 1)
+        return postData('/appointments', {
+          ...formData,
+          counselorId: counselors[0],
+        });
+      else alert('상담사 한 명을 선택해주세요');
+    } else if (Object.values(formData).every((value) => value))
+      postData('/appointments', formData);
   };
 
   return (
@@ -42,7 +49,7 @@ const ReserveButtonBox = () => {
                 setFormData((formData) => {
                   return {
                     ...formData,
-                    counselorId: recommendeds[0].counselorId,
+                    counselorId: recommendeds.counselors[0].counselorId,
                   };
                 }),
                 SubmitReserveForm()
