@@ -6,20 +6,22 @@ import Carousel from '../Carousel';
 import CounselorDetail from './CounselorDetail';
 import CounselorCard from './CounselorCard';
 import { selectedCounselorsState } from '../../recoil/counsel';
-import { CategoryDataProps } from '../../data/categoryBoxData';
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  width: 100%;
+  gap: 4rem;
+`;
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 interface ContainerProps {
-  categoryText?: CategoryDataProps;
-  carouselData: any;
+  counselorsData: any;
 }
-const CounselorContainer = ({ categoryText, carouselData }: ContainerProps) => {
+const CounselorContainer = ({ counselorsData }: ContainerProps) => {
   const [selected, setSelected] = useState(-1);
   const setSelectedCounselors = useSetRecoilState(selectedCounselorsState);
 
@@ -58,17 +60,19 @@ const CounselorContainer = ({ categoryText, carouselData }: ContainerProps) => {
 
   return (
     <Container>
-      <CategoryBox title={carouselData.title} text={carouselData.text} />
-      <Carousel
-        settings={carouselSettings}
-        dataArr={carouselData.counselors}
-        Card={CounselorCard}
-        cardClick={cardClick}
-        selectedCard={selected}
-      />
+      <Content>
+        <CategoryBox title={counselorsData.title} text={counselorsData.text} />
+        <Carousel
+          settings={carouselSettings}
+          dataArr={counselorsData.counselors}
+          Card={CounselorCard}
+          cardClick={cardClick}
+          selectedCard={selected}
+        />
+      </Content>
       {selected !== -1 && (
         <CounselorDetail
-          {...carouselData.counselors.find(
+          {...counselorsData.counselors.find(
             (data: any) => data.counselorId === selected
           )}
         />
