@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { TestInfo } from '../../data/psychologicalTest';
 
 const Card = styled.div`
   display: flex;
@@ -29,6 +28,14 @@ const MoreInfo = styled.p`
   font-size: 0.75rem;
   text-align: end;
 `;
+
+interface TestInfo {
+  id: string;
+  title: string;
+  text: string[];
+  img: string;
+  time: number;
+}
 
 const TestCard = ({ id, img, title, text, time }: TestInfo) => {
   const navigate = useNavigate();

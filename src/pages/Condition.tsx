@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import TextBox from '../components/TextBox';
+import Carousel from '../components/Carousel';
 import TestCard from '../components/condition/TestCard';
 import { psychologicalTest } from '../data/psychologicalTest';
 import { conditionData } from '../data/textBoxData';
 import { MainContent, PageBase } from '../styles/basePadding';
-import Carousel from '../components/Carousel';
 
 const Source = styled.div`
   margin-top: 1.5rem;
@@ -39,7 +39,9 @@ const Condition = () => {
       <MainContent>
         <Carousel
           settings={carouselSettings}
-          dataArr={psychologicalTest}
+          dataArr={psychologicalTest.map((test) => {
+            return { id: test.id, title: test.title, ...test.info };
+          })}
           Card={TestCard}
         />
         <Source>
