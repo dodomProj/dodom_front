@@ -1,6 +1,7 @@
+import { useEffect } from 'react';
 import styled from 'styled-components';
-import { useRecoilValueLoadable } from 'recoil';
-import { useLocation } from 'react-router-dom';
+import { useRecoilValue, useRecoilValueLoadable } from 'recoil';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ToDiary from '../components/ToDiary';
 import LoadingBox from '../components/LoadingBox';
 import CategoryBox from '../components/CategoryBox';
@@ -11,7 +12,7 @@ import { MainContent, PageBase } from '../styles/basePadding';
 import { counselorTags } from '../data/counselors';
 import { counselBoxData } from './../data/subtitleBoxData';
 import { errorData, reviewSubData } from '../data/categoryBoxData';
-import { recommendedsState } from '../recoil/reserve';
+import { formDataState, recommendedsState } from '../recoil/reserve';
 import useAllCounselors from '../api/useAllCounselors';
 
 const CounselBox = styled(PageBase)`
@@ -34,6 +35,17 @@ const Counsel = () => {
     useRecoilValueLoadable(recommendedsState);
   const [counselorTagsData, isLoading, isError] =
     useAllCounselors(counselorTags);
+  const formData = useRecoilValue(formDataState);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (pathname === '/reserve/counsel') {
+      if (formData.name) {
+        !Object.values(formData).every((value) => value) &&
+          navigate('/counsel');
+      } else navigate('/counsel');
+    }
+  }, [formData, pathname]);
 
   return (
     <CounselBox>
