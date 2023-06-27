@@ -8,9 +8,9 @@ import ReserveButtonBox from '../components/reserve/ReserveButtonBox';
 import CounselorContainer from '../components/counsel/CounselorContainer';
 import { MainContent, PageBase } from '../styles/basePadding';
 import { recommendedsState } from '../recoil/reserve';
-import { counselors } from '../data/counselors';
+import { counselorTags } from '../data/counselors';
 import { counselBoxData } from './../data/subtitleBoxData';
-import { depression, health, recommended } from '../data/categoryBoxData';
+import { recommended } from '../data/categoryBoxData';
 
 const CounselBox = styled(PageBase)`
   display: flex;
@@ -41,14 +41,9 @@ const Counsel = () => {
             carouselData={state === 'hasValue' ? recommendeds : []}
           />
         )}
-        <CounselorContainer
-          categoryText={depression}
-          carouselData={counselors.depression}
-        />
-        <CounselorContainer
-          categoryText={health}
-          carouselData={counselors.health}
-        />
+        {counselorTags.map((tag) => (
+          <CounselorContainer key={tag.tagId} carouselData={tag} />
+        ))}
       </Mid>
       {pathname.includes('reserve') ? (
         <ReserveButtonBox />

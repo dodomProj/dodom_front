@@ -56,13 +56,13 @@ type Props = {
   career: number;
   score: number;
   introduce: string;
-  icon: string;
+  img: string;
 };
-const CounselorDetail = ({ name, career, score, introduce, icon }: Props) => {
+const CounselorDetail = ({ name, career, score, introduce, img }: Props) => {
   return (
     <div>
       <Top>
-        <Image src={process.env.PUBLIC_URL + `/assets/counselor_5.png`} />
+        <Image src={img} />
         <Profile>
           <h2>{introduce}</h2>
           <div>

@@ -1,6 +1,6 @@
 import { atom, selector } from 'recoil';
 import { dodomAPI } from '../api';
-import { counselors } from '../data/counselors';
+import { CounselorProps, TagsProps, counselorTags } from '../data/counselors';
 
 export const reserveCallCheck = atom<boolean>({
   key: 'reserveCall',
@@ -52,13 +52,6 @@ export const formTimeState = atom<TimeData[]>({
   default: [{ date: '', time: '', id: 0 }],
 });
 
-export interface FrontCounselorData {
-  counselorId: number;
-  icon: string;
-  img: string;
-  name: string;
-}
-
 export interface ResCounselorData {
   counselorId: number;
   career: number;
@@ -66,9 +59,7 @@ export interface ResCounselorData {
   score: number;
 }
 
-export interface RecommendedsData
-  extends FrontCounselorData,
-    ResCounselorData {}
+export interface RecommendedsData extends CounselorProps, ResCounselorData {}
 
 export const counselKeywordState = atom<string>({
   key: 'counselorKeyword',
@@ -80,20 +71,22 @@ export const recommendedsState = selector<RecommendedsData[]>({
   get: async ({ get }) => {
     const keyword = get(counselKeywordState);
     if (!keyword) return [];
-    const res = await dodomAPI(
-      `counselors?tagId=${keyword === 'depression' ? 1 : 2}`
+    const tagData: TagsProps | undefined = counselorTags.find(
+      (tag) => tag.name === (keyword === 'depression' ? keyword : 'health')
     );
+    if (!tagData) return [];
+
+    const res = await dodomAPI(`counselors?tagId=${tagData.tagId}`);
     const data = res.data
       .sort((a: ResCounselorData, b: ResCounselorData) => b.score - a.score)
       .slice(0, 3);
 
-    const frontData = counselors[keyword === 'depression' ? keyword : 'health'];
-    const idArr = frontData.map((obj: FrontCounselorData) => obj.counselorId);
-
-    return data.map((counselor: ResCounselorData) => {
+    return data.map((one: ResCounselorData) => {
       return {
-        ...counselor,
-        ...frontData[idArr.indexOf(counselor.counselorId)],
+        ...one,
+        ...tagData.counselors.find(
+          (counselor) => counselor.counselorId === one.counselorId
+        ),
       };
     });
   },
