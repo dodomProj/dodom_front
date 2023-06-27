@@ -72,7 +72,7 @@ const ReserveRecommend = () => {
                 formData.counselorId !== -1 &&
                 formData.counselorId !== recommended.counselorId
               }
-              emphatic={formData.counselorId === recommended.counselorId}
+              selectedCard={formData.counselorId}
             />
           ))}
       </CardBox>
