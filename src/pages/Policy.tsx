@@ -28,6 +28,11 @@ const Policy = () => {
     process.env.REACT_APP_NOTION_DATABASE_ID || ''
   );
 
+  const reduceText = (textArr: string[]) => {
+    const string = textArr.reduce((a: string, c: string) => a + c[0]);
+    return `${string}`.replace(/b$|,b$/, '');
+  };
+
   return (
     <PageBase>
       <SubtitleBox {...policyBoxData} theme="dark" />
@@ -44,8 +49,9 @@ const Policy = () => {
                 <PolicyCard
                   key={policy.id}
                   img={policy.cover?.file.url}
-                  policyInfo={policy.properties}
-                  url={policy.public_url}
+                  title={reduceText(policy.이름)}
+                  text={reduceText(policy.설명)}
+                  url={policy.id}
                 />
               ))}
           </CardBox>

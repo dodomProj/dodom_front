@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { notionAPI } from '.';
 
 const useNotionAPI = (id: string) => {
   const [policyData, setPolicyData] = useState<any[]>([]);
@@ -8,13 +8,11 @@ const useNotionAPI = (id: string) => {
 
   const req = async () => {
     try {
-      const response = await axios.post(`/v1/databases/${id}/query`, '', {
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_NOTION_KEY}`,
-          'Notion-Version': '2022-06-28',
-        },
-      });
-      setPolicyData(response.data.results);
+      const response = await notionAPI(`/${id}`);
+      const data: any = Object.values(response.data).find(
+        (obj: any) => obj.collection
+      );
+      setPolicyData(data.collection.data);
       setIsLoading(false);
       return response;
     } catch (error: any) {
