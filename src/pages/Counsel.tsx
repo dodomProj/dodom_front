@@ -1,16 +1,19 @@
+import { useEffect } from 'react';
 import styled from 'styled-components';
-import { useRecoilValueLoadable } from 'recoil';
-import { useLocation } from 'react-router-dom';
+import { useRecoilValue, useRecoilValueLoadable } from 'recoil';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ToDiary from '../components/ToDiary';
+import LoadingBox from '../components/LoadingBox';
 import CategoryBox from '../components/CategoryBox';
 import SubtitleBox from '../components/SubtitleBox';
 import ReserveButtonBox from '../components/reserve/ReserveButtonBox';
 import CounselorContainer from '../components/counsel/CounselorContainer';
 import { MainContent, PageBase } from '../styles/basePadding';
-import { recommendedsState } from '../recoil/reserve';
-import { counselors } from '../data/counselors';
+import { counselorTags } from '../data/counselors';
 import { counselBoxData } from './../data/subtitleBoxData';
-import { depression, health, recommended } from '../data/categoryBoxData';
+import { errorData, reviewSubData } from '../data/categoryBoxData';
+import { formDataState, recommendedsState } from '../recoil/reserve';
+import useAllCounselors from '../api/useAllCounselors';
 
 const CounselBox = styled(PageBase)`
   display: flex;
@@ -30,25 +33,39 @@ const Counsel = () => {
   const { pathname } = useLocation();
   const { state, contents: recommendeds } =
     useRecoilValueLoadable(recommendedsState);
+  const [counselorTagsData, isLoading, isError] =
+    useAllCounselors(counselorTags);
+  const formData = useRecoilValue(formDataState);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (pathname === '/reserve/counsel') {
+      if (formData.name) {
+        !Object.values(formData).every((value) => value) &&
+          navigate('/counsel');
+      } else navigate('/counsel');
+    }
+  }, [formData, pathname]);
 
   return (
     <CounselBox>
       <SubtitleBox {...counselBoxData} />
       <Mid>
-        {pathname.includes('reserve') && (
-          <CounselorContainer
-            categoryText={recommended}
-            carouselData={state === 'hasValue' ? recommendeds : []}
-          />
+        {pathname.includes('reserve') && state === 'hasValue' && (
+          <CounselorContainer counselorsData={recommendeds} />
         )}
-        <CounselorContainer
-          categoryText={depression}
-          carouselData={counselors.depression}
-        />
-        <CounselorContainer
-          categoryText={health}
-          carouselData={counselors.health}
-        />
+        {isLoading ? (
+          <LoadingBox
+            title="상담사 정보를 불러오고 있습니다"
+            text="잠시만 기다려주세요!"
+          />
+        ) : isError ? (
+          <CategoryBox {...errorData} />
+        ) : (
+          counselorTagsData.map((tag) => (
+            <CounselorContainer key={tag.tagId} counselorsData={tag} />
+          ))
+        )}
       </Mid>
       {pathname.includes('reserve') ? (
         <ReserveButtonBox />
@@ -56,11 +73,7 @@ const Counsel = () => {
         <>
           <ReviewBox>
             <Mid>
-              <CategoryBox
-                title="DODOM 상담 후기"
-                text="DODOM의 상담사와 함께한 실제 후기에요.
-도돔을 이용한 청년들의 후기가 최신순으로 업데이트 되고 있습니다."
-              />
+              <CategoryBox {...reviewSubData} />
               <div>후기 1</div>
               <div>후기 2</div>
               <div>후기 3</div>

@@ -61,8 +61,8 @@ type Props = {
   score: number;
   introduce: string;
   icon: string;
-  onClick?: React.MouseEventHandler;
-  emphatic?: boolean;
+  onClick: (id: number) => void;
+  selectedCard: number;
   grayscale?: boolean;
   counselorId: number;
 };
@@ -74,14 +74,18 @@ const CounselorCard = ({
   introduce,
   icon,
   onClick,
-  emphatic,
+  selectedCard,
   grayscale,
   counselorId,
 }: Props) => {
   return (
-    <CardBox onClick={onClick} emphatic={emphatic} grayscale={grayscale}>
+    <CardBox
+      onClick={() => onClick(counselorId)}
+      emphatic={counselorId === selectedCard}
+      grayscale={grayscale}
+    >
       <Top>
-        <img src={process.env.PUBLIC_URL + `/assets/${icon}`} />
+        <img src={icon} />
         <p>{name}</p>
       </Top>
       <Bottom>

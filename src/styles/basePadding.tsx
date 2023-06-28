@@ -4,7 +4,6 @@ export const basePadding = css`
   max-width: 1256px;
   margin: 0 auto;
   padding: 0 60px;
-  min-width: 360px;
 
   @media screen and (max-width: 768px) {
     padding-left: 40px;

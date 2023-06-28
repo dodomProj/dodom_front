@@ -3,17 +3,16 @@ import LoadingBox from '../components/LoadingBox';
 import SubtitleBox from '../components/SubtitleBox';
 import QuestionBox from '../components/condition/QuestionBox';
 import ResultContainer from '../components/ResultContainer';
-import { TestInfo, psychologicalTest } from '../data/psychologicalTest';
 import { PageBase } from '../styles/basePadding';
 import useFindTest from '../util/useFindTest';
 
 const ConditionCheck = () => {
-  const testInfo = useFindTest<TestInfo>(psychologicalTest);
+  const testInfo = useFindTest('info');
   const [conditionStage, setConditionStage] = useState<number>(0);
 
   return (
     <PageBase>
-      <SubtitleBox {...testInfo} />
+      <SubtitleBox {...testInfo.info} title={testInfo.title} />
       {conditionStage === 0 ? (
         <QuestionBox setStage={setConditionStage} />
       ) : (
