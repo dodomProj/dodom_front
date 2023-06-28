@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useRecoilValue, useRecoilValueLoadable } from 'recoil';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ToDiary from '../components/ToDiary';
+import ReviewBox from '../components/counsel/ReviewBox';
 import LoadingBox from '../components/LoadingBox';
 import CategoryBox from '../components/CategoryBox';
 import SubtitleBox from '../components/SubtitleBox';
@@ -11,7 +12,7 @@ import CounselorContainer from '../components/counsel/CounselorContainer';
 import { MainContent, PageBase } from '../styles/basePadding';
 import { counselorTags } from '../data/counselors';
 import { counselBoxData } from './../data/subtitleBoxData';
-import { errorData, reviewSubData } from '../data/categoryBoxData';
+import { errorData } from '../data/categoryBoxData';
 import { formDataState, recommendedsState } from '../recoil/reserve';
 import useAllCounselors from '../api/useAllCounselors';
 
@@ -24,9 +25,6 @@ const Mid = styled(MainContent)`
   flex-direction: column;
   gap: 5.5rem;
   width: 100%;
-`;
-const ReviewBox = styled.aside`
-  background-color: var(--third);
 `;
 
 const Counsel = () => {
@@ -71,14 +69,7 @@ const Counsel = () => {
         <ReserveButtonBox />
       ) : (
         <>
-          <ReviewBox>
-            <Mid>
-              <CategoryBox {...reviewSubData} />
-              <div>후기 1</div>
-              <div>후기 2</div>
-              <div>후기 3</div>
-            </Mid>
-          </ReviewBox>
+          <ReviewBox />
           <ToDiary />
         </>
       )}
