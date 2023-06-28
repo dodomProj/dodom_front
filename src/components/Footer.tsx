@@ -25,7 +25,7 @@ const Slogan = styled.p`
   }
 `;
 
-function Footer({ visitCount }: { visitCount: number }) {
+function Footer({ visitCount = 0 }: { visitCount: number }) {
   return (
     <FooterContainer>
       <Slogan>

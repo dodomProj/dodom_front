@@ -23,7 +23,9 @@ function App() {
   }, [pathname]);
 
   useEffect(() => {
-    postData('/visits', null).then((res) => setVisitCount(res.data.visitCount));
+    postData('/visits', null).then((res) =>
+      setVisitCount(res?.data.visitCount)
+    );
   }, []);
 
   return (
