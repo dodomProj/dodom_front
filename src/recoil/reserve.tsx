@@ -27,12 +27,13 @@ export interface TimeData {
 export interface FormData {
   name: string;
   contact: string;
-  result: string;
   email: string;
+  timeList: string[];
+  type: string;
+  result: string;
   inquiry: string;
   method: string;
   counselorId: number;
-  timeList: string[];
 }
 
 export const formDataState = atom<FormData>({
@@ -40,12 +41,13 @@ export const formDataState = atom<FormData>({
   default: {
     name: '',
     contact: '',
-    result: '',
     email: '',
+    timeList: [],
+    type: '',
+    result: '',
     inquiry: '',
     method: '',
     counselorId: -1,
-    timeList: [],
   },
 });
 
