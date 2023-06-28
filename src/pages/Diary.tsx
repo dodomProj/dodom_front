@@ -19,13 +19,15 @@ const Bottom = styled.div`
   ${basePadding};
   padding-top: 7.5rem;
   width: 100%;
-  height: 860px;
+  height: fit-content;
+  margin-bottom: 4rem;
 `;
 
 const Diary = () => {
   const diarySubmit = useRecoilValue(diarySubmitState);
   return (
     <DiaryBox>
+      <TextBox {...aboutDiary} />
       <TextBox {...aboutDiary} />
       <Bottom>
         <Routes>

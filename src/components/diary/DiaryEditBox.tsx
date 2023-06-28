@@ -15,7 +15,6 @@ export const Box = styled.div`
   background-color: var(--third);
   border-radius: 20px;
   padding: 4rem;
-  height: 100%;
 `;
 const EditTip = styled.div`
   display: flex;

@@ -13,9 +13,12 @@ const ReserveBox = styled(PageBase)`
   display: flex;
   flex-direction: column;
 `;
+
 const Bottom = styled.div`
   ${basePadding};
   padding-top: 7.5rem;
+  height: fit-content;
+  margin-bottom: 4rem;
   width: 100%;
 `;
 

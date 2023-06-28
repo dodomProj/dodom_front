@@ -1,5 +1,6 @@
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.module.css';
+import 'react-datepicker/dist/react-datepicker-min.module.css';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useRecoilState } from 'recoil';
@@ -8,14 +9,14 @@ import { questionStyle } from './QuestionInput';
 
 const DateBox = styled.div`
   display: flex;
+  gap: 1rem;
 `;
 
 const PickBox = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 2;
-  margin-right: 1rem;
   flex-wrap: wrap;
+  flex: 1;
 `;
 
 const StyledDatePicker = styled(DatePicker)`
@@ -40,15 +41,17 @@ const ButtonBox = styled.div`
   align-items: flex-end;
   justify-content: flex-end;
   margin-bottom: 6px;
-  width: 20%;
+  width: fit-content;
 `;
 
 const Button = styled.button`
   background: transparent;
   border: none;
   margin-left: 0.5rem !important;
-  width: fit-content;
   visibility: ${(props) => (props.disabled ? 'hidden' : 'visible')};
+  img {
+    width: 2.4rem;
+  }
 `;
 
 interface Props {
@@ -62,16 +65,20 @@ const DateTimePicker = ({ dateId, maxId }: Props) => {
   const [time, setTime] = useState<Date>(today);
 
   const [formTime, setFormTime] = useRecoilState(formTimeState);
-
+  const TIME_ZONE = 9 * 60 * 60 * 1000;
   useEffect(() => {
-    const dateString = date.toLocaleDateString();
+    const dateString = new Date(date.getTime() + TIME_ZONE)
+      .toISOString()
+      .substring(0, 10);
     const timeState = [...formTime];
     timeState[dateId] = { ...timeState[dateId], date: dateString };
     setFormTime(timeState);
   }, [date]);
 
   useEffect(() => {
-    const timeString = time.toTimeString().slice(0, 9);
+    const timeString = new Date(time.getTime() + TIME_ZONE)
+      .toISOString()
+      .substring(10, 19);
     const timeState = [...formTime];
     timeState[dateId] = { ...timeState[dateId], time: timeString };
     setFormTime(timeState);
