@@ -13,12 +13,17 @@ import Policy from './pages/Policy';
 import Survey from './pages/Survey';
 import Error from './pages/Error';
 
+import { useRecoilValue } from 'recoil';
+import { reserveCardInfo } from './recoil/reserve';
+
 function App() {
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+  const info = useRecoilValue(reserveCardInfo);
   return (
     <>
       <GlobalStyle />
@@ -27,7 +32,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/diary/*" element={<Diary />} />
         <Route path="/reserve/counsel" element={<Counsel />} />
-        <Route path="/reserve/*" element={<Reserve />} />
+        <Route path="/reserve/*" element={<Reserve {...info} />} />
         <Route path="/counsel/*" element={<Counsel />} />
         <Route path="/condition" element={<Condition />} />
         <Route path="/condition/*" element={<ConditionCheck />} />

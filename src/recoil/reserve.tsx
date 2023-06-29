@@ -12,11 +12,26 @@ export const reserveMessageCheck = atom<boolean>({
   default: false,
 });
 
-// interface Todo {
-//   id: number;
-//   content: string;
-//   completed: boolean;
-// }
+export interface ReserveCardProps {
+  title?: string;
+  subtitle?: string;
+  text?: string[];
+  img?: string;
+  time?: number;
+  theme?: string;
+}
+
+export const reserveCardInfo = atom<ReserveCardProps>({
+  key: 'reserveCardInfo',
+  default: {
+    title: '',
+    subtitle: '',
+    text: [],
+    img: '',
+    time: 0,
+    theme: '',
+  },
+});
 
 export interface TimeData {
   date: string;
@@ -34,7 +49,6 @@ export interface FormData {
   inquiry: string;
   method: string;
   counselorId: number;
-  timeList: string[];
 }
 
 export const formDataState = atom<FormData>({
@@ -49,7 +63,6 @@ export const formDataState = atom<FormData>({
     inquiry: '',
     method: '',
     counselorId: -1,
-    timeList: [],
   },
 });
 
