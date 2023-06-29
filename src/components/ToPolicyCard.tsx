@@ -30,8 +30,8 @@ const ToPolicyCard = () => {
       <img src="/assets/lightbulb.png" alt="" />
       <div>
         <div>
-          <h2>어쩌고 정책, 저쩌고 사업에서</h2>
-          <p>도움을 받을 수 있어요!</p>
+          <h2>고용노동부 청년도전지원사업</h2>
+          <p>정책을 통해 도움을 받을 수 있어요!</p>
         </div>
         <MoreInfoArrow toUri="/policy" infoText="자세히 알아보기" />
       </div>
