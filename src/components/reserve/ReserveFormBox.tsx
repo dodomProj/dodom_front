@@ -10,6 +10,7 @@ import { formDataState } from '../../recoil/reserve';
 import { formTimeState } from '../../recoil/reserve';
 
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 const FormBox = styled(Box)`
   display: flex;
   flex-direction: column;
@@ -68,27 +69,30 @@ const InputBox = styled.div`
   padding-left: calc(15% + 1rem);
 `;
 
-const FlexQuestionInput = styled(QuestionInput)`
-  width: 100%;
-  flex: 1;
-  margin-right: 1rem;
-`;
-
 const ReserveFormBox = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useRecoilState(formDataState);
   const [formTime, setFormTime] = useRecoilState(formTimeState);
 
-  const onSubmit = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const target = Object.entries(formData);
+    if (target.every(([_, value]) => value)) {
+      navigate('/reserve/recommend');
+    } else {
+      alert('모든 입력을 완료해주세요.');
+      console.log(target);
+    }
+  };
+
+  useEffect(() => {
     const timeList = formTime.map((data) => data.date + data.time);
     setFormData({
       ...formData,
       timeList,
     });
-  };
+  }, [formTime]);
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
   return (
     <FormBox>
       <Title>
@@ -100,7 +104,7 @@ const ReserveFormBox = () => {
           <p>작성한 오늘의 일기로 전문가에게 도움을 받아볼 수 있어요!</p>
         </Right>
       </Title>
-      <Form>
+      <Form onSubmit={(e) => handleSubmit(e)}>
         <FlexBox>
           <QuestionInput
             question="성함"
@@ -161,11 +165,7 @@ const ReserveFormBox = () => {
         </InputBox>
         {/* 버튼 텍스트 수정 가능 */}
         <ButtonBox>
-          <Button
-            text="상담사 추천받기"
-            forSubmit={false}
-            onClick={() => onSubmit()}
-          />
+          <Button text="상담사 추천받기" forSubmit={true} />
         </ButtonBox>
       </Form>
     </FormBox>

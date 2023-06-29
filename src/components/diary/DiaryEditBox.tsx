@@ -99,7 +99,7 @@ const DiaryEditBox = () => {
     e.preventDefault();
     if (diaryText.length) {
       setDiarySubmit(true);
-      setFormData({ ...formData, type: '마음 일기' });
+      setFormData({ ...formData, type: '마음 일기', result: diaryText });
       navigate('/diary/result');
     }
   };
