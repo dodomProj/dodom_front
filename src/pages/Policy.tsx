@@ -48,7 +48,7 @@ const Policy = () => {
               policyData.map((policy: any) => (
                 <PolicyCard
                   key={policy.id}
-                  img={policy.cover?.file.url}
+                  img={policy.img && policy.img[0][0]}
                   title={reduceText(policy.이름)}
                   text={reduceText(policy.설명)}
                   url={policy.id}
