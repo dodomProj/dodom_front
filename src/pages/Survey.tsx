@@ -72,13 +72,17 @@ const Survey = () => {
     };
 
   const submitForm = () => {
-    if (Object.values(form).every((el) => el))
-      postData(`/reviews?appointmentId=${search.slice(1)}`, form);
-    // TODO 요청 실패할 경우 동작(ex. alert)
+    postData(
+      `/reviews?appointmentId=${search.split('?appointmentId=')[1]}`,
+      form
+    ).then((res) => {
+      if (res.status === 201) navigate('/');
+      else alert('제출에 실패했습니다.\n잠시후 다시 시도해주세요');
+    });
   };
 
   useEffect(() => {
-    if (!search) navigate('/');
+    if (!search.includes('?appointmentId=')) navigate('/');
     else {
       // TODO get 요청(+예약번호) => 상담사 번호, 후기 작성 여부
       // 잘못된 예약번호거나 후기 작성 O인 경우 메인으로 navigate('/')

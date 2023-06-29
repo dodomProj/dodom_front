@@ -1,18 +1,15 @@
 import { useEffect, useState } from 'react';
-import { notionAPI } from '.';
+import { dodomAPI } from '.';
 
-const useNotionAPI = (id: string) => {
-  const [policyData, setPolicyData] = useState<any[]>([]);
+const useGet = (uri: string) => {
+  const [data, setData] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   const req = async () => {
     try {
-      const response = await notionAPI(`/${id}`);
-      const data: any = Object.values(response.data).find(
-        (obj: any) => obj.collection
-      );
-      setPolicyData(data.collection.data);
+      const response = await dodomAPI(`${uri}`);
+      setData(response.data);
       setIsLoading(false);
       return response;
     } catch (error: any) {
@@ -23,14 +20,14 @@ const useNotionAPI = (id: string) => {
   };
 
   useEffect(() => {
-    if (id) {
+    if (uri) {
       setIsLoading(true);
       setIsError(false);
       req();
     }
-  }, [id]);
+  }, [uri]);
 
-  return [policyData, isLoading, isError];
+  return [data, isLoading, isError];
 };
 
-export default useNotionAPI;
+export default useGet;

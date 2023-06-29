@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import GlobalStyle from './styles/global';
 import Header from './components/Header';
@@ -12,13 +12,22 @@ import ConditionCheck from './pages/ConditionCheck';
 import Policy from './pages/Policy';
 import Survey from './pages/Survey';
 import Error from './pages/Error';
+import postData from './api/postData';
 
 function App() {
   const { pathname } = useLocation();
+  const [visitCount, setVisitCount] = useState(0);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+  useEffect(() => {
+    postData('/visits', null).then((res) =>
+      setVisitCount(res?.data.visitCount)
+    );
+  }, []);
+
   return (
     <>
       <GlobalStyle />
@@ -35,7 +44,7 @@ function App() {
         <Route path="/survey/*" element={<Survey />} />
         <Route path="*" element={<Error />} />
       </Routes>
-      <Footer />
+      <Footer visitCount={visitCount} />
     </>
   );
 }

@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 interface CardProps {
   img: string;
-  policyInfo: any;
+  title: string;
+  text: string;
   url: string;
 }
 
@@ -50,14 +51,10 @@ const MoreInfo = styled.a`
 `;
 const PolicyCard = ({
   img = '/assets/policy_default.png',
-  policyInfo,
+  title,
+  text,
   url,
 }: CardProps) => {
-  const title = policyInfo.이름.title.reduce(
-    (a: string, c: any) => a + c.plain_text,
-    ''
-  );
-  const content = policyInfo.설명.rich_text[0].plain_text;
   return (
     <Box>
       <div>
@@ -66,10 +63,16 @@ const PolicyCard = ({
         </ImgWrapper>
         <Text>
           <h3>{title}</h3>
-          <p>{content.length > 75 ? content.slice(0, 75) + '...' : content}</p>
+          <p>{text.length > 75 ? text.slice(0, 75) + '...' : text}</p>
         </Text>
       </div>
-      <MoreInfo href={url} target="_blank">
+      <MoreInfo
+        href={`https://carnation-english-ab2.notion.site/${url.replace(
+          '-',
+          ''
+        )}`}
+        target="_blank"
+      >
         자세히 알아보기
       </MoreInfo>
     </Box>
