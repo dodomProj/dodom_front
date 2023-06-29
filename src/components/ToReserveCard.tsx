@@ -12,7 +12,7 @@ const Item = styled(Link)`
     color: var(--black);
   }
   cursor: pointer;
-  padding: 3rem;
+  padding: 3rem 2rem;
   div {
     padding: 1rem 0;
   }

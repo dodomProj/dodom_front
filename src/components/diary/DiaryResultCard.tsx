@@ -13,6 +13,7 @@ const Card = styled(ResultCard)`
     align-self: center;
     width: 20rem;
   }
+  witdh: fit-content;
 `;
 
 const DiaryResultCard = () => {
