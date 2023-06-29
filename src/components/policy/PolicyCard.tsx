@@ -46,10 +46,10 @@ const MoreInfo = styled.a`
   font-size: 0.75rem;
   text-align: end;
   cursor: pointer;
-  padding: 0 1.25rem 1.25rem;
+  padding: 1rem 1.25rem 1.25rem;
 `;
 const PolicyCard = ({
-  img = '/assets/emoji_grinning_face.png',
+  img = '/assets/policy_default.png',
   policyInfo,
   url,
 }: CardProps) => {

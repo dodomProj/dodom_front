@@ -5,6 +5,7 @@ import CounselorCard from '../counsel/CounselorCard';
 import MoreInfoArrow from '../MoreInfoArrow';
 import ReserveButtonBox from './ReserveButtonBox';
 import {
+  CounselorData,
   RecommendedsData,
   formDataState,
   recommendedsState,
@@ -56,7 +57,7 @@ const ReserveRecommend = () => {
       />
       <CardBox>
         {state === 'hasValue' &&
-          recommendeds.map((recommended: RecommendedsData) => (
+          recommendeds.counselors.map((recommended: CounselorData) => (
             <CounselorCard
               {...recommended}
               key={recommended.counselorId}
@@ -72,7 +73,7 @@ const ReserveRecommend = () => {
                 formData.counselorId !== -1 &&
                 formData.counselorId !== recommended.counselorId
               }
-              emphatic={formData.counselorId === recommended.counselorId}
+              selectedCard={formData.counselorId}
             />
           ))}
       </CardBox>

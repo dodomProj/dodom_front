@@ -6,8 +6,11 @@ import PolicyCard from '../components/policy/PolicyCard';
 import { policyBoxData } from '../data/subtitleBoxData';
 import { MainContent, PageBase } from '../styles/basePadding';
 import useNotionAPI from '../api/useNotionAPI';
+import CategoryBox from '../components/CategoryBox';
+import { policySubData } from '../data/categoryBoxData';
 
-const CardBox = styled(MainContent)`
+const CardBox = styled.div`
+  margin-top: 3rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-gap: 2.5rem;
@@ -28,23 +31,26 @@ const Policy = () => {
   return (
     <PageBase>
       <SubtitleBox {...policyBoxData} theme="dark" />
-      {isLoading ? (
-        <LoadingBox title="정보를 불러오고 있습니다" text="" />
-      ) : isError ? (
-        <p>에러입니다</p>
-      ) : (
-        <CardBox>
-          {Array.isArray(policyData) &&
-            policyData.map((policy: any) => (
-              <PolicyCard
-                key={policy.id}
-                img={policy.cover?.file.url}
-                policyInfo={policy.properties}
-                url={policy.public_url}
-              />
-            ))}
-        </CardBox>
-      )}
+      <MainContent>
+        <CategoryBox {...policySubData} />
+        {isLoading ? (
+          <LoadingBox title="정보를 불러오고 있습니다" text="" />
+        ) : isError ? (
+          <p>에러입니다</p>
+        ) : (
+          <CardBox>
+            {Array.isArray(policyData) &&
+              policyData.map((policy: any) => (
+                <PolicyCard
+                  key={policy.id}
+                  img={policy.cover?.file.url}
+                  policyInfo={policy.properties}
+                  url={policy.public_url}
+                />
+              ))}
+          </CardBox>
+        )}
+      </MainContent>
       <ToDiary />
     </PageBase>
   );

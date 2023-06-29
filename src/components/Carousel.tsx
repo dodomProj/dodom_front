@@ -20,7 +20,7 @@ interface CarouselProps {
   settings: {};
   dataArr: {}[];
   Card: ComponentType<any>;
-  cardClick?: (i: number) => void;
+  cardClick?: (id: number) => void;
   selectedCard?: number;
 }
 
@@ -53,11 +53,7 @@ const Carousel = ({
       <Box {...settings}>
         {dataArr.map((data, i) => (
           <SwiperSlide key={i}>
-            <Card
-              {...data}
-              onClick={cardClick && (() => cardClick(i))}
-              emphatic={selectedCard === i}
-            />
+            <Card {...data} onClick={cardClick} selectedCard={selectedCard} />
           </SwiperSlide>
         ))}
       </Box>

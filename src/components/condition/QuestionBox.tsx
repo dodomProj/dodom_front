@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import Button from '../Button';
 import AnswerEl from './AnswerEl';
 import ProgressBar from '../ProgressBar';
 import { MainContent } from '../../styles/basePadding';
-import { TestQNAInfo, psychologicalQNA } from '../../data/psychologicalTest';
-import useFindTest from '../../util/useFindTest';
-import { useRecoilState, useSetRecoilState } from 'recoil';
 import { answerScoreState, answersState } from '../../recoil/condition';
+import useFindTest from '../../util/useFindTest';
 
 interface QuestionBoxProps {
   setStage: (stage: number) => void;
@@ -36,7 +35,8 @@ const ButtonBox = styled.div`
 `;
 
 const QuestionBox = ({ setStage }: QuestionBoxProps) => {
-  const testQNA = useFindTest<TestQNAInfo>(psychologicalQNA);
+  const { qna } = useFindTest('qna');
+
   const setAnswersScore = useSetRecoilState(answerScoreState);
   const [answers, setAnswers] = useRecoilState(answersState);
 
@@ -50,50 +50,56 @@ const QuestionBox = ({ setStage }: QuestionBoxProps) => {
   };
 
   useEffect(() => {
-    if (testQNA?.questions) {
-      setQuestionsLen(testQNA.questions.length);
-      setAnswersScore(testQNA.answers.map((answer) => answer.score));
+    if (qna?.questions) {
+      setQuestionsLen(qna.questions.length);
+      setAnswersScore(qna.answers.map((answer) => answer.score));
       setAnswers([]);
     }
-  }, [testQNA]);
+  }, [qna]);
 
   return (
     <Box>
-      <p>{testQNA?.questions && testQNA?.questions[questionIdx]}</p>
-      <ProgressBar
-        value={(questionIdx / questionsLen) * 100}
-        size="sm"
-        bgcolor="var(--secondary)"
-        barcolor="var(--primary)"
-      />
-      <AnswerBox>
-        {testQNA?.answers?.map((answer, idx) => (
-          <AnswerEl
-            key={idx}
-            img={answer.img}
-            text={answer.text}
-            setAnswer={() => setAnswer(idx)}
-            selected={answers[questionIdx] === idx}
+      {qna && (
+        <>
+          <p>{qna.questions[questionIdx]}</p>
+          <ProgressBar
+            value={(questionIdx / questionsLen) * 100}
+            size="sm"
+            bgcolor="var(--secondary)"
+            barcolor="var(--primary)"
           />
-        ))}
-      </AnswerBox>
-      <ButtonBox>
-        {!!questionIdx && (
-          <Button
-            text="이전"
-            onClick={() => questionIdx > 0 && setQuestionIdx(questionIdx - 1)}
-          />
-        )}
-        <Button
-          text={questionIdx === questionsLen - 1 ? '결과보기' : '다음'}
-          onClick={
-            questionsLen && questionIdx < questionsLen - 1
-              ? () => setQuestionIdx(questionIdx + 1)
-              : () => setStage(1)
-          }
-          isEmpty={answers[questionIdx] === undefined}
-        />
-      </ButtonBox>
+          <AnswerBox>
+            {qna.answers.map((answer, idx) => (
+              <AnswerEl
+                key={idx}
+                img={answer.img}
+                text={answer.text}
+                setAnswer={() => setAnswer(idx)}
+                selected={answers[questionIdx] === idx}
+              />
+            ))}
+          </AnswerBox>
+          <ButtonBox>
+            {!!questionIdx && (
+              <Button
+                text="이전"
+                onClick={() =>
+                  questionIdx > 0 && setQuestionIdx(questionIdx - 1)
+                }
+              />
+            )}
+            <Button
+              text={questionIdx === questionsLen - 1 ? '결과보기' : '다음'}
+              onClick={
+                questionsLen && questionIdx < questionsLen - 1
+                  ? () => setQuestionIdx(questionIdx + 1)
+                  : () => setStage(1)
+              }
+              isEmpty={answers[questionIdx] === undefined}
+            />
+          </ButtonBox>
+        </>
+      )}
     </Box>
   );
 };
