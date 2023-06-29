@@ -1,6 +1,10 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import { useRecoilValue, useRecoilValueLoadable } from 'recoil';
+import {
+  useRecoilValue,
+  useRecoilValueLoadable,
+  useResetRecoilState,
+} from 'recoil';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ToDiary from '../components/ToDiary';
 import ReviewBox from '../components/counsel/ReviewBox';
@@ -15,6 +19,7 @@ import { counselBoxData } from './../data/subtitleBoxData';
 import { errorData } from '../data/categoryBoxData';
 import { formDataState, recommendedsState } from '../recoil/reserve';
 import useAllCounselors from '../api/useAllCounselors';
+import { selectedCounselorsState } from '../recoil/counsel';
 
 const CounselBox = styled(PageBase)`
   display: flex;
@@ -33,6 +38,7 @@ const Counsel = () => {
     useRecoilValueLoadable(recommendedsState);
   const [counselorTagsData, isLoading, isError] =
     useAllCounselors(counselorTags);
+  const resetSelectedCounselors = useResetRecoilState(selectedCounselorsState);
   const formData = useRecoilValue(formDataState);
   const navigate = useNavigate();
 
@@ -43,6 +49,7 @@ const Counsel = () => {
           navigate('/counsel');
       } else navigate('/counsel');
     }
+    resetSelectedCounselors();
   }, [formData, pathname]);
 
   return (
