@@ -12,11 +12,26 @@ export const reserveMessageCheck = atom<boolean>({
   default: false,
 });
 
-// interface Todo {
-//   id: number;
-//   content: string;
-//   completed: boolean;
-// }
+export interface ReserveCardProps {
+  title?: string;
+  subtitle?: string;
+  text?: string[];
+  img?: string;
+  time?: number;
+  theme?: string;
+}
+
+export const reserveCardInfo = atom<ReserveCardProps>({
+  key: 'reserveCardInfo',
+  default: {
+    title: '',
+    subtitle: '',
+    text: [],
+    img: '',
+    time: 0,
+    theme: '',
+  },
+});
 
 export interface TimeData {
   date: string;

@@ -1,7 +1,8 @@
 import { useRef } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { formDataState } from '../../recoil/reserve';
 import {
   diaryTextState,
   diarySubmitState,
@@ -83,8 +84,9 @@ const DiaryEditBox = () => {
   const navigate = useNavigate();
 
   const [diaryText, setDiaryText] = useRecoilState(diaryTextState);
-  const [diarySubmit, setDiarySubmit] = useRecoilState(diarySubmitState);
   const [tipHover, setTipHover] = useRecoilState(tipHoverState);
+  const setDiarySubmit = useSetRecoilState(diarySubmitState);
+  const [formData, setFormData] = useRecoilState(formDataState);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   useAutosizeTextArea(textareaRef.current, diaryText);
@@ -97,6 +99,7 @@ const DiaryEditBox = () => {
     e.preventDefault();
     if (diaryText.length) {
       setDiarySubmit(true);
+      setFormData({ ...formData, type: '마음 일기', result: diaryText });
       navigate('/diary/result');
     }
   };

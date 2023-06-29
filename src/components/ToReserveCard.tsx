@@ -12,7 +12,7 @@ const Item = styled(Link)`
     color: var(--black);
   }
   cursor: pointer;
-  padding: 3rem;
+  padding: 3rem 2rem;
   div {
     padding: 1rem 0;
   }
@@ -24,7 +24,6 @@ interface CardProps {
 
 const ToReserveCard = ({ keyword }: CardProps) => {
   const setCounselKeyword = useSetRecoilState(counselKeywordState);
-
   return (
     <ButtonCard theme="--primary" onClick={() => setCounselKeyword(keyword)}>
       <Item to={'/reserve/'}>

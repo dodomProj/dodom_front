@@ -1,14 +1,13 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { basePadding } from '../styles/basePadding';
-
-type TextBoxProps = {
-  title: String;
-  subtitle?: String;
-  text: Array<String>;
-  theme: String;
+interface TextBoxProps {
+  title?: string;
+  subtitle?: string;
+  text?: string[];
+  theme?: string;
   children?: ReactNode;
-};
+}
 
 const Box = styled.div`
   background-color: var(
@@ -57,11 +56,7 @@ const TextBox = ({ title, subtitle, text, theme, children }: TextBoxProps) => {
           <h1>{title}</h1>
           {subtitle && <p>{subtitle}</p>}
         </Title>
-        <Text>
-          {text.map((line) => (
-            <p>{line}</p>
-          ))}
-        </Text>
+        <Text>{text && text.map((line) => <p>{line}</p>)}</Text>
         {children}
       </div>
     </Box>

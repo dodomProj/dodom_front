@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { PageBase, basePadding } from '../styles/basePadding';
 
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState, useResetRecoilState } from 'recoil';
 import { diarySubmitState } from '../recoil/diary';
+import { reserveCardInfo } from './../recoil/reserve';
 
 import TextBox from '../components/TextBox';
 import { aboutDiary } from '../data/textBoxData';
@@ -10,6 +11,7 @@ import DiaryEditBox from '../components/diary/DiaryEditBox';
 import DiaryResultBox from '../components/diary/DiaryResultBox';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const DiaryBox = styled(PageBase)`
   display: flex;
@@ -24,7 +26,13 @@ const Bottom = styled.div`
 `;
 
 const Diary = () => {
+  const setCardInfo = useSetRecoilState(reserveCardInfo);
+  const resetCardInfo = useResetRecoilState(reserveCardInfo);
   const diarySubmit = useRecoilValue(diarySubmitState);
+  useEffect(() => {
+    resetCardInfo();
+    setCardInfo({ ...aboutDiary });
+  }, []);
   return (
     <DiaryBox>
       <TextBox {...aboutDiary} />
