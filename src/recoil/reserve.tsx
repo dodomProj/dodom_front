@@ -34,6 +34,7 @@ export interface FormData {
   inquiry: string;
   method: string;
   counselorId: number;
+  timeList: string[];
 }
 
 export const formDataState = atom<FormData>({
@@ -48,6 +49,7 @@ export const formDataState = atom<FormData>({
     inquiry: '',
     method: '',
     counselorId: -1,
+    timeList: [],
   },
 });
 

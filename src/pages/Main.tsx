@@ -72,12 +72,12 @@ const SubBox = styled.div`
   background: var(--black);
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  position: relative;
 `;
 const LinkBox = styled.div`
   display: flex;
   padding-right: 4rem;
-  margin-top: 2rem;
+  margin-top: 4rem;
   div {
     color: var(--white);
     cursor: pointer;
@@ -87,6 +87,9 @@ const LinkBox = styled.div`
     width: 1rem;
     margin-left: 1rem;
   }
+  position: absolute;
+  right: 4rem;
+  bottom: 4rem;
 `;
 const Main = () => {
   const target = useRef<HTMLDivElement>(null);
