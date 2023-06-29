@@ -24,7 +24,6 @@ interface CardProps {
 
 const ToReserveCard = ({ keyword }: CardProps) => {
   const setCounselKeyword = useSetRecoilState(counselKeywordState);
-
   return (
     <ButtonCard theme="--primary" onClick={() => setCounselKeyword(keyword)}>
       <Item to={'/reserve/'}>
