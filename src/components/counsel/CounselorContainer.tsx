@@ -18,31 +18,30 @@ const Content = styled.div`
   gap: 1rem;
 `;
 
+const carouselSettings = {
+  slidesPerView: 1.3,
+  spaceBetween: 34,
+  breakpoints: {
+    481: {
+      slidesPerView: 1.7,
+    },
+    769: {
+      slidesPerView: 2.6,
+    },
+    1057: {
+      slidesPerView: 3.7,
+    },
+    1345: {
+      slidesPerView: 4.2,
+    },
+  },
+};
 interface ContainerProps {
   counselorsData: any;
 }
 const CounselorContainer = ({ counselorsData }: ContainerProps) => {
   const [selected, setSelected] = useState(-1);
   const setSelectedCounselors = useSetRecoilState(selectedCounselorsState);
-
-  const carouselSettings = {
-    slidesPerView: 1.3,
-    spaceBetween: 34,
-    breakpoints: {
-      481: {
-        slidesPerView: 1.7,
-      },
-      769: {
-        slidesPerView: 2.6,
-      },
-      1057: {
-        slidesPerView: 3.7,
-      },
-      1345: {
-        slidesPerView: 4.2,
-      },
-    },
-  };
 
   const cardClick = (id: number) => {
     if (selected === id) {
