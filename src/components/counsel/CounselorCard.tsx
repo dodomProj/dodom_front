@@ -5,6 +5,7 @@ const CardBox = styled(Card)<{ grayscale?: boolean; emphatic?: boolean }>`
   position: relative;
   background-color: var(--white);
   cursor: pointer;
+  height: 100%;
 
   :after {
     content: '';
