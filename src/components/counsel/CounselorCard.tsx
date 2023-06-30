@@ -5,6 +5,7 @@ const CardBox = styled(Card)<{ grayscale?: boolean; emphatic?: boolean }>`
   position: relative;
   background-color: var(--white);
   cursor: pointer;
+  height: 100%;
 
   :after {
     content: '';
@@ -53,6 +54,7 @@ const Content = styled.p`
   text-align: end;
   max-width: 6.5rem;
   color: var(--sub3);
+  word-break: keep-all;
 `;
 
 type Props = {
@@ -82,10 +84,12 @@ const CounselorCard = ({
     <CardBox
       onClick={() => onClick(counselorId)}
       emphatic={counselorId === selectedCard}
-      grayscale={grayscale}
+      grayscale={
+        grayscale && selectedCard !== -1 && counselorId !== selectedCard
+      }
     >
       <Top>
-        <img src={icon} />
+        <img src={icon} alt="" />
         <p>{name}</p>
       </Top>
       <Bottom>

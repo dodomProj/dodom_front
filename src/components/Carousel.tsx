@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
-const RightSpread = styled.div<{ marginRight: number }>`
-  min-width: 320px;
+const RightSpread = styled.div<{ marginRight: number; spread: boolean }>`
   margin-right: calc((${(props) => props.marginRight}px - 100%) * -1 / 2);
+  margin-right: ${(props) => !props.spread && 0};
 `;
 const Box = styled(Swiper)`
   width: inherit;
@@ -17,19 +17,23 @@ const Box = styled(Swiper)`
 `;
 
 interface CarouselProps {
+  spread?: boolean;
   settings: {};
   dataArr: {}[];
   Card: ComponentType<any>;
   cardClick?: (id: number) => void;
   selectedCard?: number;
+  grayscale?: boolean;
 }
 
 const Carousel = ({
+  spread = true,
   settings,
   Card,
   dataArr,
   cardClick,
   selectedCard,
+  grayscale,
 }: CarouselProps) => {
   const [clientWidth, setClientWidth] = useState(document.body.clientWidth);
 
@@ -42,18 +46,25 @@ const Carousel = ({
   };
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    if (spread) {
+      window.addEventListener('resize', handleResize);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
   }, []);
 
   return (
-    <RightSpread marginRight={clientWidth}>
+    <RightSpread marginRight={clientWidth} spread={spread}>
       <Box {...settings}>
         {dataArr.map((data, i) => (
           <SwiperSlide key={i}>
-            <Card {...data} onClick={cardClick} selectedCard={selectedCard} />
+            <Card
+              {...data}
+              onClick={cardClick}
+              selectedCard={selectedCard}
+              grayscale={grayscale}
+            />
           </SwiperSlide>
         ))}
       </Box>
