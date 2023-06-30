@@ -6,7 +6,6 @@ import MoreInfoArrow from '../MoreInfoArrow';
 import ReserveButtonBox from './ReserveButtonBox';
 import {
   CounselorData,
-  RecommendedsData,
   formDataState,
   recommendedsState,
 } from '../../recoil/reserve';
@@ -44,7 +43,7 @@ const ReserveRecommend = () => {
   return (
     <RecommendBox>
       <TitleBox>
-        <img src={process.env.PUBLIC_URL + '/assets/counselorpic.svg'} />
+        <img src={'/assets/counselorpic.svg'} alt="" />
         <TextBox>
           <h2>추천 상담사</h2>
           <p>적합한 상담사를 추천해드려요!</p>

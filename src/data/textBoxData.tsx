@@ -32,7 +32,7 @@ export const conditionData = {
 };
 
 export const surveyData = {
-  title: '○○○ 상담사 만족도 설문조사',
+  title: '상담사 만족도 설문조사',
   subtitle: '',
   text: [
     '도돔(Dodom)을 이용해주셔서 감사드립니다.',

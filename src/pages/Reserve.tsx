@@ -1,16 +1,13 @@
+import { useRecoilValue } from 'recoil';
+import { Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
-import { PageBase, basePadding } from '../styles/basePadding';
-
 import TextBox from '../components/TextBox';
-import { aboutDiary } from '../data/textBoxData';
-
-import { Routes, Route, Navigate } from 'react-router-dom';
-import ReserveRecommend from '../components/reserve/ReserveRecommend';
+import SubtitleBox from '../components/SubtitleBox';
 import ReserveSuccess from '../components/reserve/ReserveSuccess';
 import ReserveFormBox from './../components/reserve/ReserveFormBox';
-import SubtitleBox from '../components/SubtitleBox';
-
-import { ReserveCardProps } from '../recoil/reserve';
+import ReserveRecommend from '../components/reserve/ReserveRecommend';
+import { PageBase, basePadding } from '../styles/basePadding';
+import { reserveCardInfo } from '../recoil/reserve';
 
 const ReserveBox = styled(PageBase)`
   display: flex;
@@ -25,20 +22,15 @@ const Bottom = styled.div`
   width: 100%;
 `;
 
-const Reserve = ({
-  title,
-  subtitle,
-  text,
-  img,
-  time,
-  theme,
-}: ReserveCardProps) => {
+const Reserve = () => {
+  const info = useRecoilValue(reserveCardInfo);
+
   return (
     <ReserveBox>
-      {img ? (
-        <SubtitleBox {...{ title, text, img, time }} />
+      {info.title !== '솔직한 내 마음 일기' ? (
+        <SubtitleBox {...info} />
       ) : (
-        <TextBox {...{ title, subtitle, text, theme }} />
+        <TextBox {...info} />
       )}
       <Bottom>
         <Routes>

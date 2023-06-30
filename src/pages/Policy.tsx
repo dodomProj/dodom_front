@@ -7,7 +7,7 @@ import { policyBoxData } from '../data/subtitleBoxData';
 import { MainContent, PageBase } from '../styles/basePadding';
 import useNotionAPI from '../api/useNotionAPI';
 import CategoryBox from '../components/CategoryBox';
-import { policySubData } from '../data/categoryBoxData';
+import { errorData, policySubData } from '../data/categoryBoxData';
 
 const CardBox = styled.div`
   margin-top: 3rem;
@@ -41,7 +41,7 @@ const Policy = () => {
         {isLoading ? (
           <LoadingBox title="정보를 불러오고 있습니다" text="" />
         ) : isError ? (
-          <p>에러입니다</p>
+          <CategoryBox {...errorData} />
         ) : (
           <CardBox>
             {Array.isArray(policyData) &&

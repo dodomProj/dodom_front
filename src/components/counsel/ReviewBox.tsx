@@ -55,7 +55,11 @@ const ReviewBox = () => {
           Array.isArray(reviewsData) && (
             <ContentBox>
               {reviewsData.slice(0, 3).map((review: Review, idx: number) => (
-                <ReviewEl {...reviewsOrder[idx]} {...review} />
+                <ReviewEl
+                  key={review.appointmentAt}
+                  {...reviewsOrder[idx]}
+                  {...review}
+                />
               ))}
             </ContentBox>
           )
