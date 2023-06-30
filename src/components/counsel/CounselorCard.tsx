@@ -87,7 +87,7 @@ const CounselorCard = ({
       grayscale={grayscale}
     >
       <Top>
-        <img src={icon} />
+        <img src={icon} alt="" />
         <p>{name}</p>
       </Top>
       <Bottom>
