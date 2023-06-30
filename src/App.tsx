@@ -4,6 +4,7 @@ import GlobalStyle from './styles/global';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Main from './pages/Main';
+import Guide from './pages/Guide';
 import Diary from './pages/Diary';
 import Reserve from './pages/Reserve';
 import Counsel from './pages/Counsel';
@@ -39,6 +40,7 @@ function App() {
       <Header path={pathname} />
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/guide" element={<Guide />} />
         <Route path="/diary/*" element={<Diary />} />
         <Route path="/reserve/counsel" element={<Counsel />} />
         <Route path="/reserve/*" element={<Reserve {...info} />} />
