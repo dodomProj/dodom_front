@@ -8,7 +8,9 @@ import QuestionBlock from '../components/QuestionBlock';
 import ConsentCheck from '../components/survey/ConsentCheck';
 import { surveyData } from '../data/textBoxData';
 import { MainContent, PageBase } from '../styles/basePadding';
+import { dodomAPI } from '../api';
 import postData from '../api/postData';
+import { findCounselorName } from '../util/findCounselorName';
 
 import Rate from 'rc-rate';
 import 'rc-rate/assets/index.css';
@@ -61,6 +63,7 @@ const Survey = () => {
     opinion: '',
     agree: false,
   });
+  const [counselorName, setCounselorName] = useState<string>();
   const { search } = useLocation();
   const navigate = useNavigate();
 
@@ -84,15 +87,17 @@ const Survey = () => {
   useEffect(() => {
     if (!search.includes('?appointmentId=')) navigate('/');
     else {
-      // TODO get 요청(+예약번호) => 상담사 번호, 후기 작성 여부
-      // 잘못된 예약번호거나 후기 작성 O인 경우 메인으로 navigate('/')
-      // 200이면 상담사 번호로 상담사 이름 가져오기
+      dodomAPI(`/appointments${search}`).then((res) =>
+        res.status === 200 && !res.data.reviewExist
+          ? setCounselorName(findCounselorName(res.data.counselorId))
+          : navigate('/')
+      );
     }
   }, [search]);
 
   return (
     <PageBase>
-      <TextBox {...surveyData} />
+      <TextBox {...surveyData} title={`${counselorName} ${surveyData.title}`} />
       <SurveyBox>
         <QuestionInput
           question="1. 본인의 이름을 작성해주세요."
