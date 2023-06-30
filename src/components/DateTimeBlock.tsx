@@ -1,20 +1,16 @@
 import styled from 'styled-components';
 import DateTimePicker from './DateTimePicker';
 import { useRecoilState } from 'recoil';
-import { formTimeState } from '../recoil/reserve';
+import { formDateTimeState } from '../recoil/reserve';
 
 const Box = styled.div``;
 
 const DateTimeBlock = () => {
-  const [formTime, setFormTime] = useRecoilState(formTimeState);
+  const [formData, setFormData] = useRecoilState(formDateTimeState);
   return (
     <Box>
-      {formTime.map((time) => (
-        <DateTimePicker
-          dateId={time.id}
-          maxId={formTime[formTime.length - 1].id}
-          key={time.id}
-        />
+      {formData.timeList.map((time) => (
+        <DateTimePicker dateId={time.id} key={time.id} />
       ))}
     </Box>
   );

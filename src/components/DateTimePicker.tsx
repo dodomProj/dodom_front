@@ -4,7 +4,7 @@ import 'react-datepicker/dist/react-datepicker-min.module.css';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useRecoilState } from 'recoil';
-import { formTimeState } from '../recoil/reserve';
+import { formDateTimeState } from '../recoil/reserve';
 import { questionStyle } from './QuestionInput';
 
 const DateBox = styled.div`
@@ -56,45 +56,45 @@ const Button = styled.button`
 
 interface Props {
   dateId: number;
-  maxId: number;
 }
 
-const DateTimePicker = ({ dateId, maxId }: Props) => {
-  const today = new Date();
-  const [date, setDate] = useState<Date>(today);
-  const [time, setTime] = useState<Date>(today);
+const today = new Date();
+today.setHours(today.getHours() + 1);
 
-  const [formTime, setFormTime] = useRecoilState(formTimeState);
-  const TIME_ZONE = 9 * 60 * 60 * 1000;
-  useEffect(() => {
-    const dateString = new Date(date.getTime() + TIME_ZONE)
-      .toISOString()
-      .substring(0, 10);
-    const timeState = [...formTime];
-    timeState[dateId] = { ...timeState[dateId], date: dateString };
-    setFormTime(timeState);
-  }, [date]);
-
-  useEffect(() => {
-    const timeString = new Date(time.getTime() + TIME_ZONE)
-      .toISOString()
-      .substring(10, 19);
-    const timeState = [...formTime];
-    timeState[dateId] = { ...timeState[dateId], time: timeString };
-    setFormTime(timeState);
-  }, [time]);
+const DateTimePicker = ({ dateId }: Props) => {
+  const [formDateTime, setformDateTime] = useRecoilState(formDateTimeState);
 
   const datePickAdd = () => {
-    const timeState = [...formTime];
-    timeState.push({ date: '', time: '', id: maxId + 1 });
-    setFormTime(timeState);
+    const nextTimeList = [...formDateTime.timeList];
+    nextTimeList.push({ date: new Date(), id: new Date().getTime() });
+    setformDateTime((prev) => ({ ...prev, timeList: nextTimeList }));
   };
 
   const datePickRemove = () => {
-    console.log(dateId);
-    const timeState = formTime.filter((time) => time.id !== dateId);
-    setFormTime(timeState);
+    const nextTimeList = formDateTime.timeList.filter(
+      (time) => time.id !== dateId
+    );
+    setformDateTime((prev) => ({ ...prev, timeList: nextTimeList }));
   };
+
+  const handleChange = (date: Date) => {
+    setformDateTime((prev) => {
+      const nextTimeList = [...prev.timeList];
+      nextTimeList[selectedIndex] = {
+        ...nextTimeList[selectedIndex],
+        date,
+      };
+      return {
+        ...prev,
+        timeList: nextTimeList,
+      };
+    });
+  };
+
+  const selectedIndex = formDateTime.timeList.findIndex(
+    (time) => time.id === dateId
+  );
+
   return (
     <DateBox>
       <PickBox>
@@ -102,9 +102,9 @@ const DateTimePicker = ({ dateId, maxId }: Props) => {
         <StyledDatePicker
           id="form-date"
           dateFormat="yyyy년 MM월 dd일"
-          selected={date}
-          minDate={today}
-          onChange={(date: Date) => setDate(date)}
+          selected={formDateTime.timeList[selectedIndex].date}
+          // minDate={today}
+          onChange={handleChange}
           // placeholderText="****년 **월 **일"
         />
       </PickBox>
@@ -112,8 +112,8 @@ const DateTimePicker = ({ dateId, maxId }: Props) => {
         {dateId === 0 && <Label htmlFor="form-time">상담 희망 시간</Label>}
         <StyledDatePicker
           id="form-time"
-          selected={time}
-          onChange={(time: Date) => setTime(time)}
+          selected={formDateTime.timeList[selectedIndex].date}
+          onChange={handleChange}
           showTimeSelect
           showTimeSelectOnly
           timeIntervals={15}

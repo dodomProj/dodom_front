@@ -1,6 +1,7 @@
 import { atom, selector } from 'recoil';
 import { dodomAPI } from '../api';
 import { CounselorProps, TagsProps, counselorTags } from '../data/counselors';
+import { format } from 'date-fns';
 
 export const reserveCallCheck = atom<boolean>({
   key: 'reserveCall',
@@ -34,8 +35,7 @@ export const reserveCardInfo = atom<ReserveCardProps>({
 });
 
 export interface TimeData {
-  date: string;
-  time: string;
+  date: Date;
   id: number;
 }
 
@@ -50,6 +50,19 @@ export interface FormData {
   method: string;
   counselorId: number;
 }
+interface FormDateTime {
+  timeList: TimeData[];
+}
+
+export const defaultDate = new Date();
+defaultDate.setHours(defaultDate.getHours() + 1);
+
+export const formDateTimeState = atom<FormDateTime>({
+  key: 'formDateTime',
+  default: {
+    timeList: [{ date: defaultDate, id: 0 }],
+  },
+});
 
 export const formDataState = atom<FormData>({
   key: 'formData',
@@ -64,11 +77,6 @@ export const formDataState = atom<FormData>({
     method: '',
     counselorId: -1,
   },
-});
-
-export const formTimeState = atom<TimeData[]>({
-  key: 'formTime',
-  default: [{ date: '', time: '', id: 0 }],
 });
 
 export interface ResCounselorData {

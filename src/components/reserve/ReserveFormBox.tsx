@@ -5,12 +5,13 @@ import QuestionInput from '../QuestionInput';
 import CheckBoxInput from '../CheckBoxInput';
 import DateTimeBlock from '../DateTimeBlock';
 
-import { useRecoilState } from 'recoil';
-import { formDataState } from '../../recoil/reserve';
-import { formTimeState } from '../../recoil/reserve';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { formDataState, formDateTimeState } from '../../recoil/reserve';
 
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import format from 'date-fns/format';
+import { useEffect } from 'react';
+
 const FormBox = styled(Box)`
   display: flex;
   flex-direction: column;
@@ -71,8 +72,8 @@ const InputBox = styled.div`
 
 const ReserveFormBox = () => {
   const navigate = useNavigate();
+  const formDateTime = useRecoilValue(formDateTimeState);
   const [formData, setFormData] = useRecoilState(formDataState);
-  const [formTime, setFormTime] = useRecoilState(formTimeState);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -81,17 +82,23 @@ const ReserveFormBox = () => {
       navigate('/reserve/recommend');
     } else {
       alert('모든 입력을 완료해주세요.');
-      console.log(target);
     }
   };
 
   useEffect(() => {
-    const timeList = formTime.map((data) => data.date + data.time);
-    setFormData({
-      ...formData,
-      timeList,
-    });
-  }, [formTime]);
+    const { timeList } = formDateTime;
+    const nextTimeList = [...timeList];
+    setFormData((prev) => ({
+      ...prev,
+      timeList: nextTimeList.map(({ date }) =>
+        format(date, "yyyy-MM-dd'T'HH:mm:ss")
+      ),
+    }));
+  }, [formDateTime]);
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
 
   return (
     <FormBox>
