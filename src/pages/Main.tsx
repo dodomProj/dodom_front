@@ -1,12 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import TextBox from '../components/TextBox';
 import { firstDodom } from '../data/textBoxData';
 import { PageBase } from '../styles/basePadding';
-import Button from '../components/Button';
-import ToConditionCard from '../components/ToConditionCard';
-import QuestionInput from '../components/QuestionInput';
 
 const MainBox = styled(PageBase)`
   display: flex;
@@ -123,14 +120,18 @@ const Main = () => {
       <SubBox ref={target}>
         <TextBox {...firstDodom} />
         <LinkBox>
-          <div>
-            상담사 알아보기
-            <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
-          </div>
-          <div>
-            DODOM 더 알아보기
-            <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
-          </div>
+          <Link to="/counsel">
+            <div>
+              상담사 알아보기
+              <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
+            </div>
+          </Link>
+          <Link to="/guide">
+            <div>
+              DODOM 더 알아보기
+              <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
+            </div>
+          </Link>
         </LinkBox>
       </SubBox>
     </>
