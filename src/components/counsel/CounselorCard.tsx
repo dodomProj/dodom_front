@@ -54,6 +54,7 @@ const Content = styled.p`
   text-align: end;
   max-width: 6.5rem;
   color: var(--sub3);
+  word-break: keep-all;
 `;
 
 type Props = {

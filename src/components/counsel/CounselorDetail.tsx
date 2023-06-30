@@ -1,28 +1,34 @@
 import styled from 'styled-components';
+import { ReactComponent as StarIcon } from '../../svg/star.svg';
+import DetailInfo from './DetailInfo';
 
 const Top = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  margin-bottom: 2.5rem;
   border-width: 0 0 3px 0;
   border-style: solid;
   border-color: var(--black);
-`;
-const Bottom = styled.div`
-  margin-top: 2.5rem;
-  h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: 500;
-  }
-  p {
-    font-size: 1.2rem;
-    margin-bottom: 2.5rem;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
   }
 `;
 const Image = styled.img`
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 35rem;
   object-fit: contain;
+  margin-top: auto;
+  margin-right: auto;
+
+  @media screen and (max-width: 768px) {
+    position: absolute;
+    z-index: auto;
+    bottom: 0;
+    width: 50%;
+    max-height: 100%;
+  }
 `;
 const Profile = styled.div`
   display: flex;
@@ -30,25 +36,48 @@ const Profile = styled.div`
   height: inherit;
   justify-content: space-between;
   margin-bottom: 2rem;
-  h2 {
-    color: var(--sub3);
-    width: 15rem;
-    text-align: end;
-  }
+
   div {
     text-align: end;
-    small {
-      display: block;
-      color: var(--sub3);
-      font-size: 1.125rem;
-      margin-bottom: 0.5rem;
-    }
     p {
       color: var(--sub3);
       font-size: 1.5rem;
       margin-bottom: 0.5rem;
+      word-break: keep-all;
     }
   }
+`;
+const Slogan = styled.p`
+  max-width: 15rem;
+  margin-bottom: 1rem;
+  font-family: Pretendard-Bold;
+  font-size: 2.25rem;
+  color: var(--sub3);
+  word-break: keep-all;
+  text-align: end;
+
+  @media screen and (max-width: 768px) {
+    align-self: end;
+    max-width: 70%;
+  }
+`;
+const Star = styled.div`
+  display: inline-flex;
+  align-items: center;
+  color: var(--sub3);
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+
+  > svg {
+    width: 1.125rem;
+    height: 1.125rem;
+    color: var(--primary);
+  }
+`;
+const Name = styled.span`
+  font-family: Pretendard-Bold;
+  font-size: 3rem;
+  word-break: keep-all;
 `;
 
 type Props = {
@@ -64,28 +93,21 @@ const CounselorDetail = ({ name, career, score, introduce, img }: Props) => {
       <Top>
         <Image src={img} />
         <Profile>
-          <h2>{introduce}</h2>
+          <Slogan>{introduce}</Slogan>
           <div>
-            <small>🌟 {score}점 (5.0)</small>
+            <Star>
+              <StarIcon /> {score}점 (5.0)
+            </Star>
             <p>전문 상담사 {career}년</p>
-            <h1>{name}</h1>
+            <Name>{name}</Name>
           </div>
         </Profile>
       </Top>
-      <Bottom>
-        <div>
-          <h3>{name} 상담사의 강점</h3>
-          <p>업데이트 예정입니다</p>
-        </div>
-        <div>
-          <h3>이런 사람에게 추천해요!</h3>
-          <p>업데이트 예정입니다</p>
-        </div>
-        <div>
-          <h3>심리상담 효과</h3>
-          <p>업데이트 예정입니다</p>
-        </div>
-      </Bottom>
+      <div>
+        <DetailInfo title={`${name} 상담사의 강점`} />
+        <DetailInfo title="이런 사람에게 추천해요!" />
+        <DetailInfo title="심리상담 효과" />
+      </div>
     </div>
   );
 };
