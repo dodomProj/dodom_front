@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
 interface CardProps {
@@ -55,11 +56,17 @@ const PolicyCard = ({
   text,
   url,
 }: CardProps) => {
+  const [imgSrc, setImgSrc] = useState(img);
+
   return (
     <Box>
       <div>
         <ImgWrapper>
-          <img src={img} alt="" />
+          <img
+            src={imgSrc}
+            alt=""
+            onError={() => setImgSrc('/assets/policy_default.png')}
+          />
         </ImgWrapper>
         <Text>
           <h3>{title}</h3>
