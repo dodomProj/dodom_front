@@ -16,6 +16,7 @@ export const ProgressBox = styled.div`
 `;
 interface BarColor {
   color: string;
+  shadow: string;
 }
 export const ProgressWrapper = styled(ProgressBox)<BarColor>`
   width: 25%;
@@ -38,7 +39,7 @@ export const ProgressWrapper = styled(ProgressBox)<BarColor>`
 
   > div {
     border-radius: 40px;
-    box-shadow: inset 0 0 0 4px ${(props) => props.color};
+    box-shadow: inset 0 0 0 4px ${(props) => props.shadow};
     height: 3.2rem;
   }
 `;
@@ -51,11 +52,15 @@ const TextBox = styled.div`
     line-height: 1.5rem;
   }
 `;
+export const barColor = [
+  'var(--primary)',
+  'rgba(255, 138, 0, 1)',
+  'var(--point)',
+];
 
 const BasicResult = () => {
   const { score, common, type } = useTestResult();
   if (score === undefined || !common?.total || !type) return null;
-  const barColor = ['var(--primary)', 'rgba(255, 138, 0, 1)', 'var(--point)'];
 
   return (
     <>
@@ -66,7 +71,10 @@ const BasicResult = () => {
         textalign="right"
         marginbottom="8rem"
       />
-      <ProgressWrapper color={barColor[type.level]}>
+      <ProgressWrapper
+        color={type.level === 2 ? 'var(--black)' : barColor[type.level]}
+        shadow={barColor[type.level]}
+      >
         <img src={type.emoji} alt={type.emoji} />
         <ProgressBar
           value={(score / common.total) * 100}
