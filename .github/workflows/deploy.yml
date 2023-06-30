@@ -9,6 +9,11 @@ jobs:
     steps:
       - name: Checkout source code.
         uses: actions/checkout@v2
+      - name: set .env
+        run: |
+          echo "REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}" >> .env
+          echo "REACT_APP_NOTION_API=${{ secrets.REACT_APP_NOTION_API }}" >> .env
+          echo "REACT_APP_NOTION_DATABASE_ID=${{ secrets.REACT_APP_NOTION_DATABASE_ID }}" >> .env
       - name: Install dependencies
         run: npm install
       - name: Build

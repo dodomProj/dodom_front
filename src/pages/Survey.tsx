@@ -43,6 +43,7 @@ const Info = styled.p`
   margin-top: 0.6rem;
 `;
 const StyledRate = styled(Rate)`
+  /* width: 100%; */
   .rc-rate-star {
     color: var(--white);
   }
@@ -52,6 +53,15 @@ const StyledRate = styled(Rate)`
   .rc-rate-star-half:hover .rc-rate-star-first,
   .rc-rate-star-full:hover .rc-rate-star-second {
     color: var(--primary);
+  }
+
+  @media screen and (max-width: 768px) {
+    .rc-rate-star {
+      margin-right: 0;
+      svg {
+        width: 4rem;
+      }
+    }
   }
 `;
 
