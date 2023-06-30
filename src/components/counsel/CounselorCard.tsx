@@ -84,7 +84,9 @@ const CounselorCard = ({
     <CardBox
       onClick={() => onClick(counselorId)}
       emphatic={counselorId === selectedCard}
-      grayscale={grayscale}
+      grayscale={
+        grayscale && selectedCard !== -1 && counselorId !== selectedCard
+      }
     >
       <Top>
         <img src={icon} alt="" />

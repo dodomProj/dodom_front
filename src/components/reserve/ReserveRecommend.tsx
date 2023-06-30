@@ -1,14 +1,11 @@
 import styled from 'styled-components';
 import { useRecoilState, useRecoilValueLoadable } from 'recoil';
 import { Box } from '../diary/DiaryEditBox';
-import CounselorCard from '../counsel/CounselorCard';
+import Carousel from '../Carousel';
 import MoreInfoArrow from '../MoreInfoArrow';
 import ReserveButtonBox from './ReserveButtonBox';
-import {
-  CounselorData,
-  formDataState,
-  recommendedsState,
-} from '../../recoil/reserve';
+import CounselorCard from '../counsel/CounselorCard';
+import { formDataState, recommendedsState } from '../../recoil/reserve';
 
 const RecommendBox = styled(Box)`
   display: flex;
@@ -17,6 +14,14 @@ const RecommendBox = styled(Box)`
 const TitleBox = styled.div`
   display: flex;
   gap: 1.2rem;
+
+  > img {
+    max-width: 7.5rem;
+    margin-top: auto;
+  }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 const TextBox = styled.div`
   display: flex;
@@ -29,11 +34,24 @@ const TextBox = styled.div`
   }
 `;
 const CardBox = styled.div`
-  display: flex;
-  justify-content: space-between;
   margin-top: 4rem;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
 `;
+const carouselSettings = {
+  slidesPerView: 1,
+  spaceBetween: 34,
+  breakpoints: {
+    481: {
+      slidesPerView: 1.15,
+    },
+    769: {
+      slidesPerView: 2.1,
+    },
+    1057: {
+      slidesPerView: 3,
+    },
+  },
+};
 
 const ReserveRecommend = () => {
   const [formData, setFormData] = useRecoilState(formDataState);
@@ -55,26 +73,24 @@ const ReserveRecommend = () => {
         infoText="더보기"
       />
       <CardBox>
-        {state === 'hasValue' &&
-          recommendeds.counselors.map((recommended: CounselorData) => (
-            <CounselorCard
-              {...recommended}
-              key={recommended.counselorId}
-              onClick={() =>
-                formData.counselorId === recommended.counselorId
-                  ? setFormData({ ...formData, counselorId: -1 })
-                  : setFormData({
-                      ...formData,
-                      counselorId: recommended.counselorId,
-                    })
-              }
-              grayscale={
-                formData.counselorId !== -1 &&
-                formData.counselorId !== recommended.counselorId
-              }
-              selectedCard={formData.counselorId}
-            />
-          ))}
+        {state === 'hasValue' && (
+          <Carousel
+            spread={false}
+            settings={carouselSettings}
+            dataArr={recommendeds.counselors}
+            Card={CounselorCard}
+            cardClick={(id: number) =>
+              formData.counselorId === id
+                ? setFormData({ ...formData, counselorId: -1 })
+                : setFormData({
+                    ...formData,
+                    counselorId: id,
+                  })
+            }
+            selectedCard={formData.counselorId}
+            grayscale={true}
+          />
+        )}
       </CardBox>
       <ReserveButtonBox />
     </RecommendBox>
