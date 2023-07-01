@@ -1,8 +1,3 @@
-// title?: string;
-// text?: string[];
-// img?: string;
-// time?: number;
-
 export const counselBoxData = {
   title: '내게 맞는 상담사',
   text: [
