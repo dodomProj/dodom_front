@@ -1,46 +1,67 @@
-# Getting Started with Create React App
+<details>
+<summary><b>봉사 조회</b></summary>
+<div markdown="1"><br/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![봉사 조회](https://user-images.githubusercontent.com/88031716/228537703-04117ea5-d2da-4104-a416-7eefe576580f.gif)
 
-## Available Scripts
+- 사용자가 봉사 카테고리(어린이, 장애인, 노인, 동물, 환경)을 클릭하여 카테고리에 맞는 봉사활동을 조회할 수 있습니다.
+- 사용자가 검색창에 봉사명 혹은, 지역별로 필터링 하여 봉사활동을 조회 할 수 있습니다.
 
-In the project directory, you can run:
+</div>
+</details>
+<details>
+<summary><b>봉사 신청</b></summary>
+<div markdown="1"><br/>
 
-### `npm start`
+![봉사 신청](https://user-images.githubusercontent.com/88031716/228538391-074a4954-d976-4f94-9aac-78722c94e7bd.gif)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- 로그인한 사용자가 원하는 봉사활동을 클릭하여, 봉사활동 상세에 나도 할래 버튼을 클릭하면 신청이 가능합니다.
+- 로그인한 사용자가 마이페이지에서 봉사활동을 신청한 봉사활동을 관리, 취소가 가능합니다.
+- 봉사신청 완료후 봉사를 참가 하게 되면 봉사점수를 얻게 되며 봉사 상세에서 후기를 작성 할 수 있습니다.
+</div>
+</details>
+<details>
+<summary><b>봉사 그룹 개설</b></summary>
+<div markdown="1"><br/>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![봉사 그룹 개설](https://user-images.githubusercontent.com/88031716/228539300-04d82a04-038f-4dbe-9a53-76016cb8cb8b.gif)
 
-### `npm test`
+- 봉사 포인트가 15점인 사용자가 그룹을 개설 할 수 있으며, 그룹을 개설하게 되면 그룹장 뱃지를 얻게 됩니다.
+- 봉사 성향이 비슷한 사용자 끼리 만나 커뮤니티를 형성 할 수 있습니다.
+</div>
+</details>
+<details>
+<summary><b>봉사 그룹 참여</b></summary>
+<div markdown="1"><br/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![봉사 그룹 참여](https://user-images.githubusercontent.com/88031716/228540053-66a61556-9940-4acc-a87d-ec2c367bb497.gif)
 
-### `npm run build`
+- 로그인한 사용자가 메인 네비게이션 메뉴에서 커뮤니티를 클릭후 원하는 그룹을 선택해 함께 하기 버튼을 누르게 되면 가입이 됩니다.
+- 그룹에 가입한 사용자는 그룹의 커뮤니케이션 기능인 댓글로 다른 사용자들과 소통이 가능 합니다.
+</div>
+</details>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🙋 Member
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 저희는 좀 더 나은 세상을 만들기 위해 모였습니다. <br/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+|                              [강은서<br>(BE)](https://github.com/kdmstj)                               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       [조윤희<br>(FE)](https://github.com/YUNH7)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |                                  [차세진<br>(FE)](https://github.com/chasj0326)                                   |
+| :----------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: |
+| <img alt="강은서" src="https://avatars.githubusercontent.com/u/62414231?v=4" height="100" width="100"> |                                                                                                                                                                                                                                                                                                                                                                                                                                                        <img alt="조윤희" src="https://avatars.githubusercontent.com/u/100519978?v=4" height="100" width="100">                                                                                                                                                                                                                                                                                                                                                                                                                                                         |      <img alt="차세진" src="https://avatars.githubusercontent.com/u/62418379?v=4" height="100" width="100">       |
+|                           <p align="left"> - 기능 구현<br/>- 기능 구현 </p>                            | <p align="left" >- 심리 검사 페이지(나의 상태)<br/>&ensp;+ 테스트 객체에서 필요한 정보<br/>&ensp;&ensp;&ensp;(테스트 종류, 질문/답변/결과)만<br/>&ensp;&ensp;&ensp;찾아 리턴하는 커스텀 훅 작성<br/>- 상담사 소개 페이지<br/>&ensp;+ 상담폼 상담사 더보기와<br/>&ensp;&ensp;&ensp;조건부 렌더링으로 같이 사용,<br/>&ensp;&ensp;&ensp;상담폼 관련 데이터가 없다면<br/>&ensp;&ensp;&ensp;리다이렉트<br/>&ensp;&ensp;&ensp;(/reserve/counsel > /counsel)<br/>- 정책 소개 페이지(추천 사업)<br/>- 만족도 조사 페이지(설문조사)<br/>&ensp;+ api 응답에 따라<br/>&ensp;&ensp;&ensp;이미 리뷰가 등록된 후기라면<br/>&ensp;&ensp;&ensp;메인으로 리다이렉트<br/>- Loading, 404 페이지<br/>- 캐러셀, 별점 컴포넌트 적용<br/>- CICD<br/>&ensp;Github actions로 AWS S3 자동 배포<br/><br/>**Create** :<br/>- 사이트에 접근 시 방문자수 +1<br/>- 상담 예약<br/>- 상담 후기 등록<br/>**Read** :<br/>- 상담사 정보 조회<br/>- 정책 관련 Notion 데이터 조회<br/>- 예약 번호로 상담사Id,<br/>&ensp; 후기 등록 여부 조회<br/>- 후기 조회 | <p align="left">- 기능 구현<br/>- 기능 구현<br/>- 기능 구현<br/>- 기능 구현<br/><br/>**Create** :<br/>- 상담 예약 |
 
-### `npm run eject`
+<br/>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## <span style=""> ⚙️ **Tools** </span>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+|                                                   Github                                                    |                                                                                       Discord                                                                                        |                                                                                   Notion                                                                                    |
+| :---------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| <img alt="github logo" src="https://techstack-generator.vercel.app/github-icon.svg" width="65" height="65"> | <img alt="Discord logo" src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/62595384e89d1d54d704ece7_3437c10597c1526c3dbd98c737c2bcae.svg" height="65" width="65"> | <img alt="Notion logo" src="https://www.notion.so/cdn-cgi/image/format=auto,width=640,quality=100/front-static/shared/icons/notion-app-icon-3d.png" height="65" width="65"> |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<br/>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### <span style=""> 🖥 **Front-end** </span>
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+|                                                                                               Html                                                                                                |                                                                                     CSS                                                                                      |                                                       TypeScript                                                       |                                                            React                                                            |                                                            React-router                                                            |                                                    Axios                                                     |                                                                     Recoil                                                                     |                                             Styled-<br>Components                                              |                                                            ESLint                                                            |                                                        Prettier                                                         |                                                                                        S3                                                                                         |
+| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| <img style="margin: auto;" width="100%" height="100%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/440px-HTML5_logo_and_wordmark.svg.png" alt="" /> | <img style="margin: auto;" width="100%" height="100%" src="https://user-images.githubusercontent.com/111227745/210204643-4c3d065c-59ec-481d-ac13-cea795730835.png" alt="" /> | <img style="margin: auto;" width="80%" height="80%" src="https://techstack-generator.vercel.app/ts-icon.svg" alt="" /> | <img style="margin: auto;" width="100%" height="100%" src="https://techstack-generator.vercel.app/react-icon.svg" alt="" /> | <img style="margin: auto;" width="100%" height="100%" src="https://reactrouter.com/_brand/react-router-stacked-color.png" alt=""/> | <img style="margin: auto;" width="100%" height="100%" src="https://axios-http.com/assets/logo.svg" alt="" /> | <img style="margin: auto;" width="100%" height="100%" src="https://seeklogo.com/images/R/recoil-js-logo-0FA612F129-seeklogo.com.png" alt="" /> | <img style="margin: auto;" width="60%" height="60%" src="https://www.styled-components.com/atom.png" alt="" /> | <img style="margin: auto;" width="100%" height="100%" src="https://techstack-generator.vercel.app/eslint-icon.svg" alt="" /> | <img style="margin: auto;" width="100%" height="100%" src="https://techstack-generator.vercel.app/prettier-icon.svg" /> | <img style="margin: auto;" width="100%" height="100%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Amazon-S3-Logo.svg/1200px-Amazon-S3-Logo.svg.png"  alt="" /> |
