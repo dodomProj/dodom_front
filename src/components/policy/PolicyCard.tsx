@@ -57,7 +57,7 @@ const PolicyCard = ({
   url,
 }: CardProps) => {
   const [imgSrc, setImgSrc] = useState(img);
-
+  console.log(url, url.replace(/-/g, ''));
   return (
     <Box>
       <div>
@@ -75,7 +75,7 @@ const PolicyCard = ({
       </div>
       <MoreInfo
         href={`https://carnation-english-ab2.notion.site/${url.replace(
-          '-',
+          /-/g,
           ''
         )}`}
         target="_blank"
