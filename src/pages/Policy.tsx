@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import ToDiary from '../components/ToDiary';
-import LoadingBox from '../components/LoadingBox';
-import SubtitleBox from '../components/SubtitleBox';
+import ToDiary from '../components/common/ToDiary';
+import LoadingBox from '../components/common/LoadingBox';
+import SubtitleBox from '../components/common/SubtitleBox';
 import PolicyCard from '../components/policy/PolicyCard';
 import { policyBoxData } from '../data/subtitleBoxData';
 import { MainContent, PageBase } from '../styles/basePadding';
 import useNotionAPI from '../api/useNotionAPI';
-import CategoryBox from '../components/CategoryBox';
+import CategoryBox from '../components/common/CategoryBox';
 import { errorData, policySubData } from '../data/categoryBoxData';
 
 const CardBox = styled.div`

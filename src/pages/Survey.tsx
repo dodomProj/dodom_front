@@ -1,10 +1,10 @@
 import { useState, useEffect, ChangeEvent } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import Button from '../components/Button';
-import TextBox from '../components/TextBox';
-import QuestionInput from '../components/QuestionInput';
-import QuestionBlock from '../components/QuestionBlock';
+import Button from '../components/common/Button';
+import TextBox from '../components/common/TextBox';
+import QuestionInput from '../components/common/QuestionInput';
+import QuestionBlock from '../components/common/QuestionBlock';
 import ConsentCheck from '../components/survey/ConsentCheck';
 import { surveyData } from '../data/textBoxData';
 import { MainContent, PageBase } from '../styles/basePadding';
@@ -102,7 +102,7 @@ const Survey = () => {
           : navigate('/')
       );
     }
-  }, [search]);
+  }, [search, navigate]);
 
   return (
     <PageBase>

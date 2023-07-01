@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
-import { basePadding } from '../styles/basePadding';
+import { basePadding } from '../../styles/basePadding';
 interface TextBoxProps {
   title?: string;
   subtitle?: string;

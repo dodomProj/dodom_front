@@ -91,7 +91,7 @@ const CounselorDetail = ({ name, career, score, introduce, img }: Props) => {
   return (
     <div>
       <Top>
-        <Image src={img} />
+        <Image src={img} alt="" />
         <Profile>
           <Slogan>{introduce}</Slogan>
           <div>

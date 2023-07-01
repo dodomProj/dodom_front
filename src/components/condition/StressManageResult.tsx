@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import CategoryBox from '../CategoryBox';
+import CategoryBox from '../common/CategoryBox';
 import useTestResult from '../../util/useTestResult';
 
 import {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import SubtitleBox from '../components/SubtitleBox';
+import SubtitleBox from '../components/common/SubtitleBox';
 import QuestionBox from '../components/condition/QuestionBox';
-import ResultContainer from '../components/ResultContainer';
+import ResultContainer from '../components/common/ResultContainer';
 import { PageBase } from '../styles/basePadding';
 import useFindTest from '../util/useFindTest';
 
@@ -17,7 +17,7 @@ const ConditionCheck = () => {
   useEffect(() => {
     resetCardInfo();
     setCardInfo({ ...testInfo.info, title: testInfo.title });
-  }, [testInfo]);
+  }, [testInfo, setConditionStage, setCardInfo, resetCardInfo]);
 
   return (
     <PageBase>

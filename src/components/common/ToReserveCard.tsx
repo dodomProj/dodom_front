@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { ButtonCard } from '../styles/baseCard';
+import { ButtonCard } from '../../styles/baseCard';
 import { useSetRecoilState } from 'recoil';
-import { counselKeywordState } from '../recoil/reserve';
+import { counselKeywordState } from '../../recoil/reserve';
 
 const Item = styled(Link)`
   display: flex;
@@ -35,7 +35,7 @@ const ToReserveCard = ({ keyword }: CardProps) => {
             상담을 받아보아요!
           </p>
         </div>
-        <img src={process.env.PUBLIC_URL + '/assets/mobile.png'} />
+        <img src={process.env.PUBLIC_URL + '/assets/mobile.png'} alt="" />
       </Item>
     </ButtonCard>
   );

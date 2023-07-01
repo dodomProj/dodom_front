@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ButtonCard } from '../styles/baseCard';
+import { ButtonCard } from '../../styles/baseCard';
 
 const Item = styled(Link)`
   display: flex;
@@ -31,7 +31,7 @@ const ToConditionCard = () => {
             심리검사도 진행해 보아요!
           </p>
         </div>
-        <img src={process.env.PUBLIC_URL + '/assets/glass.png'} />
+        <img src={process.env.PUBLIC_URL + '/assets/glass.png'} alt="" />
       </Item>
     </ButtonCard>
   );

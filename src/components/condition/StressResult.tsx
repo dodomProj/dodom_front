@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import useTestResult from '../../util/useTestResult';
-import CategoryBox from '../CategoryBox';
-import ProgressBar from '../ProgressBar';
+import CategoryBox from '../common/CategoryBox';
+import ProgressBar from '../common/ProgressBar';
 import { ProgressWrapper, barColor } from './BasicResult';
 
 const ProgressContainer = styled(ProgressWrapper)`

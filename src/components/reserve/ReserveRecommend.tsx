@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { useRecoilState, useRecoilValueLoadable } from 'recoil';
 import { Box } from '../diary/DiaryEditBox';
-import Carousel from '../Carousel';
-import MoreInfoArrow from '../MoreInfoArrow';
+import Carousel from '../common/Carousel';
+import MoreInfoArrow from '../common/MoreInfoArrow';
 import ReserveButtonBox from './ReserveButtonBox';
 import CounselorCard from '../counsel/CounselorCard';
 import { formDataState, recommendedsState } from '../../recoil/reserve';

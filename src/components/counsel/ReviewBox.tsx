@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import CategoryBox from '../CategoryBox';
+import CategoryBox from '../common/CategoryBox';
 import { errorData, reviewSubData } from '../../data/categoryBoxData';
 import { basePadding } from '../../styles/basePadding';
 import ReviewEl from './ReviewEl';
 import useGet from '../../api/useGet';
-import LoadingBox from '../LoadingBox';
+import LoadingBox from '../common/LoadingBox';
 
 const Box = styled.aside`
   background-color: var(--third);

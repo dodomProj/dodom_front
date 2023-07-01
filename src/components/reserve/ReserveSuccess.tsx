@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Box } from '../diary/DiaryEditBox';
-import Button from '../Button';
-import ToPolicyCard from '../ToPolicyCard';
+import Button from '../common/Button';
+import ToPolicyCard from '../common/ToPolicyCard';
 import { useNavigate } from 'react-router';
 
 const ReservedBox = styled(Box)`
@@ -28,7 +28,7 @@ const ReserveSuccess = () => {
     <>
       <ReservedBox>
         <Image>
-          <img src={process.env.PUBLIC_URL + '/assets/reserved.svg'} />
+          <img src={process.env.PUBLIC_URL + '/assets/reserved.svg'} alt="" />
         </Image>
         <Text>
           <h2>상담 예약이 완료 되었습니다:)</h2>

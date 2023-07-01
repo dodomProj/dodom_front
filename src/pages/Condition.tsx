@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import TextBox from '../components/TextBox';
-import Carousel from '../components/Carousel';
+import TextBox from '../components/common/TextBox';
+import Carousel from '../components/common/Carousel';
 import TestCard from '../components/condition/TestCard';
 import { psychologicalTest } from '../data/psychologicalTest';
 import { conditionData } from '../data/textBoxData';

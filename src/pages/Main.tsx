@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import TextBox from '../components/TextBox';
+import TextBox from '../components/common/TextBox';
 import { firstDodom } from '../data/textBoxData';
 import { PageBase, basePadding } from '../styles/basePadding';
 
@@ -103,12 +103,12 @@ const Main = () => {
       <MainBox>
         <Top>
           <ButtonCard to="/diary" theme="--primary">
-            <img src={process.env.PUBLIC_URL + '/assets/chat.png'} />
+            <img src={process.env.PUBLIC_URL + '/assets/chat.png'} alt="" />
             <h1>솔직한 내 마음 일기 작성하기</h1>
             <p>아무도 모르는 내 마음, 편하게 써봐요.</p>
           </ButtonCard>
           <ButtonCard to="/" theme="--third">
-            <img src={process.env.PUBLIC_URL + '/assets/glass.png'} />
+            <img src={process.env.PUBLIC_URL + '/assets/glass.png'} alt="" />
             <h1>내 상태 체크하기</h1>
             <p>
               내 상태 체크하기로 간단한 설문을 통해
@@ -127,11 +127,17 @@ const Main = () => {
         <LinkBox>
           <Link to="/counsel">
             상담사 알아보기
-            <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
+            <img
+              src={process.env.PUBLIC_URL + '/assets/arrow_white.png'}
+              alt=""
+            />
           </Link>
           <Link to="/guide">
             DODOM 더 알아보기
-            <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
+            <img
+              src={process.env.PUBLIC_URL + '/assets/arrow_white.png'}
+              alt=""
+            />
           </Link>
         </LinkBox>
       </SubBox>

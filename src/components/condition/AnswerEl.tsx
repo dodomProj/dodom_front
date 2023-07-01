@@ -41,7 +41,7 @@ const AnswerEl = ({ img, text, setAnswer, selected }: AnswerProps) => {
       onClick={selected ? undefined : setAnswer}
       bgcolor={selected ? '--secondary' : 'inherit'}
     >
-      <AnswerEmoticon src={img} />
+      <AnswerEmoticon src={img} alt="" />
       <p>{text}</p>
     </Box>
   );

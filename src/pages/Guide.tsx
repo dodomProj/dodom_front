@@ -1,14 +1,14 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { PageBase, basePadding } from '../styles/basePadding';
 import { aboutDodom, aboutCounsel, faq } from '../data/guideData';
-import TextBox from '../components/TextBox';
-import { useState } from 'react';
-import ToDiary from '../components/ToDiary';
+import TextBox from '../components/common/TextBox';
+import ToDiary from '../components/common/ToDiary';
 type container = {
   background: string;
 };
 
-type aboutCounsel = {
+type aboutCounselProps = {
   theme: string;
 };
 
@@ -16,7 +16,7 @@ const Container = styled.div<container>`
   background-color: ${(props) => `var(${props.background})`};
   transition: 0.5s;
 `;
-const AboutCounsel = styled.div<aboutCounsel>`
+const AboutCounsel = styled.div<aboutCounselProps>`
   ${basePadding};
   background-color: ${(props) =>
     props.theme === 'dark' ? 'var(--black)' : 'var(--secondary)'};
@@ -130,9 +130,9 @@ const Guide = () => {
           </Title>
           <Contents>
             {aboutCounsel.map((item, index) => (
-              <div onMouseOver={() => setHoverContent(index)}>
+              <div key={index} onMouseOver={() => setHoverContent(index)}>
                 <div className="img-container">
-                  <img src={process.env.PUBLIC_URL + item.img} />
+                  <img src={process.env.PUBLIC_URL + item.img} alt="" />
                 </div>
                 {hoverContent === index ? (
                   <Hovered>
@@ -154,7 +154,7 @@ const Guide = () => {
           </Title>
           <Toggles>
             {faq.map((item, index) => (
-              <div>
+              <div key={index}>
                 <Question onClick={() => handleToggle(index)}>
                   ▶ Q{index + 1}. {item.question}
                 </Question>

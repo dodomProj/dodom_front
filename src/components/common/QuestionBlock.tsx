@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { questionStyle } from '../components/QuestionInput';
+import { questionStyle } from './QuestionInput';
 import { ReactNode } from 'react';
 
 interface QuestionBlockProps {

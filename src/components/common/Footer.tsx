@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { basePadding } from '../styles/basePadding';
+import { basePadding } from '../../styles/basePadding';
 
 const FooterContainer = styled.footer`
   ${basePadding}

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { MainContent } from '../styles/basePadding';
+import { MainContent } from '../../styles/basePadding';
 import Loading from './Loading';
 
 interface LoadingProps {

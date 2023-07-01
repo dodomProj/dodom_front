@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import SaveButton from '../SaveButton';
+import SaveButton from '../common/SaveButton';
 import ConditionResultContents from '../condition/ConditionResultContents';
 import { ButtonCard } from '../../styles/baseCard';
 import useSaveImg from '../../util/useSaveImg';

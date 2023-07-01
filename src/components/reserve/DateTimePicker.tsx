@@ -1,11 +1,10 @@
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.module.css';
 import 'react-datepicker/dist/react-datepicker-min.module.css';
-import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useRecoilState } from 'recoil';
-import { formDateTimeState } from '../recoil/reserve';
-import { questionStyle } from './QuestionInput';
+import { formDateTimeState } from '../../recoil/reserve';
+import { questionStyle } from '../common/QuestionInput';
 
 const DateBox = styled.div`
   display: flex;
@@ -120,14 +119,20 @@ const DateTimePicker = ({ dateId }: Props) => {
       </PickBox>
       <ButtonBox>
         <Button type="button" onClick={() => datePickAdd()}>
-          <img src={process.env.PUBLIC_URL + '/assets/addbutton.svg'} />
+          <img
+            src={process.env.PUBLIC_URL + '/assets/addbutton.svg'}
+            alt="상담 예약 시간 추가"
+          />
         </Button>
         <Button
           disabled={dateId === 0 ? true : false}
           type="button"
           onClick={() => datePickRemove()}
         >
-          <img src={process.env.PUBLIC_URL + '/assets/removebutton.svg'} />
+          <img
+            src={process.env.PUBLIC_URL + '/assets/removebutton.svg'}
+            alt="상담 예약 시간 제거"
+          />
         </Button>
       </ButtonBox>
     </DateBox>

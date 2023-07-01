@@ -1,8 +1,8 @@
 import { useRecoilValue } from 'recoil';
 import { Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
-import TextBox from '../components/TextBox';
-import SubtitleBox from '../components/SubtitleBox';
+import TextBox from '../components/common/TextBox';
+import SubtitleBox from '../components/common/SubtitleBox';
 import ReserveSuccess from '../components/reserve/ReserveSuccess';
 import ReserveFormBox from './../components/reserve/ReserveFormBox';
 import ReserveRecommend from '../components/reserve/ReserveRecommend';

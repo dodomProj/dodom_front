@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import GlobalStyle from './styles/global';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/common/Header';
+import Footer from './components/common/Footer';
 import Main from './pages/Main';
 import Guide from './pages/Guide';
 import Diary from './pages/Diary';

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
-import Button from '../Button';
+import Button from '../common/Button';
 import AnswerEl from './AnswerEl';
-import ProgressBar from '../ProgressBar';
+import ProgressBar from '../common/ProgressBar';
 import { MainContent } from '../../styles/basePadding';
 import { answerScoreState, answersState } from '../../recoil/condition';
 import useFindTest from '../../util/useFindTest';
@@ -55,7 +55,7 @@ const QuestionBox = ({ setStage }: QuestionBoxProps) => {
       setAnswersScore(qna.answers.map((answer) => answer.score));
       setAnswers([]);
     }
-  }, [qna]);
+  }, [qna, setAnswersScore, setAnswers, setQuestionIdx, setQuestionsLen]);
 
   return (
     <Box>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import navEl from '../data/navEl';
+import navEl from '../../data/navEl';
 
 const Box = styled.nav`
   flex: 0.8;

@@ -110,6 +110,7 @@ const DiaryEditBox = () => {
         <h2>솔직한 내 마음 일기</h2>
         <Info>
           <img
+            alt="diaryExample"
             src={process.env.PUBLIC_URL + '/assets/info.png'}
             onMouseOver={() => setTipHover(true)}
             onMouseOut={() => setTipHover(false)}

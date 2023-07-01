@@ -5,7 +5,7 @@ import { useRecoilValue, useSetRecoilState, useResetRecoilState } from 'recoil';
 import { diarySubmitState } from '../recoil/diary';
 import { reserveCardInfo } from './../recoil/reserve';
 
-import TextBox from '../components/TextBox';
+import TextBox from '../components/common/TextBox';
 import { aboutDiary } from '../data/textBoxData';
 import DiaryEditBox from '../components/diary/DiaryEditBox';
 import DiaryResultBox from '../components/diary/DiaryResultBox';
@@ -32,7 +32,7 @@ const Diary = () => {
   useEffect(() => {
     resetCardInfo();
     setCardInfo({ ...aboutDiary });
-  }, []);
+  }, [setCardInfo, resetCardInfo]);
   return (
     <DiaryBox>
       <TextBox {...aboutDiary} />

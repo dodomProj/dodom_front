@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { Box } from '../diary/DiaryEditBox';
-import Button from '../Button';
-import QuestionInput from '../QuestionInput';
-import CheckBoxInput from '../CheckBoxInput';
-import DateTimeBlock from '../DateTimeBlock';
+import Button from '../common/Button';
+import QuestionInput from '../common/QuestionInput';
+import CheckBoxInput from '../common/CheckBoxInput';
+import DateTimeBlock from './DateTimeBlock';
 
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { formDataState, formDateTimeState } from '../../recoil/reserve';
@@ -94,13 +94,13 @@ const ReserveFormBox = () => {
         format(date, "yyyy-MM-dd'T'HH:mm:ss")
       ),
     }));
-  }, [formDateTime]);
+  }, [formDateTime, setFormData]);
 
   return (
     <FormBox>
       <Title>
         <Left>
-          <img src={process.env.PUBLIC_URL + '/assets/mobile.png'} />
+          <img src={process.env.PUBLIC_URL + '/assets/mobile.png'} alt="" />
         </Left>
         <Right>
           <h2>상담 받아보기</h2>

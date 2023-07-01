@@ -46,7 +46,7 @@ const CheckBoxInput = ({ text, id, disabled, checked, onChange }: Props) => {
         id={id}
       />
       <label htmlFor={id}>
-        <img src={process.env.PUBLIC_URL + '/assets/check.svg'} />
+        <img src={process.env.PUBLIC_URL + '/assets/check.svg'} alt="" />
       </label>
       <p>{text}</p>
     </Label>

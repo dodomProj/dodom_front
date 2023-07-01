@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import DateTimePicker from './DateTimePicker';
-import { useRecoilState } from 'recoil';
-import { formDateTimeState } from '../recoil/reserve';
+import { useRecoilValue } from 'recoil';
+import { formDateTimeState } from '../../recoil/reserve';
 
 const Box = styled.div``;
 
 const DateTimeBlock = () => {
-  const [formData, setFormData] = useRecoilState(formDateTimeState);
+  const formData = useRecoilValue(formDateTimeState);
   return (
     <Box>
       {formData.timeList.map((time) => (

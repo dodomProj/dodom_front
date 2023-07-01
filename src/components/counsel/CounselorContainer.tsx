@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
-import CategoryBox from '../CategoryBox';
-import Carousel from '../Carousel';
+import CategoryBox from '../common/CategoryBox';
+import Carousel from '../common/Carousel';
 import CounselorDetail from './CounselorDetail';
 import CounselorCard from './CounselorCard';
 import { selectedCounselorsState } from '../../recoil/counsel';

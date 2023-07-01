@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { ButtonCard } from '../styles/baseCard';
+import { ButtonCard } from '../../styles/baseCard';
 
 const Item = styled(Link)`
   display: flex;
@@ -21,7 +21,7 @@ const ToDiaryCard = () => {
   return (
     <ButtonCard theme="--third">
       <Item to={'/diary'}>
-        <img src={process.env.PUBLIC_URL + '/assets/chat.png'} />
+        <img src={process.env.PUBLIC_URL + '/assets/chat.png'} alt="" />
         <div>
           <h2>마음 일기 작성하기</h2>
           <p>

@@ -6,11 +6,11 @@ import {
   useResetRecoilState,
 } from 'recoil';
 import { useLocation, useNavigate } from 'react-router-dom';
-import ToDiary from '../components/ToDiary';
+import ToDiary from '../components/common/ToDiary';
 import ReviewBox from '../components/counsel/ReviewBox';
-import LoadingBox from '../components/LoadingBox';
-import CategoryBox from '../components/CategoryBox';
-import SubtitleBox from '../components/SubtitleBox';
+import LoadingBox from '../components/common/LoadingBox';
+import CategoryBox from '../components/common/CategoryBox';
+import SubtitleBox from '../components/common/SubtitleBox';
 import ReserveButtonBox from '../components/reserve/ReserveButtonBox';
 import CounselorContainer from '../components/counsel/CounselorContainer';
 import { MainContent, PageBase } from '../styles/basePadding';
@@ -50,7 +50,7 @@ const Counsel = () => {
       } else navigate('/counsel');
     }
     resetSelectedCounselors();
-  }, [formData, pathname]);
+  }, [formData, pathname, resetSelectedCounselors, navigate]);
 
   return (
     <CounselBox>

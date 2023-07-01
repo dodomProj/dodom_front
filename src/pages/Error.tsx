@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import Logo from '../components/Logo';
-import Button from '../components/Button';
+import Logo from '../components/common/Logo';
+import Button from '../components/common/Button';
 import { MainContent, PageBase } from '../styles/basePadding';
 import styled from 'styled-components';
 

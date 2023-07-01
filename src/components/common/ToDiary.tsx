@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { basePadding } from '../styles/basePadding';
+import { basePadding } from '../../styles/basePadding';
 
 export const SubtitleContainer = styled.div`
   background-color: var(--primary);

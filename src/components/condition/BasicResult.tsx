@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import CategoryBox from '../CategoryBox';
-import ProgressBar from '../ProgressBar';
+import CategoryBox from '../common/CategoryBox';
+import ProgressBar from '../common/ProgressBar';
 import useTestResult from '../../util/useTestResult';
 
 export const ProgressBox = styled.div`

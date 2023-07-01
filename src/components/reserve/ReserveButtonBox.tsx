@@ -7,8 +7,8 @@ import {
   useRecoilValueLoadable,
   useResetRecoilState,
 } from 'recoil';
-import Button from '../Button';
-import Loading from '../Loading';
+import Button from '../common/Button';
+import Loading from '../common/Loading';
 import postData from '../../api/postData';
 import { selectedCounselorsState } from '../../recoil/counsel';
 import {

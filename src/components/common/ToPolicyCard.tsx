@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ButtonCard } from '../styles/baseCard';
+import { ButtonCard } from '../../styles/baseCard';
 import MoreInfoArrow from './MoreInfoArrow';
 
 const Card = styled(ButtonCard)`

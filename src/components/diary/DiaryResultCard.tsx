@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import SaveButton from '../SaveButton';
+import SaveButton from '../common/SaveButton';
 import { ResultCard } from '../condition/ConditionResultCard';
 import { useRecoilValue } from 'recoil';
 import { diaryTextState } from '../../recoil/diary';
@@ -13,7 +13,6 @@ const Card = styled(ResultCard)`
     align-self: center;
     width: 20rem;
   }
-  witdh: fit-content;
 `;
 
 const DiaryResultCard = () => {

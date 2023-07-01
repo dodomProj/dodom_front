@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import Logo, { TitleStyle } from './Logo';
 import NavBox from './NavBox';
-import { basePadding } from '../styles/basePadding';
+import { basePadding } from '../../styles/basePadding';
 
 interface HeaderProps {
   path: string;

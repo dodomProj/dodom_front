@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import ToDiaryCard from '../ToDiaryCard';
-import ToReserveCard from '../ToReserveCard';
+import ToDiaryCard from '../common/ToDiaryCard';
+import ToReserveCard from '../common/ToReserveCard';
 import ConditionResultCard from './ConditionResultCard';
 
 type Direction = {
