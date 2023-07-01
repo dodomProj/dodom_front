@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import TextBox from '../components/TextBox';
 import { firstDodom } from '../data/textBoxData';
-import { PageBase } from '../styles/basePadding';
+import { PageBase, basePadding } from '../styles/basePadding';
 
 const MainBox = styled(PageBase)`
   display: flex;
@@ -83,14 +83,15 @@ const SubBox = styled.div`
   padding-bottom: 100px;
 `;
 const LinkBox = styled.div`
+  ${basePadding}
+  width: 100%;
   display: flex;
   justify-content: flex-end;
-  padding-right: 4rem;
-  margin-top: 4rem;
-  div {
+  a {
     color: var(--white);
     cursor: pointer;
     margin-left: 4rem;
+    word-break: keep-all;
   }
   img {
     width: 1rem;
@@ -130,16 +131,12 @@ const Main = () => {
         <TextBox {...firstDodom} />
         <LinkBox>
           <Link to="/counsel">
-            <div>
-              상담사 알아보기
-              <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
-            </div>
+            상담사 알아보기
+            <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
           </Link>
           <Link to="/guide">
-            <div>
-              DODOM 더 알아보기
-              <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
-            </div>
+            DODOM 더 알아보기
+            <img src={process.env.PUBLIC_URL + '/assets/arrow_white.png'} />
           </Link>
         </LinkBox>
       </SubBox>
