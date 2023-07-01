@@ -56,7 +56,7 @@ const TextBox = ({ title, subtitle, text, theme, children }: TextBoxProps) => {
           <h1>{title}</h1>
           {subtitle && <p>{subtitle}</p>}
         </Title>
-        <Text>{text && text.map((line) => <p>{line}</p>)}</Text>
+        <Text>{text && text.map((line, i) => <p key={i}>{line}</p>)}</Text>
         {children}
       </div>
     </Box>
