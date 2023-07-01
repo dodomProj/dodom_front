@@ -19,8 +19,10 @@ const Top = styled.div`
       filter: brightness(50%);
     }
   }
-
-  height: 70vh;
+  @media only screen and (min-width: 1000px) {
+    height: 70vh;
+  }
+  flex-grow: 1;
 `;
 const ButtonCard = styled(Link)`
   background-color: var(${(props) => props.theme});
@@ -31,6 +33,7 @@ const ButtonCard = styled(Link)`
   flex: 2;
   min-width: 500px;
   transition: 0.5s;
+  padding: 1rem;
   img {
     display: block;
     margin-bottom: 70px;
@@ -65,11 +68,16 @@ const Bottom = styled.div`
   height: calc(-100px + 30vh);
 `;
 const SubBox = styled.div`
-  height: calc(-300px + 100vh);
+  height: fit-content;
   background: var(--black);
   display: flex;
   flex-direction: column;
   position: relative;
+  @media only screen and (min-width: 1000px) {
+    height: calc(-300px + 100vh);
+    padding-bottom: 0;
+  }
+  padding-bottom: 100px;
 `;
 const LinkBox = styled.div`
   display: flex;
