@@ -57,7 +57,7 @@ const PolicyCard = ({
   url,
 }: CardProps) => {
   const [imgSrc, setImgSrc] = useState(img);
-  console.log(url, url.replace(/-/g, ''));
+
   return (
     <Box>
       <div>
