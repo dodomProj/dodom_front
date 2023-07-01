@@ -19,19 +19,23 @@ const Top = styled.div`
       filter: brightness(50%);
     }
   }
-  @media only screen and (min-width: 1000px) {
-    height: 70vh;
+  height: calc(-250px + 100vh);
+  @media only screen and (max-width: 700px) {
+    flex-direction: column;
+    height: fit-content;
   }
-  flex-grow: 1;
+  @media only screen and (min-width: 701px) and (max-height: 632px) {
+    height: fit-content;
+  }
 `;
 const ButtonCard = styled(Link)`
   background-color: var(${(props) => props.theme});
+  /* min-width: 50vw; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   flex: 2;
-  min-width: 500px;
   transition: 0.5s;
   padding: 1rem;
   img {
@@ -65,22 +69,22 @@ const Bottom = styled.div`
     color: var(--white);
     cursor: pointer;
   }
-  height: calc(-100px + 30vh);
+  height: 150px;
 `;
 const SubBox = styled.div`
   height: fit-content;
   background: var(--black);
   display: flex;
   flex-direction: column;
-  position: relative;
-  @media only screen and (min-width: 1000px) {
-    height: calc(-300px + 100vh);
+  /* @media only screen and (min-width: 1080px) {
+    height: calc(-200px + 100vh);
     padding-bottom: 0;
-  }
+  } */
   padding-bottom: 100px;
 `;
 const LinkBox = styled.div`
   display: flex;
+  justify-content: flex-end;
   padding-right: 4rem;
   margin-top: 4rem;
   div {
@@ -92,9 +96,6 @@ const LinkBox = styled.div`
     width: 1rem;
     margin-left: 1rem;
   }
-  position: absolute;
-  right: 4rem;
-  bottom: 4rem;
 `;
 const Main = () => {
   const target = useRef<HTMLDivElement>(null);
