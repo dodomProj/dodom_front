@@ -96,9 +96,6 @@ const ReserveFormBox = () => {
     }));
   }, [formDateTime]);
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
 
   return (
     <FormBox>
