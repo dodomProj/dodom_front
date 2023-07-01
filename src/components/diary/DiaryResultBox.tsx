@@ -17,7 +17,7 @@ const FlexBox = styled.div`
 
 const DiaryResultBox = () => {
   const diaryText = useRecoilValue(diaryTextState);
-  // 임시로직
+
   const depressionCheck = (text: string) => {
     return depressionKeywords.some((word) => text.includes(word));
   };

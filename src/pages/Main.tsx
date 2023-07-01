@@ -30,7 +30,6 @@ const Top = styled.div`
 `;
 const ButtonCard = styled(Link)`
   background-color: var(${(props) => props.theme});
-  /* min-width: 50vw; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,10 +75,6 @@ const SubBox = styled.div`
   background: var(--black);
   display: flex;
   flex-direction: column;
-  /* @media only screen and (min-width: 1080px) {
-    height: calc(-200px + 100vh);
-    padding-bottom: 0;
-  } */
   padding-bottom: 100px;
 `;
 const LinkBox = styled.div`

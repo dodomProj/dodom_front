@@ -166,7 +166,6 @@ const ReserveFormBox = () => {
             id="form-message"
           />
         </InputBox>
-        {/* 버튼 텍스트 수정 가능 */}
         <ButtonBox>
           <Button text="상담사 추천받기" forSubmit={true} />
         </ButtonBox>

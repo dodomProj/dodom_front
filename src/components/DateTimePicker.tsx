@@ -103,9 +103,7 @@ const DateTimePicker = ({ dateId }: Props) => {
           id="form-date"
           dateFormat="yyyy년 MM월 dd일"
           selected={formDateTime.timeList[selectedIndex].date}
-          // minDate={today}
           onChange={handleChange}
-          // placeholderText="****년 **월 **일"
         />
       </PickBox>
       <PickBox>

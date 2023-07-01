@@ -12,10 +12,6 @@ type aboutCounsel = {
   theme: string;
 };
 
-const GuideBox = styled(PageBase)`
-  /* height: 100%;
-  background-color: red; */
-`;
 const Container = styled.div<container>`
   background-color: ${(props) => `var(${props.background})`};
   transition: 0.5s;
@@ -32,7 +28,6 @@ const AboutCounsel = styled.div<aboutCounsel>`
     height: 900px;
   }
   padding-top: 5rem;
-  /* padding-bottom: 5rem; */
   transition: 0.5s;
 `;
 const Title = styled.h1`
@@ -123,7 +118,7 @@ const Guide = () => {
     setClickContents(contents);
   };
   return (
-    <GuideBox>
+    <PageBase>
       <TextBox {...aboutDodom} />
       <Container background={hoverContent >= 0 ? '--black' : '--secondary'}>
         <AboutCounsel
@@ -174,7 +169,7 @@ const Guide = () => {
         </FAQ>
       </Container>
       <ToDiary />
-    </GuideBox>
+    </PageBase>
   );
 };
 

@@ -43,7 +43,6 @@ const Info = styled.p`
   margin-top: 0.6rem;
 `;
 const StyledRate = styled(Rate)`
-  /* width: 100%; */
   .rc-rate-star {
     color: var(--white);
   }

@@ -6,10 +6,7 @@ export const Card = styled.div`
 `;
 
 export const ButtonCard = styled(Card)`
-  /* position: relative; */
   background-color: var(${(props) => props.theme});
-  /* width: 565px; */
-  /* height: 370px; */
   h2 {
     margin-bottom: 1rem;
   }
