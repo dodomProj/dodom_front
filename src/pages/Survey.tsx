@@ -88,8 +88,10 @@ const Survey = () => {
       `/reviews?appointmentId=${search.split('?appointmentId=')[1]}`,
       form
     ).then((res) => {
-      if (res.status === 201) navigate('/');
-      else alert('제출에 실패했습니다.\n잠시후 다시 시도해주세요');
+      if (res.status === 201) {
+        alert('제출에 성공했습니다\n메인으로 이동합니다 :)');
+        navigate('/');
+      } else alert('제출에 실패했습니다.\n잠시후 다시 시도해주세요');
     });
   };
 
