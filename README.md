@@ -1,43 +1,55 @@
+## ✨ 기능 소개
+
 <details>
-<summary><b>봉사 조회</b></summary>
+<summary><b>메인 화면</b></summary>
 <div markdown="1"><br/>
-
-![봉사 조회](https://user-images.githubusercontent.com/88031716/228537703-04117ea5-d2da-4104-a416-7eefe576580f.gif)
-
-- 사용자가 봉사 카테고리(어린이, 장애인, 노인, 동물, 환경)을 클릭하여 카테고리에 맞는 봉사활동을 조회할 수 있습니다.
-- 사용자가 검색창에 봉사명 혹은, 지역별로 필터링 하여 봉사활동을 조회 할 수 있습니다.
+  
+![main](https://github.com/dodomProj/dodom_front/assets/62418379/bd29605b-091a-4f08-8bb8-8dc5835fd360)
 
 </div>
 </details>
 <details>
-<summary><b>봉사 신청</b></summary>
+<summary><b>마음 일기 - 상담 예약</b></summary>
 <div markdown="1"><br/>
 
-![봉사 신청](https://user-images.githubusercontent.com/88031716/228538391-074a4954-d976-4f94-9aac-78722c94e7bd.gif)
+https://github.com/dodomProj/dodom_front/assets/62418379/997fceae-cefc-4e78-8905-131e51b5a9be
 
-- 로그인한 사용자가 원하는 봉사활동을 클릭하여, 봉사활동 상세에 나도 할래 버튼을 클릭하면 신청이 가능합니다.
-- 로그인한 사용자가 마이페이지에서 봉사활동을 신청한 봉사활동을 관리, 취소가 가능합니다.
-- 봉사신청 완료후 봉사를 참가 하게 되면 봉사점수를 얻게 되며 봉사 상세에서 후기를 작성 할 수 있습니다.
+
 </div>
 </details>
 <details>
-<summary><b>봉사 그룹 개설</b></summary>
+<summary><b>심리 검사 - 상담 예약</b></summary>
 <div markdown="1"><br/>
 
-![봉사 그룹 개설](https://user-images.githubusercontent.com/88031716/228539300-04d82a04-038f-4dbe-9a53-76016cb8cb8b.gif)
+https://github.com/dodomProj/dodom_front/assets/62418379/2dc75853-4635-4c3d-b18e-b84b10e3c9c6
 
-- 봉사 포인트가 15점인 사용자가 그룹을 개설 할 수 있으며, 그룹을 개설하게 되면 그룹장 뱃지를 얻게 됩니다.
-- 봉사 성향이 비슷한 사용자 끼리 만나 커뮤니티를 형성 할 수 있습니다.
+
 </div>
 </details>
 <details>
-<summary><b>봉사 그룹 참여</b></summary>
+<summary><b>상담사 소개</b></summary>
 <div markdown="1"><br/>
 
-![봉사 그룹 참여](https://user-images.githubusercontent.com/88031716/228540053-66a61556-9940-4acc-a87d-ec2c367bb497.gif)
+https://github.com/dodomProj/dodom_front/assets/62418379/58814861-feea-424b-bd1a-50145c51cf39
 
-- 로그인한 사용자가 메인 네비게이션 메뉴에서 커뮤니티를 클릭후 원하는 그룹을 선택해 함께 하기 버튼을 누르게 되면 가입이 됩니다.
-- 그룹에 가입한 사용자는 그룹의 커뮤니케이션 기능인 댓글로 다른 사용자들과 소통이 가능 합니다.
+</div>
+</details>
+
+<details>
+<summary><b>상담 후기 작성</b></summary>
+<div markdown="1"><br/>
+
+https://github.com/dodomProj/dodom_front/assets/62418379/332f2a22-0d5b-4d8c-b9fe-bd86cd8c1f03
+
+</div>
+</details>
+
+<details>
+<summary><b>지원 정책 소개</b></summary>
+<div markdown="1"><br/>
+
+https://github.com/dodomProj/dodom_front/assets/62418379/a2d95f0c-a138-4dc0-b783-b924d136d152
+
 </div>
 </details>
 
