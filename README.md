@@ -1,43 +1,55 @@
+## ✨ 기능 소개
+
 <details>
-<summary><b>봉사 조회</b></summary>
+<summary><b>메인 화면</b></summary>
 <div markdown="1"><br/>
-
-![봉사 조회](https://user-images.githubusercontent.com/88031716/228537703-04117ea5-d2da-4104-a416-7eefe576580f.gif)
-
-- 사용자가 봉사 카테고리(어린이, 장애인, 노인, 동물, 환경)을 클릭하여 카테고리에 맞는 봉사활동을 조회할 수 있습니다.
-- 사용자가 검색창에 봉사명 혹은, 지역별로 필터링 하여 봉사활동을 조회 할 수 있습니다.
+  
+![main](https://github.com/dodomProj/dodom_front/assets/62418379/bd29605b-091a-4f08-8bb8-8dc5835fd360)
 
 </div>
 </details>
 <details>
-<summary><b>봉사 신청</b></summary>
+<summary><b>마음 일기 - 상담 예약</b></summary>
 <div markdown="1"><br/>
 
-![봉사 신청](https://user-images.githubusercontent.com/88031716/228538391-074a4954-d976-4f94-9aac-78722c94e7bd.gif)
+https://github.com/dodomProj/dodom_front/assets/62418379/997fceae-cefc-4e78-8905-131e51b5a9be
 
-- 로그인한 사용자가 원하는 봉사활동을 클릭하여, 봉사활동 상세에 나도 할래 버튼을 클릭하면 신청이 가능합니다.
-- 로그인한 사용자가 마이페이지에서 봉사활동을 신청한 봉사활동을 관리, 취소가 가능합니다.
-- 봉사신청 완료후 봉사를 참가 하게 되면 봉사점수를 얻게 되며 봉사 상세에서 후기를 작성 할 수 있습니다.
+
 </div>
 </details>
 <details>
-<summary><b>봉사 그룹 개설</b></summary>
+<summary><b>심리 검사 - 상담 예약</b></summary>
 <div markdown="1"><br/>
 
-![봉사 그룹 개설](https://user-images.githubusercontent.com/88031716/228539300-04d82a04-038f-4dbe-9a53-76016cb8cb8b.gif)
+https://github.com/dodomProj/dodom_front/assets/62418379/2dc75853-4635-4c3d-b18e-b84b10e3c9c6
 
-- 봉사 포인트가 15점인 사용자가 그룹을 개설 할 수 있으며, 그룹을 개설하게 되면 그룹장 뱃지를 얻게 됩니다.
-- 봉사 성향이 비슷한 사용자 끼리 만나 커뮤니티를 형성 할 수 있습니다.
+
 </div>
 </details>
 <details>
-<summary><b>봉사 그룹 참여</b></summary>
+<summary><b>상담사 소개</b></summary>
 <div markdown="1"><br/>
 
-![봉사 그룹 참여](https://user-images.githubusercontent.com/88031716/228540053-66a61556-9940-4acc-a87d-ec2c367bb497.gif)
+https://github.com/dodomProj/dodom_front/assets/62418379/58814861-feea-424b-bd1a-50145c51cf39
 
-- 로그인한 사용자가 메인 네비게이션 메뉴에서 커뮤니티를 클릭후 원하는 그룹을 선택해 함께 하기 버튼을 누르게 되면 가입이 됩니다.
-- 그룹에 가입한 사용자는 그룹의 커뮤니케이션 기능인 댓글로 다른 사용자들과 소통이 가능 합니다.
+</div>
+</details>
+
+<details>
+<summary><b>상담 후기 작성</b></summary>
+<div markdown="1"><br/>
+
+https://github.com/dodomProj/dodom_front/assets/62418379/332f2a22-0d5b-4d8c-b9fe-bd86cd8c1f03
+
+</div>
+</details>
+
+<details>
+<summary><b>지원 정책 소개</b></summary>
+<div markdown="1"><br/>
+
+https://github.com/dodomProj/dodom_front/assets/62418379/a2d95f0c-a138-4dc0-b783-b924d136d152
+
 </div>
 </details>
 
@@ -48,7 +60,7 @@
 |                              [강은서<br>(BE)](https://github.com/kdmstj)                               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       [조윤희<br>(FE)](https://github.com/YUNH7)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |                                  [차세진<br>(FE)](https://github.com/chasj0326)                                   |
 | :----------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: |
 | <img alt="강은서" src="https://avatars.githubusercontent.com/u/62414231?v=4" height="100" width="100"> |                                                                                                                                                                                                                                                                                                                                                                                                                                                        <img alt="조윤희" src="https://avatars.githubusercontent.com/u/100519978?v=4" height="100" width="100">                                                                                                                                                                                                                                                                                                                                                                                                                                                         |      <img alt="차세진" src="https://avatars.githubusercontent.com/u/62418379?v=4" height="100" width="100">       |
-|                           <p align="left"> - 기능 구현<br/>- 기능 구현 </p>                            | <p align="left" >- 심리 검사 페이지(나의 상태)<br/>&ensp;+ 테스트 객체에서 필요한 정보<br/>&ensp;&ensp;&ensp;(테스트 종류, 질문/답변/결과)만<br/>&ensp;&ensp;&ensp;찾아 리턴하는 커스텀 훅 작성<br/>- 상담사 소개 페이지<br/>&ensp;+ 상담폼 상담사 더보기와<br/>&ensp;&ensp;&ensp;조건부 렌더링으로 같이 사용,<br/>&ensp;&ensp;&ensp;상담폼 관련 데이터가 없다면<br/>&ensp;&ensp;&ensp;리다이렉트<br/>&ensp;&ensp;&ensp;(/reserve/counsel > /counsel)<br/>- 정책 소개 페이지(추천 사업)<br/>- 만족도 조사 페이지(설문조사)<br/>&ensp;+ api 응답에 따라<br/>&ensp;&ensp;&ensp;이미 리뷰가 등록된 후기라면<br/>&ensp;&ensp;&ensp;메인으로 리다이렉트<br/>- Loading, 404 페이지<br/>- 캐러셀, 별점 컴포넌트 적용<br/>- CICD<br/>&ensp;Github actions로 AWS S3 자동 배포<br/><br/>**Create** :<br/>- 사이트에 접근 시 방문자수 +1<br/>- 상담 예약<br/>- 상담 후기 등록<br/>**Read** :<br/>- 상담사 정보 조회<br/>- 정책 관련 Notion 데이터 조회<br/>- 예약 번호로 상담사Id,<br/>&ensp; 후기 등록 여부 조회<br/>- 후기 조회 | <p align="left">- 기능 구현<br/>- 기능 구현<br/>- 기능 구현<br/>- 기능 구현<br/><br/>**Create** :<br/>- 상담 예약 |
+|<p align="left">**AWS 배포**<br/>&ensp;﹒s3 정적웹사이트 https 적용<br/>&ensp;﹒ec2 API 서버 https 적용<br/>&ensp;﹒가비아 도메인 적용<br/>**상담 예약**<br/>&ensp;﹒예약 완료 이메일 전송 기능<br/>**리뷰 작성 및 조회**<br/>&ensp;﹒이메일 리뷰 페이지 연결<br/>**상담사 등록 및 조회**<br/>**웹사이트 방문자 수 등록 및 조회**</p> | <p align="left" >- 심리 검사 페이지(나의 상태)<br/>&ensp;+ 테스트 객체에서 필요한 정보<br/>&ensp;&ensp;&ensp;(테스트 종류, 질문/답변/결과)만<br/>&ensp;&ensp;&ensp;찾아 리턴하는 커스텀 훅 작성<br/>- 상담사 소개 페이지<br/>&ensp;+ 상담폼 상담사 더보기와<br/>&ensp;&ensp;&ensp;조건부 렌더링으로 같이 사용,<br/>&ensp;&ensp;&ensp;상담폼 관련 데이터가 없다면<br/>&ensp;&ensp;&ensp;리다이렉트<br/>&ensp;&ensp;&ensp;(/reserve/counsel > /counsel)<br/>- 정책 소개 페이지(추천 사업)<br/>- 만족도 조사 페이지(설문조사)<br/>&ensp;+ api 응답에 따라<br/>&ensp;&ensp;&ensp;이미 리뷰가 등록된 후기라면<br/>&ensp;&ensp;&ensp;메인으로 리다이렉트<br/>- Loading, 404 페이지<br/>- 캐러셀, 별점 컴포넌트 적용<br/>- CICD<br/>&ensp;Github actions로 AWS S3 자동 배포<br/><br/>**Create** :<br/>- 사이트에 접근 시 방문자수 +1<br/>- 상담 예약<br/>- 상담 후기 등록<br/>**Read** :<br/>- 상담사 정보 조회<br/>- 정책 관련 Notion 데이터 조회<br/>- 예약 번호로 상담사Id,<br/>&ensp; 후기 등록 여부 조회<br/>- 후기 조회 | <p align="left">- 기능 구현<br/>- 기능 구현<br/>- 기능 구현<br/>- 기능 구현<br/><br/>**Create** :<br/>- 상담 예약 |
 
 <br/>
 
