@@ -96,7 +96,7 @@ const LinkBox = styled.div`
 const Main = () => {
   const target = useRef<HTMLDivElement>(null);
   const onMoveToTarget = () => {
-    target?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    target?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
   return (
     <>
@@ -107,7 +107,7 @@ const Main = () => {
             <h1>솔직한 내 마음 일기 작성하기</h1>
             <p>아무도 모르는 내 마음, 편하게 써봐요.</p>
           </ButtonCard>
-          <ButtonCard to="/" theme="--third">
+          <ButtonCard to="/condition" theme="--third">
             <img src={process.env.PUBLIC_URL + '/assets/glass.png'} alt="" />
             <h1>내 상태 체크하기</h1>
             <p>
