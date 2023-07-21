@@ -75,6 +75,7 @@ const SubBox = styled.div`
   background: var(--black);
   display: flex;
   flex-direction: column;
+  padding-top: 36px;
   padding-bottom: 100px;
 `;
 const LinkBox = styled.div`
@@ -96,7 +97,7 @@ const LinkBox = styled.div`
 const Main = () => {
   const target = useRef<HTMLDivElement>(null);
   const onMoveToTarget = () => {
-    target?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    target?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
   return (
     <>
